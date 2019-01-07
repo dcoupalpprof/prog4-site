@@ -1,0 +1,25 @@
+.Feature{
+    flex: 1;
+    display: flex;
+    text-align: center;
+    min-height: 250px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    margin: 0.5em;
+}
+
+.FeatureLink{
+    display:flex;
+    flex:1;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 100%;
+    color: #fff;
+    border:1px solid #fff;
+}
+
+.FeatureIcon{
+    font-size: 4em;
+}
+

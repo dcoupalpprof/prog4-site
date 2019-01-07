@@ -1,0 +1,11 @@
+@import "../../../../scss/rwd";
+
+.Heros{
+    background:red;
+    padding:1em;
+    text-align: center;
+    display:flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    flex:1;
+}

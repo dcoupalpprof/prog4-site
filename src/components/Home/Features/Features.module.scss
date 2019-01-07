@@ -1,0 +1,13 @@
+@import "../../../scss/rwd";
+
+.Features{
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  background: blue;
+  align-items: stretch;
+
+  @include mq(medium){
+    flex-flow: row nowrap;
+  }
+}

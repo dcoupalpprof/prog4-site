@@ -1,0 +1,8 @@
+@import "./variables";
+
+@mixin mq($ecran) {
+  $largeur: map-get($breakpoints, $ecran);
+  @media screen and (min-width: $largeur) {
+    @content;
+  }
+}

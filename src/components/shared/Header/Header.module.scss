@@ -1,0 +1,15 @@
+@import "../../../scss/rwd";
+
+.Header {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: $headerMinHeight;
+
+  @include mq(medium) {
+    &:not(.Header-small) {
+      height: $headerFullHeight;
+    }
+  }
+}
+
+.Header-small{}

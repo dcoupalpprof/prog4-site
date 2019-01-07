@@ -1,0 +1,11 @@
+$baseSize:16;
+$breakpoints:(
+        'small':(540/$baseSize)*1em,
+        'medium':(640/$baseSize)*1em,
+        'large':(1024/$baseSize)*1em,
+        'x-large':(1280/$baseSize)*1em
+);
+
+$headerMinHeight: 200px;
+$headerFullHeight: 100vh;
+
