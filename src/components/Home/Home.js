@@ -6,10 +6,10 @@ class Home extends React.Component {
 
     render() {
         return (
-            <section>
+            <main>
                 <Header isSmall={false} siteTitle="Programmation multimédia 4" title="Programmation multimédia 4"/>
                 <Features/>
-            </section>
+            </main>
         );
     }
 }

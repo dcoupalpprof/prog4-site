@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './Feature.module.scss';
 import PropTypes from 'prop-types';
-import 'primeicons/primeicons.css';
 
 const Feature = (props) => {
 

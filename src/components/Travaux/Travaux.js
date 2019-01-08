@@ -5,9 +5,9 @@ import {Header} from "../shared";
 class Travaux extends React.Component {
     render() {
         return (
-            <section className={classes.Travaux}>
+            <main className={classes.Travaux}>
                 <Header siteTitle="Programmation multimédia 4" isSmall={true} title="Travaux"/>
-            </section>
+            </main>
         );
     }
 }

@@ -6,9 +6,9 @@ class References extends React.Component {
 
     render() {
         return (
-            <section className={classes.References}>
+            <main className={classes.References}>
                 <Header siteTitle="Programmation multimédia 4" isSmall={true} title="Références"/>
-            </section>
+            </main>
         );
     }
 }
