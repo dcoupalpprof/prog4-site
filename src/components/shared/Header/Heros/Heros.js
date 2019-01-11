@@ -5,7 +5,7 @@ import classes from './Heros.module.scss';
 const Heros = (props) => {
     return (
         <section className={classes.Heros}>
-            <h1>{props.title}</h1>
+            <h1 className={classes.HerosTitle}>{props.title}</h1>
         </section>
     );
 };

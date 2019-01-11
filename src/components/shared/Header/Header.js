@@ -4,6 +4,7 @@ import {TitleBar, Heros} from "./index";
 import PropTypes from 'prop-types';
 
 const Header = (props) => {
+
     const headerClasses = [classes.Header];
     if( props.isSmall ){
         headerClasses.push(classes["Header-small"]);
@@ -26,7 +27,7 @@ Header.defaultProps = {
 Header.propTypes = {
     isSmall: PropTypes.bool,
     title: PropTypes.string,
-    siteTitle: PropTypes.string
+    siteTitle: PropTypes.string,
 };
 
 export default Header;

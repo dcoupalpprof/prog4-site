@@ -1,11 +1,19 @@
 @import "../../../../styles/rwd";
 
 .Heros{
-    background:red;
-    padding:1em;
     text-align: center;
     display:flex;
     flex-flow: column wrap;
     justify-content: center;
     flex:1;
+    background: url(/img/heros_full.jpg) center / cover;
+    filter: blur(100%);
+}
+
+.HerosTitle{
+    color: #fff;
+    font-size: 2.6rem;
+    text-shadow: 2px 2px #000;
+    background-color: rgba($color-primary, 0.6);
+    padding: 0.3em 1em;
 }

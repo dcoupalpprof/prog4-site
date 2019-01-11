@@ -7,7 +7,7 @@ class Cours extends React.Component{
     render() {
         return (
             <main className={classes.Cours}>
-                <Header isSmall={true} siteTitle="Programmation multimédia 4" title="Notes de cours"/>
+                <Header history={this.props.history} isSmall={true} siteTitle="Programmation multimédia 4" title="Notes de cours"/>
                 <section>
                     <Snippet toggleable={false} hidden={false} title="Un titre" language="jsx" code={`
                         //Test

@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Feature.module.scss';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 const Feature = (props) => {
 
@@ -8,10 +9,10 @@ const Feature = (props) => {
 
     return (
         <li className={classes.Feature}>
-            <a className={classes.FeatureLink} href={props.link}>
+            <Link className={classes.FeatureLink} to={props.link}>
                 {props.name}
                 <i className={featureIconClasses.join(' ')}></i>
-            </a>
+            </Link>
         </li>
     );
 };
