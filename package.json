@@ -1,8 +1,8 @@
 {
   "name": "site",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "private": true,
-  "homepage": "https://gitlab.com/Eden6/prog-4-web-site-react",
+  "homepage": "http://mywebsite.com/relativepath",
   "dependencies": {
     "classnames": "^2.2.6",
     "primeicons": "^1.0.0",

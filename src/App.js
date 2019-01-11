@@ -11,6 +11,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Home}/>
             <Route path="/cours" exact component={Cours}/>
+            <Route path="/cours/:coursNo" exact component={Cours}/>
             <Route path="/travaux" exact component={Travaux}/>
             <Route path="/references" exact component={References}/>
             <Route component={Home}></Route> {/* Catch all */}
