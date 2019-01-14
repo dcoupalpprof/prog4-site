@@ -6,8 +6,17 @@
     flex-flow: column wrap;
     justify-content: center;
     flex:1;
-    background: url(/img/heros_full.jpg) center / cover;
-    filter: blur(100%);
+    position:relative;
+}
+
+.HerosBg {
+    position:absolute;
+    z-index: -1;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .HerosTitle{
