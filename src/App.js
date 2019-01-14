@@ -5,6 +5,7 @@ import {Footer} from "./components/shared";
 import {Route, Switch} from 'react-router-dom';
 
 class App extends Component {
+
   render() {
     return (
       <div className={classes.App}>

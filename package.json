@@ -1,8 +1,8 @@
 {
   "name": "site",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
-  "homepage": "http://mywebsite.com/relativepath",
+  "homepage": "/",
   "dependencies": {
     "classnames": "^2.2.6",
     "primeicons": "^1.0.0",

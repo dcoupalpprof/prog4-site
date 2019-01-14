@@ -6,13 +6,38 @@ import Week1 from './weeks/Week1';
 
 class Cours extends React.Component{
 
+    randomStrings = [
+        '8ASCVbR45s',
+        'vaOKbVrHhE',
+        'FHzTc8IAAN',
+        '6zuwtYLY32',
+        'jxOzjbXpZo',
+        'a6gTIY8tCa'
+    ];
+
     state = {
         activeCoursNo: 1
     };
 
     componentDidMount() {
-        const activeCoursNo = parseInt(this.props.match.params.coursNo) || 1;
-        this.setState({activeCoursNo})
+        const activeCoursNo = this.redirectToRightClass();
+        this.setState({activeCoursNo});
+    }
+
+    redirectToRightClass() {
+        const noLastCours = this.randomStrings.indexOf(process.env.REACT_APP_LAST_COURSE) + 1;
+        const activeCoursNo = parseInt(this.props.match.params.coursNo) || 0;
+        const realCoursNo = Math.min(noLastCours, activeCoursNo);
+
+        if (activeCoursNo === 0) {
+            this.props.history.push('/cours/' + noLastCours);
+            return;
+        } else if (realCoursNo !== activeCoursNo) {
+            this.props.history.push('/cours/'+realCoursNo);
+            return;
+        }
+
+        return realCoursNo;
     }
 
     getWeekNo() {
@@ -34,9 +59,6 @@ class Cours extends React.Component{
             <main className={classes.Cours}>
                 <Header history={this.props.history} isSmall={true} siteTitle="Programmation multimédia 4" title="Notes de cours"/>
                 {this.getWeekNo()}
-                {/*<section>
-
-                </section>*/ }
             </main>
         );
     }
