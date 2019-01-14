@@ -15,6 +15,16 @@ class Cours extends React.Component{
         'a6gTIY8tCa'
     ];
 
+    coursTitles = [
+        'Retour sur Javascript',
+        'Introduction à React',
+        'Introduction à React',
+        'Introduction à React',
+        'Introduction à React',
+        'Introduction à React',
+        'Introduction à React',
+    ];
+
     state = {
         activeCoursNo: 1
     };
@@ -54,10 +64,15 @@ class Cours extends React.Component{
         return weekTag;
     }
 
+    getCoursTitle() {
+        return this.coursTitles[this.state.activeCoursNo - 1];
+    }
+
     render() {
         return (
             <main className={classes.Cours}>
                 <Header history={this.props.history} isSmall={true} siteTitle="Programmation multimédia 4" title="Notes de cours"/>
+                <h2 className={classes.CoursTitle}>Cours {this.state.activeCoursNo}: {this.getCoursTitle()}</h2>
                 {this.getWeekNo()}
             </main>
         );

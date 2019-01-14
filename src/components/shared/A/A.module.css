@@ -1,0 +1,26 @@
+.A {
+    position:relative;
+}
+
+.A:link,A:visited{
+    color: #0e4091;
+}
+
+.A:hover,.A:active{
+    color: #11c0c5;
+}
+
+.A::after {
+    content: "";
+    position:absolute;
+    left:0;
+    width:0%;
+    height:1px;
+    background-color: #11c0c5;
+    bottom: -.1em;
+    transition: width .2s ease-in;
+}
+
+.A:hover::after{
+    width: 100%;
+}
