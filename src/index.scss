@@ -52,7 +52,31 @@ code {
     font-weight: bold;
 }
 
-.p-menuitem{
+.p-submenu-icon {
+    display: none !important;
+
+    @include mq(medium){
+        display: inline-block !important;
+    }
+}
+
+.p-menubar-root-list {
+    font-size: 0.8em;
+
+    @include mq(medium){
+        font-size: 1em;
+    }
+}
+
+.p-submenu-list {
+    text-align: center;
+
+    @include mq(medium){
+        text-align: left;
+    }
+}
+
+.p-menubar-root-list>.p-menuitem{
     display: block !important;
     text-align: right;
     font-size: 1.3em;

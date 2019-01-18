@@ -1,20 +1,28 @@
 import React from 'react';
 import Prism from 'prismjs';
 import '../../../styles/prism.css';
+import PrismCode from 'react-prism';
 import PropTypes from 'prop-types';
 require('prismjs/components/prism-jsx.min');
 
 // TODO: Ajuster pour mobile
-// TODO: Ajuste couleur de BG
 
-const Snippet = (props) => {
-    return (
-        <pre>
-            <code className={`language-${props.language}`}>
-                {props.code}
-            </code>
-        </pre>
-    );
+class Snippet extends React.Component {
+
+    componentWillMount() {
+        console.log('allo');
+        Prism.highlightAll();
+    }
+
+    render() {
+        return (
+            <pre>
+                <PrismCode className={`language-${this.props.language}`}>
+{this.props.code}
+                </PrismCode>
+            </pre>
+        );
+    }
 };
 
 Snippet.defaultProps = {

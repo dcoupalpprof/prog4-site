@@ -23,13 +23,13 @@
     }
 }
 
-.FeatureLink{
+a.FeatureLink{
     display:flex;
     flex:1;
     flex-direction: column;
     justify-content: center;
     flex-basis: 100%;
-    color: #fff;
+    color: #fff !important;
     background-color: rgba(255,255,255, 0.05);
     //border: 2px solid #fff;
     //border-radius: 1em;
@@ -41,7 +41,7 @@
     }
 }
 
-.FeatureIcon{
+i.FeatureIcon{
     font-size: 4em;
 }
 

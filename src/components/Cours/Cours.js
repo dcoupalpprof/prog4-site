@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Cours.module.css';
 import {Header} from '../shared';
 import Week1 from './weeks/Week1';
-
+import withLastCours from '../hoc/withLastCours';
 
 class Cours extends React.Component{
 
@@ -15,16 +15,6 @@ class Cours extends React.Component{
         'a6gTIY8tCa'
     ];
 
-    coursTitles = [
-        'Retour sur Javascript',
-        'Introduction à React',
-        'Introduction à React',
-        'Introduction à React',
-        'Introduction à React',
-        'Introduction à React',
-        'Introduction à React',
-    ];
-
     state = {
         activeCoursNo: 1
     };
@@ -35,12 +25,11 @@ class Cours extends React.Component{
     }
 
     redirectToRightClass() {
-        const noLastCours = this.randomStrings.indexOf(process.env.REACT_APP_LAST_COURSE) + 1;
         const activeCoursNo = parseInt(this.props.match.params.coursNo) || 0;
-        const realCoursNo = Math.min(noLastCours, activeCoursNo);
+        const realCoursNo = Math.min(this.props.noLastCours, activeCoursNo);
 
         if (activeCoursNo === 0) {
-            this.props.history.push('/cours/' + noLastCours);
+            this.props.history.push('/cours/' + this.props.noLastCours);
             return;
         } else if (realCoursNo !== activeCoursNo) {
             this.props.history.push('/cours/'+realCoursNo);
@@ -65,7 +54,7 @@ class Cours extends React.Component{
     }
 
     getCoursTitle() {
-        return this.coursTitles[this.state.activeCoursNo - 1];
+        return this.props.coursTitles[this.state.activeCoursNo - 1];
     }
 
     render() {
@@ -79,4 +68,4 @@ class Cours extends React.Component{
     }
 }
 
-export default Cours;
+export default withLastCours(Cours);

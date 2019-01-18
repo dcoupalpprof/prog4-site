@@ -4,19 +4,36 @@ import PropTypes from "prop-types";
 import { Menubar } from "../../";
 import "../../../../styles/prism.css";
 import {Link} from 'react-router-dom';
-/*
-*  icon: 'pi-file' },
-      { key: 2, name: "Travaux", link: "/references", info: "Info about", icon: 'pi-inbox' },
-      { key: 3, name: "Références", link: "/references", info: "Info about", icon: 'pi-info-circle' }
-* */
+import {withRouter} from 'react-router-dom';
+import withLastCours from '../../../hoc/withLastCours';
 
 class TitleBar extends React.Component {
 
-   navItems = [
-    { label: "Notes de cours", url: '/cours', className: 'allo' },
-    { label: "Travaux", url: '/references', className: 'allo' },
-    { label: "Références", url: '/references', className: 'allo' }
-  ];
+    constructor(props) {
+        super(props);
+        const coursItems = this.createCoursItems();
+        let navCoursItem = {label: 'Notes de cours'};
+        navCoursItem = coursItems.length <= 1 ? {...navCoursItem, url: '/cours', command: (e) => {this.redirectWithRouter(e)}} : {...navCoursItem, items: coursItems};
+
+        this.navItems = [
+            navCoursItem,
+            { label: "Travaux", url: '/travaux', command: (e) => {this.redirectWithRouter(e)}  },
+            { label: "Références", url: '/references', command: (e) => {this.redirectWithRouter(e)}  }
+        ];
+    }
+
+   createCoursItems = () => {
+       const cours = [];
+       for(let i = 0; i < this.props.noLastCours; i++){
+           cours.push({label: `Cours ${i+1}`, command: (e) => {this.redirectWithRouter(e)}, url: `/cours/${i+1}`});
+       }
+       return cours;
+   };
+
+   redirectWithRouter = (e) => {
+        e.originalEvent.preventDefault();
+        this.props.history.push(e.item.url);
+    };
 
   render() {
     return (
@@ -35,4 +52,4 @@ TitleBar.propTypes = {
   title: PropTypes.string
 };
 
-export default TitleBar;
+export default withLastCours(withRouter(TitleBar));
