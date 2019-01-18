@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './References.module.css';
 import {Header} from '../shared';
+import {Helmet} from 'react-helmet';
 
 class References extends React.Component {
     references = [];
@@ -13,12 +14,17 @@ class References extends React.Component {
 
     render() {
         return (
-            <main className={classes.Travaux}>
-                <Header siteTitle="Programmation multimédia 4" isSmall={true} title="Références"/>
-                <section>
-                    {this.showReferences()}
-                </section>
-            </main>
+            <React.Fragment>
+                <Helmet>
+                    <title>{'Programmation multimédia 4 - Références'}</title>
+                </Helmet>
+                <main className={classes.Travaux}>
+                    <Header siteTitle="Programmation multimédia 4" isSmall={true} title="Références"/>
+                    <section>
+                        {this.showReferences()}
+                    </section>
+                </main>
+            </React.Fragment>
         );
     }
 }

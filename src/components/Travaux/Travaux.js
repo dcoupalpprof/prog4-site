@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Travaux.module.css';
 import {Header} from "../shared";
+import {Helmet} from 'react-helmet';
 
 class Travaux extends React.Component {
     travaux = [];
@@ -13,12 +14,17 @@ class Travaux extends React.Component {
 
     render() {
         return (
-            <main className={classes.Travaux}>
-                <Header siteTitle="Programmation multimédia 4" isSmall={true} title="Travaux"/>
-                <section>
-                    {this.showTravaux()}
-                </section>
-            </main>
+            <React.Fragment>
+                <Helmet>
+                    <title>{'Programmation multimédia 4 - Travaux'}</title>
+                </Helmet>
+                <main className={classes.Travaux}>
+                    <Header siteTitle="Programmation multimédia 4" isSmall={true} title="Travaux"/>
+                    <section>
+                        {this.showTravaux()}
+                    </section>
+                </main>
+            </React.Fragment>
         );
     }
 }

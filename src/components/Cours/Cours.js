@@ -3,6 +3,7 @@ import classes from './Cours.module.css';
 import {Header} from '../shared';
 import Week1 from './weeks/Week1';
 import withLastCours from '../hoc/withLastCours';
+import {Helmet} from 'react-helmet';
 
 class Cours extends React.Component{
 
@@ -59,11 +60,16 @@ class Cours extends React.Component{
 
     render() {
         return (
-            <main className={classes.Cours}>
-                <Header history={this.props.history} isSmall={true} siteTitle="Programmation multimédia 4" title="Notes de cours"/>
-                <h2 className={classes.CoursTitle}>Cours {this.state.activeCoursNo}: {this.getCoursTitle()}</h2>
-                {this.getWeekNo()}
-            </main>
+            <React.Fragment>
+                <Helmet>
+                    <title>{`Programmation multimédia 4 - Notes de cours`}</title>
+                </Helmet>
+                <main className={classes.Cours}>
+                    <Header history={this.props.history} isSmall={true} siteTitle="Programmation multimédia 4" title="Notes de cours"/>
+                    <h2 className={classes.CoursTitle}>Cours {this.state.activeCoursNo}: {this.getCoursTitle()}</h2>
+                    {this.getWeekNo()}
+                </main>
+            </React.Fragment>
         );
     }
 }
