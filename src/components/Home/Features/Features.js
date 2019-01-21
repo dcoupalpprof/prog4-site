@@ -6,7 +6,7 @@ class Features extends React.Component {
   state = {
     features: [
       { key: 1, name: "Notes de cours", link: "/cours", info: "Info about", icon: 'pi-file' },
-      { key: 2, name: "Travaux", link: "/references", info: "Info about", icon: 'pi-inbox' },
+      { key: 2, name: "Travaux", link: "/travaux", info: "Info about", icon: 'pi-inbox' },
       { key: 3, name: "Références", link: "/references", info: "Info about", icon: 'pi-info-circle' }
     ]
   };
