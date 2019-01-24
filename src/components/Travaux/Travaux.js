@@ -166,7 +166,7 @@ class Travaux extends React.Component {
                                 `}/>
                             </Groupe>
                             <Groupe title="Détails" toggleable={true}>
-                                <p style={{marginLeft:'-1em'}}>Vous devrez créer les composantes réutilisables suivantes dans plusieurs fichiers js ou dans un seul:</p>
+                                <p style={{textIndent:0}}>Vous devrez créer les composantes réutilisables suivantes dans plusieurs fichiers js ou dans un seul:</p>
                                 <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
                                     <li>ListeFilms</li>
                                     <li>Film</li>
@@ -189,7 +189,7 @@ class Travaux extends React.Component {
                                 </ul>
                             </Groupe>
                             <Groupe title="Remise" toggleable={true}>
-                                <p style={{marginLeft: '-1em'}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 2.</p>
+                                <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 2.</p>
                             </Groupe>
                         </Section>
                     </section>
