@@ -63,6 +63,7 @@ const Week1 = (props) => (
     create-react-app unNouveauProjet
 
                 `}/>
+                <p>On démarre ensuite le projet et la compilation automatique avec la commande <strong>npm start</strong>.</p>
             </Groupe>
             <Groupe title="Composante fonctionnelle">
                 <p>Une composante fonctionnelle est une fonction devant retourner du <strong>JSX</strong> (syntaxe ressemblant à du html). La paire de parenthèses après le return permet d'afficher le JSX sur plusieurs lignes.</p>
