@@ -1,5 +1,6 @@
 .A {
     position:relative;
+    font-weight: bold;
 }
 
 .A:link,A:visited{
@@ -18,7 +19,7 @@
     height:1px;
     background-color: #11c0c5;
     bottom: -.1em;
-    transition: width .2s ease-in;
+    transition: all .2s ease-in, color 1s ease-in;
 }
 
 .A:hover::after{

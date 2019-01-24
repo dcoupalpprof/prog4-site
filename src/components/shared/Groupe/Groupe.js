@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import Snippet from '../../Cours/Snippet/Snippet';
+import Snippet from '../Snippet/Snippet';
 import classes from './Groupe.module.css';
 import {Panel} from '../';
 

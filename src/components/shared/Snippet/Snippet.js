@@ -10,8 +10,7 @@ require('prismjs/components/prism-jsx.min');
 class Snippet extends React.Component {
 
     componentWillMount() {
-        console.log('allo');
-        Prism.highlightAll();
+        //Prism.highlightAll();
     }
 
     render() {
@@ -23,7 +22,7 @@ class Snippet extends React.Component {
             </pre>
         );
     }
-};
+}
 
 Snippet.defaultProps = {
     language: 'javascript'

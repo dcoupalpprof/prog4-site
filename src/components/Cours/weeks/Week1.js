@@ -1,6 +1,5 @@
 import React from 'react';
-import Snippet from '../Snippet/Snippet';
-import {A, Groupe, Section} from '../../shared';
+import {A, Groupe, Section, Snippet} from '../../shared';
 
 const Week1 = (props) => (
     <section>
@@ -38,74 +37,7 @@ const Week1 = (props) => (
                 <p>On évitera dorénavant d'utiliser <strong>var</strong>.</p>
             </Groupe>
             */ }
-            <Groupe title="Navigation à l'intérieur de la ligne de commande">
-                <p>Il est très fréquent qu'il soit nécessaire d'utiliser la ligne de commande pour effectuer des opérations avec Node.js.
-                Sous PC, il est conseillé d'utiliser <strong><A url="http://cmder.net/">Cmder</A></strong> sous PC tandis que le <strong>Terminal</strong> fait déjà plutôt bien le travail sur Mac.</p>
-                <Snippet code={`
-    //Permet d'accéder au lecteur D
-    d:
-    //Permet d'afficher le contenu du dossier courant sur PC
-    dir
-    //Permet d'afficher le contenu du dossier courant sur Mac/Linux
-    ls
-    //Retour à la racine du lecteur
-    cd /
-    //Navigation à l'intérieur d'un dossier
-    cd nomDunDossier
-    //Revenir au dossier précédent
-    cd ..
-    //Navigation à travers un chemin composé de plusieurs dossiers
-    cd nomDunDossier/nomDunAutre/PuisDunAutre
-    //Veuillez entourer le chemin par une paire de guillemets s'il y a des espaces dans celui-ci
 
-                `}/>
-                <h4>Important</h4>
-                <p>Si vous désirez interrompre un processus en cours dans la ligne de commande, il vous suffit d'appuyer à une ou deux reprises sur les touches <strong>ctrl-c</strong>.</p>
-            </Groupe>
-            <Groupe title="Utilisation de npm">
-                <p>Dans la ligne de commande, il suffit d'utiliser le mot-clé <strong>npm</strong> pour rechercher une librairie dans le registre ou en télécharger une dans le dossier courant.</p>
-                <Snippet code={`
-    //Recherche d'une librairie contenant le nom jquery
-    npm search jquery
-    //Installation locale de la librairie jquery
-    npm install jquery
-                `}/>
-                <p>Vous verrez souvent une manifeste nommé <strong>package.json</strong> contenant les différentes commandes à exécuter dans un projet ainsi que toutes les dépendances de ce projet en terme de librairies.
-                    Ce manifeste permet d'installer toutes ses librairies d'un seul coup grâce à la commande suivante:</p>
-                <Snippet code={`
-    //Installe toutes les dépendances du projet
-    npm install
-    //Permet d'initialiser/créer un nouveau manifeste
-    npm init
-    //Permet d'initialiser/créer un manifeste en utilisant les valeurs par défaut (sans répondre aux questions)
-    npm init -y
-                `}/>
-                <p>Une fois le manifeste existant, il est facile d'ajouter de nouvelles librairies au projet et de sauvegarder leur nom dans <strong>package.json</strong>.</p>
-                <Snippet code={`
-    //Télécharge une librairie et l'ajoute au manifeste
-    npm install leNomDuneLibrairie --save
-    //Même chose, mais pour une librairie nécessaire au développement uniquement
-    npm install leNomDuneLibrairie --save-dev
-                `}/>
-                <p>Certaines librairies doivent être installées globalement. Celles-ci sont souvent des outils réutilisables. On installe une librairie globalement à l'aide de l'option -g.</p>
-                <Snippet code={`
-    //Installe la librairie benny-hill globalement
-    npm install benny-hill -g
-    //benny-hill pourrait maintenant être utilisée sans npm puisqu'elle est globale
-    benny-hill
-    //Installe create-react-app globalement
-    npm install create-react-app -g
-    //Create-react-app peut maintenant être utilisé pour créer des projets React
-    create-react-app unNouveauProjet
-                `}/>
-                <p>Il est sinon possible d'utiliser temporairement une librairie globale sans l'installer de façon permanente à l'aide de l'outil <strong>npx</strong> aussi installé avec node:</p>
-                <Snippet code={`
-    //Téléchargera et exécutera la librairie benny-hill et la supprimera par la suite
-    npx benny-hill
-    //Téléchargera et exécutera la librairie create-react-app afin de créer le nouveau projet et supprimera ensuite create-react-app du poste
-    npx create-react-app unNouveauProjet
-                `}/>
-            </Groupe>
             {/*<Groupe title="Un titre" toggleable={true} hidden={false}>
                 <Snippet language="jsx" code={`
     //Test
@@ -117,6 +49,68 @@ const Week1 = (props) => (
     };
 `}/>
             </Groupe>*/}
+        </Section>
+        <Section title="Introduction à React">
+            <Groupe title="Installation">
+                <p>Une fois Node.js installé, il vous faut ouvrir une nouvelle ligne de commande pour utiliser le module <strong>create-react-app</strong>. <br/>
+                Il est possible de l'utiliser directement avec npx ou l'installer globalement: (voir la section <A url='/references' internal={true}>références</A> pour plus d'informations)</p>
+                <Snippet code={`
+    //L'utiliser directement avec npx
+    npx create-react-app unNouveauProjet
+    //OU l'installer globalement et l'utiliser ensuite:
+    npm install create-react-app -g
+    //Une fois l'installation terminée
+    create-react-app unNouveauProjet
+
+                `}/>
+            </Groupe>
+            <Groupe title="Composante fonctionnelle">
+                <p>Une composante fonctionnelle est une fonction devant retourner du <strong>JSX</strong> (syntaxe ressemblant à du html). La paire de parenthèses après le return permet d'afficher le JSX sur plusieurs lignes.</p>
+                <p>Le module React doit absolument être importer pour créer une composante (même s'il n'est pas utilisé de façon explicite).</p>
+                <Snippet language="jsx" code={`
+    import React from 'react';
+
+    const UneComposante = (props) => {
+        //Un peu de logique servant à l'affichage possible (très peu)
+        return (
+            <div>
+                <h1>Du contenu</h1>
+            </div>
+        );
+    };
+                `}/>
+                <p>On peut ensuite utiliser <em>UneComposante</em> à l'intérieur d'une composante parent depuis le même fichier js.</p>
+                <Snippet language="jsx" code={`
+    const App = (props) => (
+        <main>
+            <UneComposante/>
+        </main>
+    );
+
+    //App est exporté pour être utilisé depuis un autre fichier
+    export default App;
+                `}/>
+                <p>Il serait aussi possible de passer des données dynamiquement à <em>UneComposante</em> et ajoutant des attributs
+                    au nom arbitraire qui pourront être récupérer à l'intérieur des <strong>props</strong> de <em>UneComposante</em>.</p>
+                <Snippet language="jsx" code={`
+    import React from 'react';
+
+    const UneComposante = (props) => (
+            <div>
+                <h1>{props.untitre}</h1>
+            </div>
+        );
+    };
+
+    const App = (props) => (
+        <main>
+            <UneComposante untitre="Le titre de cette composante"/>
+        </main>
+    );
+
+    export default App;
+                `}/>
+            </Groupe>
         </Section>
     </section>);
 
