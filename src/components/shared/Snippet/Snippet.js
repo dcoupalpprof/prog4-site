@@ -29,7 +29,8 @@ Snippet.defaultProps = {
 };
 
 Snippet.propTypes = {
-    language: PropTypes.oneOf(['jsx', 'javascript','css'])
+    language: PropTypes.oneOf(['jsx', 'javascript','css']),
+    code: PropTypes.string
 };
 
 export default Snippet;

@@ -1,11 +1,11 @@
 import React from 'react';
 import classes from './Cours.module.css';
 import {Header} from '../shared';
-import Week1 from './weeks/Week1';
+import {Week1, Week2} from "./weeks";
 import withLastCours from '../hoc/withLastCours';
 import {Helmet} from 'react-helmet';
 
-class Cours extends React.Component{
+class Cours extends React.PureComponent{
 
     randomStrings = [
         '8ASCVbR45s',
@@ -21,6 +21,11 @@ class Cours extends React.Component{
     };
 
     componentDidMount() {
+        const activeCoursNo = this.redirectToRightClass();
+        this.setState({activeCoursNo});
+    }
+
+    componentDidUpdate() {
         const activeCoursNo = this.redirectToRightClass();
         this.setState({activeCoursNo});
     }
@@ -46,6 +51,9 @@ class Cours extends React.Component{
         switch(this.state.activeCoursNo){
             case 1:
                 weekTag  = <Week1/>;
+                break;
+            case 2:
+                weekTag  = <Week2/>;
                 break;
             default:
                 weekTag = <Week1/>;

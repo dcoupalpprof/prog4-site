@@ -11,11 +11,11 @@ const randomStrings = [
 
 const coursTitles = [
     'Retour sur Javascript',
-    'Introduction à React',
-    'Introduction à React',
-    'Introduction à React',
-    'Introduction à React',
-    'Introduction à React',
+    'Les composantes React',
+    'React-Router',
+    'Tâches asynchrones',
+    'Authentification',
+    'Expérimentations',
     'Introduction à React',
 ];
 
