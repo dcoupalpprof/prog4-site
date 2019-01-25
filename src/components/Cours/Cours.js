@@ -21,7 +21,7 @@ class Cours extends React.PureComponent{
         activeCoursNo: 1
     };
 
-    componentDidMount() {
+    componentWillMount() {
         const activeCoursNo = this.redirectToRightClass();
         this.setState({activeCoursNo});
     }
