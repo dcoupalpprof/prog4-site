@@ -3,6 +3,7 @@ import classes from './Travaux.module.css';
 import {Header} from "../shared";
 import {Helmet} from 'react-helmet';
 import {A, Groupe, Snippet, Section} from '../shared';
+import withScrollToTop from '../hoc/withScrollToTop';
 
 class Travaux extends React.Component {
     travaux = [];
@@ -201,4 +202,4 @@ class Travaux extends React.Component {
 
 
 
-export default Travaux;
+export default withScrollToTop(Travaux);

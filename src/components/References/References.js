@@ -3,6 +3,7 @@ import classes from './References.module.css';
 import {Header} from '../shared';
 import {Helmet} from 'react-helmet';
 import {A, Groupe, Snippet} from '../shared';
+import withScrollToTop from '../hoc/withScrollToTop';
 
 class References extends React.Component {
     references = [];
@@ -97,4 +98,4 @@ class References extends React.Component {
     }
 }
 
-export default References;
+export default withScrollToTop(References);

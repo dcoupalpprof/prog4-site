@@ -2,6 +2,7 @@ import React from 'react';
 import Features from './Features/Features';
 import {Header} from '../shared';
 import {Helmet} from 'react-helmet';
+import withScrollToTop from '../hoc/withScrollToTop';
 
 class Home extends React.Component {
 
@@ -20,4 +21,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default withScrollToTop(Home);

@@ -3,6 +3,7 @@ import classes from './Cours.module.css';
 import {Header} from '../shared';
 import {Week1, Week2} from "./weeks";
 import withLastCours from '../hoc/withLastCours';
+import withScrollToTop from '../hoc/withScrollToTop';
 import {Helmet} from 'react-helmet';
 
 class Cours extends React.PureComponent{
@@ -82,4 +83,4 @@ class Cours extends React.PureComponent{
     }
 }
 
-export default withLastCours(Cours);
+export default withScrollToTop(withLastCours(Cours));

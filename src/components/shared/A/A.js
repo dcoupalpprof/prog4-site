@@ -7,7 +7,7 @@ const A = (props) => {
     return props.internal ? (
         <Link to={props.url} className={classes.A}>[{props.children}}</Link>
         ) : (
-        <a target="_blank" className={classes.A} href={props.url}>[{props.children}]</a>
+        <a target="_blank" rel="noopener noreferrer" className={classes.A} href={props.url}>[{props.children}]</a>
     );
 };
 

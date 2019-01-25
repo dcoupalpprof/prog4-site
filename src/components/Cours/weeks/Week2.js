@@ -1,8 +1,9 @@
 import React from 'react';
 import {A, Groupe, Section, Snippet} from '../../shared';
 
+//todo: defaultProps, propTypes, css module, prop.children, qq lifecycle hooks
+
 const Week2 = (props) => {
-    console.log('[Cours 2] has updated');
     return (
         <section>
             <Section title="Les composantes React">
