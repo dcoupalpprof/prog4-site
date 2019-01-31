@@ -94,6 +94,58 @@ class References extends React.Component {
     npx create-react-app unNouveauProjet
                 `}/>
                         </Groupe>
+                        <Groupe toggleable={true} title="Importation/Exportation de modules">
+                            <p>On travaille avec les modules JS afin d'encapsuler les définitions de variables/fonctions/classes. On évite ainsi de polluer l'esapce publique d'une page web. Seul ce qui est exporté pourra être importé et utilisé dans d'autres scripts.</p>
+                            <Snippet code={`
+    //file1.js
+    const uneVariable = 'un string';
+
+    export default uneVariable;
+    /* ************************************************************************************ */
+
+    //file2.js
+    import UnNomAuChoix from './file2.js';
+    console.log(UnNomAuChoix); //affiche 'un string dans la console';
+                            `}/>
+                            <p>Les exportations portant la mention defaut (maximum d'un default par module) peuvent être importées sous n'importe quel nom de variable.</p>
+                            <Snippet code={`
+    //file1.js
+    export const uneFonction = (param1, param2) => param1 + param2;
+
+    export UneClasse {
+        constructor() {
+            console.log('Une instance a été créée');
+        }
+    }
+
+    export const unBool = true;
+
+    const unArray = [0,1,2];
+    export default unArray;
+    /* ************************************************************************************ */
+
+    //file2.js
+    import {uneFonction, UneClasse, unBool} from './file2.js';
+    const uneInstance = new UneClasse(); //affiche 'Une instance a été créée dans la console'
+
+    //ou
+
+    import {uneFonction as fonction, UneClasse, unBool as unBooleen} from './file2.js';
+    console.log(unBooleen); //affiche true dans la console
+
+    //ou
+
+    import * as fromFile2 from './file2.js';
+    console.log(fromFile2.uneFonction(2,5)); //affiche 7 dans la console
+    console.log(fromFile2.default.length); //affiche 3 dans la console
+                            `}/>
+
+
+                        </Groupe>
+                        <Groupe title="Modification du state - Objets et tableaux" toggleable={true}>
+                            <p>Stratégies pour modifier le <em>state</em> d'une composante à état lorsqu'il s'agit d'objets ou de tableaux par <A url="https://github.com/StephenGrider">Stephen Grinder</A>.</p>
+                            <img style={{maxWidth: '100%'}} src="/img/state_diagram.png" alt=""/>
+                        </Groupe>
                     </section>
                 </main>
             </React.Fragment>

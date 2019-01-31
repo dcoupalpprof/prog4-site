@@ -10,7 +10,7 @@ const Week2 = (props) => {
                 <p style={{marginBottom: '1em'}} className="underline">Ces notes sont basées sur la version 16.7 de React. L'intégration des <A url="https://putaindecode.io/fr/articles/js/react/react-hooks/">Hooks (v16.7.0-alpha.1)</A> contredit certains passages de ces notes.
                     L'état alpha de cette mise à jour et les recommandations de l'équipe React ont été dissuasifs dans l'intégration des nouvelles façons d'utiliser les composantes fonctionnelles dans le cours.</p>
                 <Groupe title="Les composantes fonctionnelles">
-                    <p className="p-first">Une composante fonctionnelle se qualifie à partir du moment qu'elle répond au critères suivants:</p>
+                    <p className="p-first">Une composante fonctionnelle se qualifie à partir du moment qu'elle répond aux critères suivants:</p>
                     <ul className="cours-liste">
                         <li>Elle importe le module React;</li>
                         <li>Elle est une fonction retournant du JSX</li>
@@ -65,7 +65,7 @@ const Week2 = (props) => {
         }
     }
                     `}/>
-                    <p>La référence à des méthodes de la composantes peuvent également être passée par les props afin de permettre les interactions par l'utilisateur.</p>
+                    <p>La référence à des méthodes de la composante peuvent également être passée par les props afin de permettre les interactions par l'utilisateur.</p>
                     <Snippet language="jsx" code={`
     class UneComposante extends React.Component {
         state = {
