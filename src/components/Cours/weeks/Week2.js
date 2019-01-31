@@ -111,7 +111,7 @@ const Week2 = (props) => {
         };
                     `}/>
                     <p>Selon le code ci-haut, un clic sur le bouton de la composante <em>UneAutreComposante</em> modifierait le texte affiché pour <em>Un nouveau texte</em> comme le state a été modifié. Cet exemple est disponible sur <A url="https://codesandbox.io/embed/6v64k150pk">codesandbox.io</A></p>
-                    <p className="underline">La modification du state implique le respect de règles concernant l'immuabilité de celui-ci. Il en sera question plus tard.</p>
+                    <p className="underline">La modification du state implique le respect de règles concernant l'immuabilité de celui-ci. Voir les Références pour la <A url={"/references"} internal={true}>manipulation d'un state à tableaux ou à objets</A>.</p>
                 </Groupe>
             </Section>
         </section>
