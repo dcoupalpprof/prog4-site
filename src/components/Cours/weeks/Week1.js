@@ -92,7 +92,7 @@ const Week1 = (props) => (
     export default App;
                 `}/>
                 <p>Il serait aussi possible de passer des données dynamiquement à <em>UneComposante</em> et ajoutant des attributs
-                    au nom arbitraire qui pourront être récupérer à l'intérieur des <strong>props</strong> de <em>UneComposante</em>.</p>
+                    au nom arbitraire qui pourront être récupérées à l'intérieur des <strong>props</strong> de <em>UneComposante</em>.</p>
                 <Snippet language="jsx" code={`
     import React from 'react';
 
