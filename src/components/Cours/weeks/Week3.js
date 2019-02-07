@@ -11,7 +11,7 @@ const Week2 = (props) => {
                     <Snippet language="jsx" code={`
 import {BrowserRouter} from 'react-router-dom';
 ...
-ReactDOM.render(<BrowserRouter><App/>></BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('root'));
                     `}/>
                 </Groupe>
                 <Groupe title="Déclaration et paramétrage des routes">
