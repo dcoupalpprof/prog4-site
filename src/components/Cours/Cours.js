@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Cours.module.css';
 import {Header} from '../shared';
-import {Week1, Week2, Week3} from "./weeks";
+import {Week1, Week2, Week3, Week4} from "./weeks";
 import withLastCours from '../hoc/withLastCours';
 import withScrollToTop from '../hoc/withScrollToTop';
 import {Helmet} from 'react-helmet';
@@ -58,6 +58,9 @@ class Cours extends React.PureComponent{
                 break;
             case 3:
                 weekTag  = <Week3/>;
+                break;
+            case 4:
+                weekTag  = <Week4/>;
                 break;
             default:
                 weekTag = <Week1/>;

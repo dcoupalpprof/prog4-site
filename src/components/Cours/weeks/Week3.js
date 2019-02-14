@@ -1,7 +1,7 @@
 import React from 'react';
-import {A, Groupe, Section, Snippet} from '../../shared';
+import {Groupe, Section, Snippet} from '../../shared';
 
-const Week2 = (props) => {
+const Week3 = (props) => {
     return (
         <section>
             <Section title="La navigation à l'intérieur de l'app">
@@ -73,4 +73,4 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
     );
 };
 
-export default Week2;
+export default Week3;
