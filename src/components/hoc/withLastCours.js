@@ -14,7 +14,7 @@ const coursTitles = [
     'Les composantes React',
     'React-Router',
     'Tâches asynchrones',
-    'Authentification',
+    'Context API',
     'Expérimentations',
     'Introduction à React',
 ];
