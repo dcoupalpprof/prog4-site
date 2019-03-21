@@ -60,7 +60,7 @@ class Travaux extends React.Component {
                                 <p style={{marginTop:'.5em', textIndent:0}}>La composante <strong>Film</strong> devra recevoir l'ensemble des informations (passé depuis App). <br/>
                                     La composante <strong>Entete</strong> devra recevoir et afficher le titre de l'année de production du film. <br/>
                                     Les acteurs devront être affichés en réutilisant la composante <strong>Personne</strong>. <br/>
-
+                                    <strong>Film</strong> devrait contenir <strong>Entete</strong> et les composantes <strong>Personne</strong>.
                                 </p>
                                 </Groupe>
                             <Groupe title="Remise" toggleable={true}>
