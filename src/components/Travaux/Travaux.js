@@ -239,7 +239,7 @@ class Travaux extends React.Component {
                                 <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 3.</p>
                             </Groupe>
                         </Section>
-                        {/*<Section title="Devoir 3" subtitle="Les séries télé">
+                        <Section title="Devoir 3" subtitle="Les séries télé">
                             <Groupe toggleable={true} title="Sujet" hidden={true}>
                                 <p>Vous devez créer une application React permettant de faire la recherche de séries télé à l'aide de l'API de <A url="https://www.themoviedb.org/documentation/api" internal={false}>TheMovieDb</A>. Il vous faut donc premièrement vous y inscrire pour obtenir une clé d'API.</p>
                                 <p>Votre application devra intégrer les routes pour afficher la recherche et ses résultats en plus d'une route pour les détails d'une série sélectionnée.</p>
@@ -276,7 +276,7 @@ class Travaux extends React.Component {
                             <Groupe title="Remise" toggleable={true}>
                                 <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 5.</p>
                             </Groupe>
-                        </Section>*/}
+                        </Section>
                     </section>
                 </main>
             </React.Fragment>
