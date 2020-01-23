@@ -93,6 +93,7 @@ const Week1 = (props) => (
                 `}/>
                 <p>Il serait aussi possible de passer des données dynamiquement à <em>UneComposante</em> et ajoutant des attributs
                     au nom arbitraire qui pourront être récupérées à l'intérieur des <strong>props</strong> de <em>UneComposante</em>.</p>
+                <p>On peut afficher dynamiquement des données ou exécuter des commandes js simples à l'aide des moustaches.</p>
                 <Snippet language="jsx" code={`
     import React from 'react';
 
@@ -108,6 +109,25 @@ const Week1 = (props) => (
             <UneComposante untitre="Le titre de cette composante"/>
         </main>
     );
+
+    export default App;
+                `}/>
+
+                <p>Pour faire une boucle à l'intérieur du "html", on convertira habituellement un tableau de données en un tableau de "html". On utilisera donc la fonction <strong>map</strong> de Javascript:</p>
+                <p>React demande une clé unique pour chaque balise générée par map. On utilisera pour l'instant l'index de l'élément dans le tableau, mais on chagera de pratique éventuellement.</p>
+                <Snippet language="jsx" code={`
+    import React from 'react';
+
+    const App = (props) => {
+        const eleves = [{prenom: 'Jimbo', nom: 'Scott'}, {prenom: 'Ludvig-Vanbe', nom: 'Toven'}, {prenom: 'Jimmy', nom: 'Chastenais'}];
+        return (
+            <main>
+                <ul>
+                    { eleves.map((eleve, index) => <li key={index}>{eleve.prenom + ' ' + eleve.nom}</li>) }
+                </ul>
+            </main>
+        );
+    };
 
     export default App;
                 `}/>
