@@ -4,7 +4,7 @@ import classes from './Footer.module.css';
 
 const Footer = (props) => (
     <footer className={classes.Footer}>
-        <p>© 2019 - Programmation multimédia 4 - Techniques d'intégration multimédia - <br/> Dominique Coupal</p>
+        <p>© 2020 - Programmation multimédia 4 - Techniques d'intégration multimédia - <br/> Dominique Coupal</p>
     </footer>
 );
 
