@@ -7,8 +7,6 @@ const Week2 = (props) => {
     return (
         <section>
             <Section title="Les composantes React">
-                <p style={{marginBottom: '1em'}} className="underline">Ces notes sont basées sur la version 16.7 de React. L'intégration des <A url="https://putaindecode.io/fr/articles/js/react/react-hooks/">Hooks (v16.7.0-alpha.1)</A> contredit certains passages de ces notes.
-                    L'état alpha de cette mise à jour et les recommandations de l'équipe React ont été dissuasifs dans l'intégration des nouvelles façons d'utiliser les composantes fonctionnelles dans le cours.</p>
                 <Groupe title="Les composantes fonctionnelles">
                     <p className="p-first">Une composante fonctionnelle se qualifie à partir du moment qu'elle répond aux critères suivants:</p>
                     <ul className="cours-liste">
@@ -17,7 +15,50 @@ const Week2 = (props) => {
                         <li>Le JSX retourné n'est composé que d'un seul élément racine</li>
                     </ul>
                 </Groupe>
-                <Groupe title="Les composantes à état">
+                <Groupe title="Mettre à jour le contenu d'un composante">
+                    <p>Le JSX retourné par une composante ne pourra pas être modifié tant qu'un nouveau rendu de la composante ne sera déclenché. Un changement des variables affichées dynamiquement ne résultera donc pas automatiquement à un changement des valeurs affichées.</p>
+                    <p>Pour qu'on nouveau rendu soit effectué (que la composante fonctionnelle soit exécutée à nouveau), on doit remplir l'une ou l'autre des ces conditions:</p>
+                    <ul className="cours-liste">
+                        <li>Les <strong>props</strong> qui lui sont passées doivent être modifiées</li>
+                        <li>Son <strong>état</strong> (<em>state</em>) doit être modifié</li>
+                    </ul>
+                    <p>On se souviendra que les props sont les nouveaux attributs ajoutés sur la balise lors de son utilisation, mais qu'est-ce que l'état de la composante?</p>
+                </Groupe>
+                <Groupe title="État d'une composante">
+                    <p><span className="underline">Introduit à la version 16.8</span> de React, l'ajout d'un état aux composantes fonctionnelles est rendu possible grâce aux <strong><A url="https://fr.reactjs.org/docs/hooks-intro.html" internal={false}>Hooks</A></strong>.</p>
+                    <p>Le Hook <strong>useState</strong> doit être importé depuis le package React et <span className="underline">permet de
+                        déclarer un getter et un setter d'une variable que l'on voudra afficher et modifier à l'intérieur
+                        de la composante</span>. L'utilisation du setter lancera un nouveau rendu de la composante.</p>
+                    <Snippet language="jsx" code={`
+    import React, {useState} from 'react';
+    
+    const UneComposante = (props) => {
+        
+        // useState nous retourne le getter puis le setter dans un tableau
+        const tableauNomState = useState('Jimmy');  //on passe la valeur initiale en paramètre
+        const currentNom = tableauNomState[0]; // le getter est passé en premier dans le tableau
+        const setNom = tableauNomState[1]; // le setter est passé en deuxième dans le tableau
+        
+        // On utilisera la décomposition d'un tableau pour réduire la taille du code utilisé
+        const [currentNom, setNom] = useState('Jimmy'); // remplace les 3 lignes de code ci-haut
+        
+        const onClickHandler = () => {
+            setNom('Bob');
+        };
+        
+        return (
+            <div>
+                <h3>{currentNom}</h3>
+                <button onClick={onClickHandler}>Clic!</button>
+            </div>
+        );
+    };
+                        
+                    `}/>
+                    <p>Selon le code ci-haut, un clic sur le bouton de la composante <em>UneComposante</em> modifierait le prénom affiché pour <em>Bob</em> comme le state a été modifié. Cet exemple est disponible sur <A url="https://codesandbox.io/s/lucid-grothendieck-kqvci">codesandbox.io</A></p>
+                    <p>La modification du state implique le respect de règles concernant l'immuabilité de celui-ci. Voir les Références pour la <A internal={false} url="http://localhost:3001/references">manipulation d'un state à tableaux ou à objets</A>.</p>
+                </Groupe>
+                <Groupe title="Les composantes à état - PLUS UTILISÉES DANS CE COURS" toggleable={true} hidden={true}>
                     <p>Les composantes à état sont aussi utilisées comme des balises, mais sont déclarées à l'aide d'une classe plutôt que d'une fonction. <br/>
                         La composante à état doit contenir une <strong>méthode render</strong> retournant du jsx pour se qualifier. <br/>
                     C'est dans ces composantes que se situera l'essentiel de la logique de l'application tandis que les composantes fonctionnelles serviront à afficher le contenu et détecter des interactions par l'utilisateur.</p>

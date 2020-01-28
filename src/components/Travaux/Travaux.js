@@ -24,7 +24,7 @@ class Travaux extends React.Component {
                     <Header siteTitle="Programmation multimédia 4" isSmall={true} title="Travaux"/>
                     <section>
                         <Section title="Prélude au devoir 1" subtitle="Film">
-                            <Groupe toggleable={true} title="Contenu" hidden={true}>
+                            <Groupe toggleable={true} title="Contenu">
                                 <p>Vous devez afficher les informations d'un film à l'aide des composantes React.</p>
                                 <p>Le contenu de l'objet suivant sera à intégrer:</p>
                                 <Snippet code={`

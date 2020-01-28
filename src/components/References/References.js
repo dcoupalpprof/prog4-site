@@ -143,7 +143,7 @@ class References extends React.Component {
 
                         </Groupe>
                         <Groupe title="Modification du state - Objets et tableaux" toggleable={true}>
-                            <p>Stratégies pour modifier le <em>state</em> d'une composante à état lorsqu'il s'agit d'objets ou de tableaux par <A url="https://github.com/StephenGrider">Stephen Grinder</A>.</p>
+                            <p>Stratégies pour modifier le <em>state</em> d'une composante à état lorsqu'il s'agit d'objets ou de tableaux par <A url="https://github.com/StephenGrider">Stephen Grider</A>.</p>
                             <img style={{maxWidth: '100%'}} src="/img/state_diagram.png" alt=""/>
                         </Groupe>
                     </section>
