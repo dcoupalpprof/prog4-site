@@ -58,6 +58,57 @@ const Week2 = (props) => {
                     <p>Selon le code ci-haut, un clic sur le bouton de la composante <em>UneComposante</em> modifierait le prénom affiché pour <em>Bob</em> comme le state a été modifié. Cet exemple est disponible sur <A url="https://codesandbox.io/s/lucid-grothendieck-kqvci">codesandbox.io</A></p>
                     <p>La modification du state implique le respect de règles concernant l'immuabilité de celui-ci. Voir les Références pour la <A internal={false} url="http://localhost:3001/references">manipulation d'un state à tableaux ou à objets</A>.</p>
                 </Groupe>
+
+                <Groupe title="Deux syntaxes pour mettre l'état à jour">
+                    <p>Selon ce qui est à faire, le développeur sera appelé à utiliser l'une ou l'autre des deux syntaxes à suivre pour mettre l'état à jour.</p>
+                    <ul>
+                        <li>Si l'utilisateur souhaite remplacer la valeur de l'état sans utiliser la valeur précédente:</li>
+                    </ul>
+                    <Snippet language="jsx" code={`
+    import React, {useState} from 'react';
+    
+    const UneComposante = (props) => {
+        const [currentNom, setNom] = useState('Jimmy');
+        
+        const onClickHandler = () => {
+            setNom('Bob'); // La valeur précédente, Jimmy, n'est pas nécessaire ici
+        };
+        
+        return (
+            <div>
+                <h3>{currentNom}</h3>
+                <button onClick={onClickHandler}>Clic!</button>
+            </div>
+        );
+    };         
+                    `}/>
+
+                    <ul>
+                        <li>Si l'utilisateur souhaite remplacer la valeur de l'état en utilisant la valeur précédente:</li>
+                    </ul>
+                    <Snippet language="jsx" code={`
+    import React, {useState} from 'react';
+    
+    const UneComposante = (props) => {
+        const [compteur, setCompteur] = useState(1);
+        
+        const onClickHandler = () => {
+            // On utilise ici la valeur précédente de l'état pour l'incrémenter
+            // On passe une fonction qui reçoit la valeur précédente (appelée ici currentVal) et retournant la nouvelle valeur
+            setNom(currentVal => currentVal + 1); 
+        };
+        
+        return (
+            <div>
+                <h3>{currentNom}</h3>
+                <button onClick={onClickHandler}>Clic!</button>
+            </div>
+        );
+    };         
+                    `}/>
+                    <p className="underline">Dans cette dernière syntaxe, plutôt que de passer la nouvelle valeur au setter, on lui passera une fonction recevant la valeur précédente et devant retourner la nouvelle valeur.</p>
+                </Groupe>
+
                 <Groupe title="Les composantes à état - PLUS UTILISÉES DANS CE COURS" toggleable={true} hidden={true}>
                     <p>Les composantes à état sont aussi utilisées comme des balises, mais sont déclarées à l'aide d'une classe plutôt que d'une fonction. <br/>
                         La composante à état doit contenir une <strong>méthode render</strong> retournant du jsx pour se qualifier. <br/>
