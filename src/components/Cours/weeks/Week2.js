@@ -109,6 +109,31 @@ const Week2 = (props) => {
                     <p className="underline">Dans cette dernière syntaxe, plutôt que de passer la nouvelle valeur au setter, on lui passera une fonction recevant la valeur précédente et devant retourner la nouvelle valeur.</p>
                 </Groupe>
 
+                <Groupe title="Prendre le contrôle d'un champ de texte">
+                    <p>Afin de récupérer en temps réel ce qui se trouve dans un champ de texte (lecture) et permettre de modifier sa valeur par programmation (écriture), on doit utiliser un state et <span className="underline">prendre contrôle du champ de texte</span>.</p>
+                    <p>Pour l'accès en lecture, on synchronise un state à chaque modification du champ avec l'événement <strong>onChange</strong>.</p>
+                    <p>Pour l'accès en écriture, on synchronise son <strong>value</strong> avec le state.</p>
+                    <Snippet language="jsx" code={`
+    import React, {useState} from 'react';
+    
+    const UneComposante = props => {
+        
+        const [texte, setTexte] = useState('');
+        
+        return (
+            <>
+               { /* Comme son nom l'indique', on change est appelé à chaque modification du contenu du champ de texte.
+                    On récupère alors le contenu du champ en passant par l'événement passé en paramètre.
+                */ }
+               <input type="text" value={texte} onChange={(e) => {setTexte(e.target.value)}} placeholder="Du texte"/>
+            </>
+        );
+    
+    };  
+                    `}/>
+                    <p>Cette composante peut être testée sur <A url="https://codesandbox.io/s/bold-tu-yutnw" internal={false}>Codesandbox.io</A>.</p>
+                </Groupe>
+
                 <Groupe title="Les composantes à état - PLUS UTILISÉES DANS CE COURS" toggleable={true} hidden={true}>
                     <p>Les composantes à état sont aussi utilisées comme des balises, mais sont déclarées à l'aide d'une classe plutôt que d'une fonction. <br/>
                         La composante à état doit contenir une <strong>méthode render</strong> retournant du jsx pour se qualifier. <br/>
