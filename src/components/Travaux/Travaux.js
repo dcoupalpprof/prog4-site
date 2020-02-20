@@ -324,9 +324,6 @@ class Travaux extends React.Component {
                                 <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 2.</p>
                             </Groupe>
                         </Section>
-
-
-
                     </section>
                 </main>
             </React.Fragment>

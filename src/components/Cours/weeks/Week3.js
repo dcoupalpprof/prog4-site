@@ -47,6 +47,13 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
     //permettra à UneComposante de recevoir les props liées au routeur
     export default withRouter(UneComposante);
                     `}/>
+                    <p>On pourra aussi réclamer ces informations individuellements en les récupérant avec les <A internal={false} url="https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/hooks.md">hooks</A>.</p>
+                    <ul className="cours-liste">
+                        <li>useHistory</li>
+                        <li>useLocation</li>
+                        <li>useParams</li>
+                        <li>useRouteMatch</li>
+                    </ul>
                 </Groupe>
                 <Groupe title="Déclaration d'un hyperlien ne rafraîchissant pas la page auprès du serveur">
                     <p>On remplace les hyperliens par une composante <strong>{`<Link to="url">texte</Link>`}</strong></p>
