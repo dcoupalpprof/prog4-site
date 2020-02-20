@@ -1,5 +1,5 @@
 import React from 'react';
-import {Groupe, Section, Snippet} from '../../shared';
+import {Groupe, Section, Snippet, A} from '../../shared';
 
 const Week3 = (props) => {
     return (
