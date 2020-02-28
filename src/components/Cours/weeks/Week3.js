@@ -75,6 +75,20 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
                 <Groupe title="Imbrication de routes">
                     On peut utiliser des Routes à l'intérieur d'une composante déjà liée à une Route. Il faudra cependant y utiliser un lien relatif comme path.
                 </Groupe>
+                <Groupe title="Passer des props à des Routes">
+                    <p>Pour passer des props à des routes, on peut détourner l'utilisation de la prop <strong>render</strong> sur une route.</p>
+                    <p>Il est cependant nécessaire de conserver les props passées par défaut (location, match, history).</p>
+                    <Snippet language="jsx" code={`
+                    
+    {/* depuis l'intérieur d'une compsante */}
+    const unNombre = 10;
+    
+    <Switch>
+        <Route path="/une-composante" component={UneComposante}/>
+        <Route path="/une-autre-composante" render={(props) => <UneAutreComposante {...props} unNombre={unNombre} />}/>
+    </Switch>
+                    `}/>
+                </Groupe>
             </Section>
         </section>
     );
