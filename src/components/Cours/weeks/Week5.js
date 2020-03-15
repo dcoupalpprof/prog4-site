@@ -20,30 +20,26 @@ const Week5 = (props) => {
                     `}/>
                     <Snippet language="jsx" code={`
     //app.js
-    import React from 'react';
+    import React, {useState} from 'react';
     import ThemeContext from './providers/themeContext';
 
-    class App extends React.Component {
+    const App = props => {
 
-        state = {
-            themeActif: 'devil'
-        };
+        const [themeActif, setThemeActif] = useState('devil');
 
-        themeSwitchHandler = () => { };
+        const themeSwitchHandler = () => { };
 
-        render() {
-            return (
-                <div>
-                    <ThemeContext.Provider value={{
-                        themeActif: this.state.themeActif,
-                        changeThemeFn: this.themeSwitchHandler
-                    }}>
-                        {/* ... */}}
-                    </ThemeContext.Provider>
-                </div>
-            );
-        }
-    }
+        return (
+            <div>
+                <ThemeContext.Provider value={{
+                    themeActif: themeActif,
+                    changeThemeFn: themeSwitchHandler
+                }}>
+                    {/* ... */}}
+                </ThemeContext.Provider>
+            </div>
+        );
+    };
                     `}/>
                     <p>Le contexte créé est un objet contenant une composante sous la propriété <strong>Provider</strong> et une autre sous la propriété <strong>Consumer</strong>. On utilise une fois le <em>Provider</em> dans l'application en le positionnant de façon à ce que les composantes nécessitant ses informations en soit enveloppées. On utilisera ensuite autant de <em>Consumers</em> qu'il sera nécessaire directement à l'intérieur des composantes qui dépendent de ces données. <strong>L'enfant direct d'un Consumer doit être une fonction recevant les données en paramètre et devant retourner du jsx</strong>.</p>
                     <Snippet language="jsx" code={`
@@ -57,17 +53,32 @@ const Week5 = (props) => {
         </div>
     );
                     `}/>
-                    <p>Les fonctions du contexte peuvent être passées à la composante qui le consomme sous la forme de callback ou le contexte en entier peut être récupéré dans la <strong>propriété statique contextType</strong> d'une composante. Cependant, un seul contexte ne pourra être consommé de cette façon.</p>
+                    <p>On pourrait aussi utiliser son équivalent: </p>
+                    <Snippet language="jsx" code={`
+    const DeeplyNestedComponent = props => {
+        
+        const showArticle = ({themeActif}) => (
+             <article className={themeActif}>{/* ... */}</article>
+        );
+    
+        return (
+            <div>
+                <ThemeContext.Consumer>
+                   {showArticle}
+                </ThemeContext.Consumer>
+            </div>
+        );
+    );
+                    `}/>
+                    <p>Le contexte peut aussi être récupéré dans une composante à l'aide du hook <A internal={false} url="https://fr.reactjs.org/docs/hooks-reference.html#usecontext"><strong>useContext</strong></A>. Cependant, un changement à celui-ci ne semble pas toujours provoquer un nouveau rendu.</p>
                     <Snippet language="jsx" code={`
     import ThemeContext from '../src/providers/themeContext';
+    import React, {useContext} from 'react';
 
-    class DeeplyNestedComponent extends React.Component {
-        componentDidMount {
-            console.log(this.context.themeActif);
-        }
-    }
-
-    DeeplyNestedComponent.contextType = ThemeContext;
+    const DeeplyNestedComponent = props => {
+        const currentContext = useContext(ThemeContext);
+        console.log(currentContext.themeActif);
+    };
                     `}/>
                     <p>Si on trouve désagréable la syntaxe d'utilisation du Consumer et du Provider (sous la forme Contexte.Provider) on ne pourrait qu'en exporter ses deux propriétés:</p>
                     <Snippet language="jsx" code={`
@@ -86,19 +97,18 @@ const Week5 = (props) => {
                     <p>Dans l'exemple précédent, on peut reprocher au contexte de dépendre de la composante App. Il serait préférable qu'il puisse avoir son propre state et ses propres méthodes.</p>
                     <Snippet language="jsx" code={`
     //themeContext.js
+    import React, {useState} from 'react';
     const {Provider, Consumer} = React.createContext();
 
-    class ThemeProvider extends React.Component {
-        state = {
-            themeActif: 'devil',
-        };
+    const ThemeProvider = props => {
+        const [themeActif, setThemeActif = useState('devil');
 
-        themeSwitchHandler = () => {/* ... */};
+        const themeSwitchHandler = () => {/* ... */};
 
-        render() {
-            <Provider value={{themeActif: this.state.themeActif}}>{props.childre}}</Provider>
-        }
-    }
+        return (
+            <Provider value={{themeActif: themeActif}}>{props.children}}</Provider>
+        );
+    };
     export {ThemeProvider, Consumer as ThemeConsumer};
 
      //App.js

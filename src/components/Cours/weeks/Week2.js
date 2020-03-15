@@ -137,7 +137,7 @@ const Week2 = (props) => {
                 <Groupe title="Les composantes à état - PLUS UTILISÉES DANS CE COURS" toggleable={true} hidden={true}>
                     <p>Les composantes à état sont aussi utilisées comme des balises, mais sont déclarées à l'aide d'une classe plutôt que d'une fonction. <br/>
                         La composante à état doit contenir une <strong>méthode render</strong> retournant du jsx pour se qualifier. <br/>
-                    C'est dans ces composantes que se situera l'essentiel de la logique de l'application tandis que les composantes fonctionnelles serviront à afficher le contenu et détecter des interactions par l'utilisateur.</p>
+                        C'est dans ces composantes que se situera l'essentiel de la logique de l'application tandis que les composantes fonctionnelles serviront à afficher le contenu et détecter des interactions par l'utilisateur.</p>
                     <Snippet language="jsx" code={`
     //ex:
     import React from 'react';
@@ -167,7 +167,7 @@ const Week2 = (props) => {
     <div><UneComposante texte="Du texte"/></div>
                     `}/>
                     <p>Parmi les différences entre les deux types de composantes, on note la propriété <strong>state</strong> dans la composante à état (d'où elle tire son nom). <br/>
-                    C'est dans le state que l'on enregistre les informations/données propagées à travers les composantes fonctionnelles par les props.</p>
+                        C'est dans le state que l'on enregistre les informations/données propagées à travers les composantes fonctionnelles par les props.</p>
                     <Snippet language="jsx" code={`
     class UneComposante extends React.Component {
         state = {

@@ -4,15 +4,49 @@ import {A, Groupe, Section, Snippet} from '../../shared';
 const Week4 = (props) => {
     return (
         <section>
-            <Section title="Les phases du cycle de vie d'une composante à état (lifecycle hooks)">
-                <Groupe title="Les phases">
-                    <p>Les composantes à état passent à travers plusieurs phases afin d'afficher et de modifier leur contenu. Certaines méthodes correspondant à ces différentes phases peuvent donc être utilisées afin d'exécuter du code à ces moments précis. Le <A url="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" internal={false}>diagramme <em>React lifecycle methods</em></A> suivant nous en donne un bon aperçu.</p>
-                    <p>En plus du <strong>render</strong> déjà connu, les plus courantes sont <strong>componentDidMount, componentDidUpdate et componentWillUnmount</strong>. On pourra d'ailleurs, dans ces trois dernières méthodes exécuter ce qu'on appelle des <strong>effets secondaires (side effects)</strong>. Les effects secondaires ne sont pas directement en lien avec les opérations de la composantes (fonctions pures). Une synchronisation avec un serveur, mise en cache de données ou la génération d'un log pourraient en être de bons exemples.</p>
-                    <p>Parlant d'effets secondaires, qu'en est-il des requêtes exécutées vers un serveur distant?</p>
+            <Section title="Récupération de données externes">
+                <Groupe title="Les effets secondaires (de bord)">
+                    <p>On utilisera le <strong>hook <A internal={false} url="https://fr.reactjs.org/docs/hooks-effect.html">useEffect</A></strong> pour effectuer des <strong>effets secondaires</strong> après le premier rendu et/ou après chacun des rafraîchissements d'une composante.</p>
+                    <p>Les effects secondaires sont des opérations qui sortent des opérations normales d'une composantes (fonction pures). Une synchronisation avec un serveur, mise en cache de données ou la génération d'un log pourraient être de bons exemples d'effets secondaires.</p>
+                    <p>Comme les autres hooks, useEffect ne peut qu'être utilisé à la <em>racine</em> de la composante (pas dans une fonction, un if, une boucle...). Le premier paramètre de useEffect est une fonction à appeler lors après chaque rendu.</p>
+                    <Snippet language="jsx" code={`
+    import React, {useEffect} from 'react';
+    const uneComposante = props => {
+    
+        useEffect(() => {
+            // Cette opération est exécutée après le premier rendu et les suivants
+        });    
+    };
+                    `}></Snippet>
+                    <p>Si useEffect modifie le state, un nouveau rendu sera exécuté et une boucle infinie s'en suivra. On utilisera alors le <span className="underline">deuxième
+                        paramètre</span> de useEffect.</p>
+                    <Snippet language="jsx" code={`
+    useEffect(() => {
+        // Cette opération ne sera exécutée qu'au premier rendu
+    }, []);
+                    `}/>
+                    <p>Le 2e paramètre est une tableau de dépendances. Les variables qu'on y insérera seront évaluées à chaque rendu et si une valeur venait qu'à être modifiée, la fonction de useEffect serait éxécutée à nouveau.</p>
+                    <Snippet language="jsx" code={`
+    const [nbEssaie, setNbEssais] = useState(0);
+                    
+    useEffect(() => {
+        // Cette opération ne sera exécutée qu'au premier rendu et à chaque fois que
+        // props.match.params.userId OU nbEssais changeront de valeur
+    }, [props.match.params.userId, nbEssais]);
+                    `}/>
+                    <p>Il est aussi possible de retourner une fonction depuis la fonction passée en paramètre. Celle-ci sera exécuter à la suppression de la composante. On pourrai ainsi utiliser un addEventListener dans le useEffect et retourner une fonction faisait un removeEventListener.</p>
+                    <Snippet language="jsx" code={`
+    useEffect(() => {
+        // Cette opération ne sera exécutée qu'au premier rendu
+        
+        return () => {
+            // Cette opération sera exécutée à la destruction (démontage) de la composante
+        }
+    }, []);
+                    `}/>
                 </Groupe>
                 <Groupe title="Requêtes ajax">
                     <p>Bien que des librairies comme Axios font un travail efficace, nous utiliserons la méthode <strong>fetch</strong> pour interroger un serveur. Fetch n'utilise pas l'objet typique xmlHttpRequest (comme le fait axios). Son utilisation retourne une promesse afin de mieux enchaîner les différentes requêtes asynchrones et il est de plus compatible avec les <strong>Service Workers</strong> si l'envie de développer une <strong>Progressive web app (PWA)</strong> vous prenait. Il faut écrire davantage de code que si nous utilisions axios, mais c'est le prix à payer.</p>
-
                     <Snippet code={`
     //Requête en GET
     fetch('url')
@@ -46,6 +80,18 @@ const Week4 = (props) => {
          .then(resp => resp.json());
          console.log(data);
     };
+                    `}/>
+                    <p>Si on désire exécuter un fetch après le premier rendu de la composante, on combinera l'utilisation de fetch et useEffect:</p>
+                    <Snippet language="jsx" code={`
+    useEffect(() => {
+        // On ne peut pas déclarer la fonction de useEffect comme async parce que celle-ci retournerait une promesse (plutôt qu'une fonction à exécuter au démontage)
+        const fetchData = async(() => {
+            const resp = await fetch('url');
+            const data = await data.json();
+            // on modifierait probablement le state de la composante ici
+        );
+        fetchData();
+    }, []);
                     `}/>
                 </Groupe>
                 <Groupe title="Cross origin resource sharing (CORS)">

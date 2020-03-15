@@ -1,5 +1,5 @@
 import React from 'react';
-import {Groupe, Section, Snippet} from '../../shared';
+import {Groupe, Section, Snippet, A} from '../../shared';
 
 const Week3 = (props) => {
     return (
@@ -47,6 +47,13 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
     //permettra à UneComposante de recevoir les props liées au routeur
     export default withRouter(UneComposante);
                     `}/>
+                    <p>On pourra aussi réclamer ces informations individuellements en les récupérant avec les <A internal={false} url="https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/hooks.md">hooks</A>.</p>
+                    <ul className="cours-liste">
+                        <li>useHistory</li>
+                        <li>useLocation</li>
+                        <li>useParams</li>
+                        <li>useRouteMatch</li>
+                    </ul>
                 </Groupe>
                 <Groupe title="Déclaration d'un hyperlien ne rafraîchissant pas la page auprès du serveur">
                     <p>On remplace les hyperliens par une composante <strong>{`<Link to="url">texte</Link>`}</strong></p>
@@ -67,6 +74,20 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
                 </Groupe>
                 <Groupe title="Imbrication de routes">
                     On peut utiliser des Routes à l'intérieur d'une composante déjà liée à une Route. Il faudra cependant y utiliser un lien relatif comme path.
+                </Groupe>
+                <Groupe title="Passer des props à des Routes">
+                    <p>Pour passer des props à des routes, on peut détourner l'utilisation de la prop <strong>render</strong> sur une route.</p>
+                    <p>Il est cependant nécessaire de conserver les props passées par défaut (location, match, history).</p>
+                    <Snippet language="jsx" code={`
+                    
+    {/* depuis l'intérieur d'une compsante */}
+    const unNombre = 10;
+    
+    <Switch>
+        <Route path="/une-composante" component={UneComposante}/>
+        <Route path="/une-autre-composante" render={(props) => <UneAutreComposante {...props} unNombre={unNombre} />}/>
+    </Switch>
+                    `}/>
                 </Groupe>
             </Section>
         </section>
