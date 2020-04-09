@@ -280,7 +280,7 @@ class Travaux extends React.Component {
                             <Groupe title="Remise" toggleable={true}>
                                 <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 3.</p>
                             </Groupe>
-                        </Section>
+                        </Section> */ }
                         <Section title="Prélude au devoir 1" subtitle="Film">
                             <Groupe toggleable={true} title="Contenu">
                                 <p>Vous devez afficher les informations d'un film à l'aide des composantes React.</p>
@@ -324,7 +324,7 @@ class Travaux extends React.Component {
                             <Groupe title="Remise" toggleable={true}>
                                 <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 2.</p>
                             </Groupe>
-					</Section> */ }
+					</Section>
                     </section>
                 </main>
             </React.Fragment>
