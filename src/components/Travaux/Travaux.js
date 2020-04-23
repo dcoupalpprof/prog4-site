@@ -62,7 +62,7 @@ class Travaux extends React.Component {
                             <Groupe title="Remise" toggleable={true}>
                                 <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 5.</p>
                             </Groupe>
-                        </Section>
+                        </Section> */}
                         <Section title="Devoir 2" subtitle="Le Club des Louise">
                             <Groupe title="Contenu">
                                 <p>Vous devrez programmer la navigation du célèbre site <strong>volontairement</strong> visuellement minimaliste nommé Le Club des Louise.</p>
@@ -103,7 +103,7 @@ class Travaux extends React.Component {
                             <Groupe title="Remise" toggleable={true}>
                                 <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 4.</p>
                             </Groupe>
-                        </Section> */}
+                        </Section>
                         <Section title="Devoir 1" subtitle="Les films">
                             <Groupe toggleable={true} title="Contenu" hidden={true}>
                                 <p>Vous devez organiser l'affichage d'une liste de films à l'aide de différentes composantes fonctionnelles React.</p>
