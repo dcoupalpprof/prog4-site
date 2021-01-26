@@ -4,12 +4,6 @@ import {A, Groupe, Section, Snippet} from '../../shared';
 const Week1 = (props) => (
     <section>
         <Section title="La base">
-            <Groupe title="Javascript">
-                <p>Programmation multimédia 4 est basé sur une version de Javascript récupérant des éléments de ECMAScript ES2015-ES2018. Certains exemples de <A url="https://www.typescriptlang.org/">Typescript</A> pourront aussi y être montrés.</p>
-                <p>Ce premier cours permettra de réviser les bases acquises ainsi que de se mettre à jour en Javascript avant d'introduire l'utilisation d'un cadriciel (<em>framework</em>).</p>
-                <p>La révision de Javascript se fera à l'aide des diapositives du cours.</p>
-            </Groupe>
-
             {/*<Groupe title="Insérer du Javascript dans une page html">
                 <Snippet language="javascript" code={`
     <script>
@@ -53,24 +47,20 @@ const Week1 = (props) => (
         <Section title="Introduction à React">
             <Groupe title="Installation">
                 <p>Une fois Node.js installé, il vous faut ouvrir une nouvelle ligne de commande pour utiliser le module <strong>create-react-app</strong>. <br/>
-                Il est possible de l'utiliser directement avec npx ou l'installer globalement: (voir la section <A url='/references' internal={true}>références</A> pour plus d'informations)</p>
+                On utilisera npx pour éviter d'avoir à installer une version localement. (voir la section <A url='/references' internal={true}>références</A> pour plus d'informations)</p>
                 <Snippet code={`
     //L'utiliser directement avec npx
     npx create-react-app unNouveauProjet
-    //OU l'installer globalement et l'utiliser ensuite:
-    npm install create-react-app -g
-    //Une fois l'installation terminée
-    create-react-app unNouveauProjet
-
                 `}/>
-                <p>On démarre ensuite le projet et la compilation automatique avec la commande <strong>npm start</strong>.</p>
+                <p>Depuis le dossier du projet, on démarre le projet ainsi que sa compilation automatique avec la commande <strong>npm start</strong>.</p>
             </Groupe>
             <Groupe title="Composante fonctionnelle">
-                <p>Une composante fonctionnelle est une fonction devant retourner du <strong>JSX</strong> (syntaxe ressemblant à du html). La paire de parenthèses après le return permet d'afficher le JSX sur plusieurs lignes.</p>
+                <p>Une composante fonctionnelle est une fonction devant retourner du <strong>JSX</strong> (<A url="https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-different-in-the-new-transform">syntaxe ressemblant à du html</A>, mais <A url="https://www.icantbelieveitsnotbutter.com/">c'est
+                    du JS</A>!). La paire de parenthèses après le return permet d'afficher le JSX sur plusieurs lignes.</p>
                 <p>Le module React doit absolument être importer pour créer une composante (même s'il n'est pas utilisé de façon explicite).</p>
+                <p><strong>A</strong> - Dans les versions qui précédaient V17, on devait importer le module React. Ceci n'est plus nécessaire ni utilisé, mais vous pourriez tout de même y être confrontés en entreprise ou sur le web.</p>
                 <Snippet language="jsx" code={`
-    import React from 'react';
-
+    // import React from 'react';  // - A
     const UneComposante = (props) => {
         //Un peu de logique servant à l'affichage possible (très peu)
         return (
@@ -95,8 +85,6 @@ const Week1 = (props) => (
                     au nom arbitraire qui pourront être récupérées à l'intérieur des <strong>props</strong> de <em>UneComposante</em>.</p>
                 <p>On peut afficher dynamiquement des données ou exécuter des commandes js simples à l'aide des moustaches.</p>
                 <Snippet language="jsx" code={`
-    import React from 'react';
-
     const UneComposante = (props) => (
             <div>
                 <h1>{props.untitre}</h1>
@@ -112,18 +100,39 @@ const Week1 = (props) => (
 
     export default App;
                 `}/>
-
-                <p>Pour faire une boucle à l'intérieur du "html", on convertira habituellement un tableau de données en un tableau de "html". On utilisera donc la fonction <strong>map</strong> de Javascript:</p>
-                <p>React demande une clé unique pour chaque balise générée par map. On utilisera pour l'instant l'index de l'élément dans le tableau, mais on chagera de pratique éventuellement.</p>
+                <p>On peut passer du texte statique à une composantes à travers ses props, mais on peut également passer tout type de contenu ainsi que des variables en utilisant les moustaches:</p>
                 <Snippet language="jsx" code={`
-    import React from 'react';
+    const App = (props) => {
+        const texte = "du texte";
+        const nombre = 5;
+        return (
+            <main>
+                <UneComposante titre={texte} age={10} nombre={nombre} objet={{prop1: 2, prop2: "texte"}} />
+            </main>
+        );
+    };
 
+    export default App;
+                `}/>
+
+                <p>Pour faire un suivi plus facile et améliorer la complétion de code par l'IDE pour les props passées à une composante, on utilisera la décomposition d'objet:</p>
+                <Snippet language="jsx" code={`
+    const UneComposante = ({titre, age, nombre, objet}) => (
+            <div>
+                <h1>{titre}: {objet.prop1}</h1>
+            </div>
+        );
+    };
+                `}/>
+                <p>Pour faire une boucle à l'intérieur du "html", on convertira habituellement un tableau de données en un tableau de jsx. On utilisera donc la fonction <strong>map</strong> de Javascript:</p>
+                <p>React demande une clé unique pour chaque balise générée par map.</p>
+                <Snippet language="jsx" code={`
     const App = (props) => {
         const eleves = [{prenom: 'Jimbo', nom: 'Scott'}, {prenom: 'Ludvig-Vanbe', nom: 'Toven'}, {prenom: 'Jimmy', nom: 'Chastenais'}];
         return (
             <main>
                 <ul>
-                    { eleves.map((eleve, index) => <li key={index}>{eleve.prenom + ' ' + eleve.nom}</li>) }
+                    { eleves.map((eleve, index) => <li key={prenom}>{eleve.prenom + ' ' + eleve.nom}</li>) }
                 </ul>
             </main>
         );

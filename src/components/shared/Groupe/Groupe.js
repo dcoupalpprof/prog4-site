@@ -28,6 +28,7 @@ class Groupe extends React.Component{
     initCollapsedState() {
         if (this.props.toggleable) {
             this.panelId = this.getGroupeId();
+            console.log(this.panelId);
             const lsState = this.getCollapseState();
             const savedState = typeof lsState === 'undefined' ? this.props.hidden : lsState === 0 ?  false: true;
             if (this.state.collapsed !== savedState) {
