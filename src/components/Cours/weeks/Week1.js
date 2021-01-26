@@ -3,8 +3,8 @@ import {A, Groupe, Section, Snippet} from '../../shared';
 
 const Week1 = (props) => (
     <section>
-        <Section title="La base">
-            {/*<Groupe title="Insérer du Javascript dans une page html">
+        {/*<Section title="La base">
+            <Groupe title="Insérer du Javascript dans une page html">
                 <Snippet language="javascript" code={`
     <script>
         //Rédiger du code ici
@@ -42,8 +42,8 @@ const Week1 = (props) => (
         );
     };
 `}/>
-            </Groupe>*/}
-        </Section>
+            </Groupe>
+        </Section>*/}
         <Section title="Introduction à React">
             <Groupe title="Installation">
                 <p>Une fois Node.js installé, il vous faut ouvrir une nouvelle ligne de commande pour utiliser le module <strong>create-react-app</strong>. <br/>
