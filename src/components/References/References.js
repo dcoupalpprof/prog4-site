@@ -27,8 +27,7 @@ class References extends React.Component {
                     <Header siteTitle="Programmation multimédia 4" isSmall={true} title="Références"/>
                     <section>
                         <Groupe toggleable={true} title="Navigation à l'intérieur de la ligne de commande">
-                            <p>Il est très fréquent qu'il soit nécessaire d'utiliser la ligne de commande pour effectuer des opérations avec Node.js.
-                                Sous PC, il est conseillé d'utiliser <strong><A url="http://cmder.net/">Cmder</A></strong> sous PC tandis que le <strong>Terminal</strong> fait déjà plutôt bien le travail sur Mac.</p>
+                            <p>Il est très fréquent qu'il soit nécessaire d'utiliser la ligne de commande pour effectuer des opérations avec Node.js.</p>
                             <Snippet code={`
     //Permet d'accéder au lecteur D
     d:
@@ -68,10 +67,10 @@ class References extends React.Component {
     //Permet d'initialiser/créer un manifeste en utilisant les valeurs par défaut (sans répondre aux questions)
     npm init -y
                 `}/>
-                            <p>Une fois le manifeste existant, il est facile d'ajouter de nouvelles librairies au projet et de sauvegarder leur nom dans <strong>package.json</strong>.</p>
+                            <p>Une fois le manifeste existant, il est facile d'ajouter de nouvelles librairies au projet. Celle-ci sera ajoutée automatiquement au manifest <strong>package.json</strong>.</p>
                             <Snippet code={`
     //Télécharge une librairie et l'ajoute au manifeste
-    npm install leNomDuneLibrairie --save
+    npm install leNomDuneLibrairie
     //Même chose, mais pour une librairie nécessaire au développement uniquement
     npm install leNomDuneLibrairie --save-dev
                 `}/>
@@ -81,10 +80,6 @@ class References extends React.Component {
     npm install benny-hill -g
     //benny-hill pourrait maintenant être utilisée sans npm puisqu'elle est globale
     benny-hill
-    //Installe create-react-app globalement
-    npm install create-react-app -g
-    //Create-react-app peut maintenant être utilisé pour créer des projets React
-    create-react-app unNouveauProjet
                 `}/>
                             <p>Il est sinon possible d'utiliser temporairement une librairie globale sans l'installer de façon permanente à l'aide de l'outil <strong>npx</strong> aussi installé avec node:</p>
                             <Snippet code={`

@@ -57,8 +57,8 @@ const Week1 = (props) => (
             <Groupe title="Composante fonctionnelle">
                 <p>Une composante fonctionnelle est une fonction devant retourner du <strong>JSX</strong> (<A url="https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-different-in-the-new-transform">syntaxe ressemblant à du html</A>, mais <A url="https://www.icantbelieveitsnotbutter.com/">c'est
                     du JS</A>!). La paire de parenthèses après le return permet d'afficher le JSX sur plusieurs lignes.</p>
-                <p>Le module React doit absolument être importer pour créer une composante (même s'il n'est pas utilisé de façon explicite).</p>
-                <p><strong>A</strong> - Dans les versions qui précédaient V17, on devait importer le module React. Ceci n'est plus nécessaire ni utilisé, mais vous pourriez tout de même y être confrontés en entreprise ou sur le web.</p>
+                <p>Le module React doit absolument être importé pour créer une composante (même s'il n'est pas utilisé de façon explicite).</p>
+                <p><strong>A</strong> - Dans les versions qui précédaient V17, on devait importer le module React. Ceci n'est plus nécessaire ni utilisé, mais vous pourriez tout de même y être confrontés en entreprise ou sur le web comme la version 17 est toute récente.</p>
                 <Snippet language="jsx" code={`
     // import React from 'react';  // - A
     const UneComposante = (props) => {
@@ -81,7 +81,7 @@ const Week1 = (props) => (
     //App est exporté pour être utilisé depuis un autre fichier
     export default App;
                 `}/>
-                <p>Il serait aussi possible de passer des données dynamiquement à <em>UneComposante</em> et ajoutant des attributs
+                <p>Il serait aussi possible de passer des données dynamiquement à <em>UneComposante</em> en ajoutant des attributs
                     au nom arbitraire qui pourront être récupérées à l'intérieur des <strong>props</strong> de <em>UneComposante</em>.</p>
                 <p>On peut afficher dynamiquement des données ou exécuter des commandes js simples à l'aide des moustaches.</p>
                 <Snippet language="jsx" code={`
