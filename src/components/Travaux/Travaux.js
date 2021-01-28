@@ -106,7 +106,7 @@ class Travaux extends React.Component {
                         <Section title="Devoir 1" subtitle="Les films">
                             <Groupe toggleable={true} title="Contenu" hidden={true}>
                                 <p>Vous devez organiser l'affichage d'une liste de films à l'aide de différentes composantes fonctionnelles React.</p>
-                                <p>Le contenu du tableau suivant sera à intégrer et vous devrez permettre de supprimer des films de la liste:</p>
+                                <p>Le contenu du tableau suivant sera à intégrer:</p>
                                 <Snippet code={`
     const lesFilms = [
         {
@@ -261,9 +261,6 @@ class Travaux extends React.Component {
                                     <strong>Photo</strong> devra servir à la fois pour l'affiche et pour les personnes. Une propriété <strong>type</strong> permettra de modifier son apparence en fonction du type de photo à afficher (affiche ou personne). <br/>
                                     L'intégration devra être facilitée par l'utilisation d'une librairie CSS sélectionnée depuis cette <A url="https://speckyboy.com/open-source-front-end-ui-kits/">liste de librairies CSS</A>.</p>
 
-                                <p>Les proptypes des composantes <strong>Entete</strong>, <strong>Personne</strong> et <strong>Photo</strong> devront être déclarés.</p>
-
-                                <p>La composante <strong>Film</strong> devra inclure un bouton permettant de supprimer ce film de la liste.</p>
                             </Groupe>
                             <Groupe title="Correction" toggleable={true}>
                                 <h3>Critères de correction:</h3>
@@ -272,7 +269,6 @@ class Travaux extends React.Component {
                                     <li>Respect des contraintes de développement</li>
                                     <li>Justesse de la création des composantes</li>
                                     <li>Optimisation et clarté du code Javascript</li>
-                                    <li>Gestion immuable de l'état des composantes</li>
                                     <li>Qualité de l'intégration</li>
                                 </ul>
                             </Groupe>
