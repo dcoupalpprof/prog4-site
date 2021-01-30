@@ -208,7 +208,7 @@ class Travaux extends React.Component {
                 },{
                     prenom: 'Brad',
                     nom: 'Pitt',
-                    photo: 'http://fr.web.img5.acsta.net/c_162_216/pictures/19/01/03/17/21/1289778.jpg'
+                    photo: 'https://fr.web.img6.acsta.net/c_162_216/pictures/20/02/10/10/37/1374948.jpg'
                 }
             ],
             realisateur: {
