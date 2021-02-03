@@ -10,9 +10,9 @@ const Week2 = (props) => {
                 <Groupe title="Les composantes fonctionnelles">
                     <p className="p-first">Une composante fonctionnelle se qualifie à partir du moment qu'elle répond aux critères suivants:</p>
                     <ul className="cours-liste">
-                        <li>Elle importe le module React;</li>
                         <li>Elle est une fonction retournant du JSX</li>
-                        <li>Le JSX retourné n'est composé que d'un seul élément racine</li>
+                        <li>Le JSX retourné n'est composé que d'un seul élément racine. On peut utiliser un fragment <strong>&#x3C;&#x3E;&#x3C;/&#x3E;</strong> si ça nous est impossible.</li>
+                        <li>Le JSX est enrobé d'une paire de parenthèses pour s'assurer de sa bonne compilation.</li>
                     </ul>
                 </Groupe>
                 <Groupe title="Mettre à jour le contenu d'un composante">
@@ -30,7 +30,7 @@ const Week2 = (props) => {
                         déclarer un getter et un setter d'une variable que l'on voudra afficher et modifier à l'intérieur
                         de la composante</span>. L'utilisation du setter lancera un nouveau rendu de la composante.</p>
                     <Snippet language="jsx" code={`
-    import React, {useState} from 'react';
+    import {useState} from 'react';
     
     const UneComposante = (props) => {
         
@@ -65,7 +65,7 @@ const Week2 = (props) => {
                         <li>Si l'utilisateur souhaite remplacer la valeur de l'état sans utiliser la valeur précédente:</li>
                     </ul>
                     <Snippet language="jsx" code={`
-    import React, {useState} from 'react';
+    import {useState} from 'react';
     
     const UneComposante = (props) => {
         const [currentNom, setNom] = useState('Jimmy');
@@ -87,7 +87,7 @@ const Week2 = (props) => {
                         <li>Si l'utilisateur souhaite remplacer la valeur de l'état en utilisant la valeur précédente:</li>
                     </ul>
                     <Snippet language="jsx" code={`
-    import React, {useState} from 'react';
+    import {useState} from 'react';
     
     const UneComposante = (props) => {
         const [compteur, setCompteur] = useState(1);
@@ -114,7 +114,7 @@ const Week2 = (props) => {
                     <p>Pour l'accès en lecture, on synchronise un state à chaque modification du champ avec l'événement <strong>onChange</strong>.</p>
                     <p>Pour l'accès en écriture, on synchronise son <strong>value</strong> avec le state.</p>
                     <Snippet language="jsx" code={`
-    import React, {useState} from 'react';
+    import {useState} from 'react';
     
     const UneComposante = props => {
         
@@ -134,14 +134,64 @@ const Week2 = (props) => {
                     <p>Cette composante peut être testée sur <A url="https://codesandbox.io/s/bold-tu-yutnw" internal={false}>Codesandbox.io</A>.</p>
                 </Groupe>
 
+                <Groupe title="Affichage conditionnel d'une portion du JSX" toggleable={true} hidden={false}>
+                    <p>Il arrivera souvent que l'on voudra afficher ou non une portion de JSX en fonction d'une condition. On pourra évidemment passer par une fonction pour ce faire, mais le tout alourdit la tâche.</p>
+                    <p>Comme on ne peut pas déclarer de bloc à l'intérieur du JSX, l'une des stratégies est d'utiliser un opérateur ternaire.</p>
+                    <Snippet language="jsx" code={`
+    const MaComposante = () => {
+        const [isEditable, setIsEditable] = useState(false);
+        
+        return (
+            <div>{/* L'opérateur ternaire permet d'afficher une ou l'autre des balises en fonction de la condition */}
+                { isEditable ? (<p>Du texte</p>) : (<input type="text" value="du texte"/>)}
+            </div>
+        );
+    };
+    
+    /* Avec une classe */
+    const MonAutreComposante = () => {
+        const [isSelected, setIsSelected] = useState(false);
+        
+        return (
+            <div className={isSelected ? 'selected': 'not-selected'}> {/* Une classe pourrait aussi être ajoutée conditionnellement */}
+                <p>Du texte</p>
+            </div>
+        );
+    };
+                    `}/>
+                    <p>Dans les cas où on veut afficher ou non une portion de code sans vouloir fournir d'alternative, une des façons de procéder serait la suivante:</p>
+                    <Snippet language="jsx" code={`
+    /* Avec une classe */
+    const SayMyName = () => {
+        const [isVisible, setIsVisible] = useState(false);
+        
+        return (
+            <div> {/* Cette approche est valide, mais on procède souvent autrement. */}
+                { isVisible ? ( <p>Du texte</p> ) : null }
+            </div>
+        );
+    };
+                    `}/>
+                    <p>Quand on exécute la commande suivante <pre>console.log(5 > 1 && 'allo');</pre>, le résultat affiché est <strong>allo</strong>. Cela veut donc dire que ce qui est au bout de la condition est affiché si le début de la condition est true. Tout ça pour dire que si on veut afficher conditionnellement un bout de JSX sans vouloir fournir d'alternative, on peutr aussi procéder ainsi:</p>
+                    <Snippet language="jsx" code={`
+    /* Avec une classe */
+    const SayMyName = () => {
+        const [isVisible, setIsVisible] = useState(false);
+        
+        return (
+            <div> {/* Le paragraphe sera affiché si isVisible est true. Sinon rien ne sera affiché dans le div. */}
+                { isVisible && ( <p>Du texte</p> ) }
+            </div>
+        );
+    };
+                    `}/>
+                </Groupe>
+
                 <Groupe title="Les composantes à état - PLUS UTILISÉES DANS CE COURS" toggleable={true} hidden={true}>
                     <p>Les composantes à état sont aussi utilisées comme des balises, mais sont déclarées à l'aide d'une classe plutôt que d'une fonction. <br/>
                         La composante à état doit contenir une <strong>méthode render</strong> retournant du jsx pour se qualifier. <br/>
                         C'est dans ces composantes que se situera l'essentiel de la logique de l'application tandis que les composantes fonctionnelles serviront à afficher le contenu et détecter des interactions par l'utilisateur.</p>
                     <Snippet language="jsx" code={`
-    //ex:
-    import React from 'react';
-
     class UneComposante extends React.Component {
 
         render() {

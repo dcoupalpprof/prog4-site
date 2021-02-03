@@ -6,9 +6,6 @@ import {A, Groupe, Snippet} from '../shared';
 import withScrollToTop from '../hoc/withScrollToTop';
 
 class References extends React.Component {
-
-    //todo: Ajouter modules (import / export) et attributs JSX
-
     references = [];
 
     /*showReferences = () => {
