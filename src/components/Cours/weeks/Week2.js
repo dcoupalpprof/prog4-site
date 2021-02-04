@@ -134,6 +134,78 @@ const Week2 = (props) => {
                     <p>Cette composante peut être testée sur <A url="https://codesandbox.io/s/bold-tu-yutnw" internal={false}>Codesandbox.io</A>.</p>
                 </Groupe>
 
+                <Groupe title="Modification du state lorsqu'il s'agit d'un tableau - AJOUT">
+                    <p>Les méthodes utilisées pour modifier le state lorsqu'il contient une <strong>référence</strong> (tableau ou objet) doivent se faire de façon immuable. C'est à dire qu'on ne doit pas modifier direct le tableau ou l'objet, mais le remplacer par un nouveau tableau ou un nouvel objet. </p>
+                    <p>Pour ajouter un élément à un tableau, on utilisera donc le <strong><A url="https://youtu.be/h_D3VFfhvs4?t=65">spread operator</A></strong>.</p>
+                    <Snippet language="jsx" code={`
+    import {useState} from 'react';
+    
+    const App = props => {
+        
+        const [tableau, setTableau] = useState(['du texte', 'un autre texte']);
+        
+        const ajouterAuTableau = () => {
+            const textePourAjout = 'un nouveau texte';
+            setTableau(prevTableau => [...prevTableau, textePourAjout]);
+        };
+        
+        {/* ... reste de la composante */}
+    
+    };  
+                    `}/>
+                    <p>Cette composante peut être testée sur <A url="https://codesandbox.io/s/green-leaf-evbg3?file=/src/App.js" internal={false}>Codesandbox.io</A>.</p>
+                </Groupe>
+
+                <Groupe title="Modification du state lorsqu'il s'agit d'un tableau - SUPPRESSION">
+                    <p>Les méthodes utilisées pour modifier le state lorsqu'il contient une <strong>référence</strong> (tableau ou objet) doivent se faire de façon immuable. C'est à dire qu'on ne doit pas modifier direct le tableau ou l'objet, mais le remplacer par un nouveau tableau ou un nouvel objet. </p>
+                    <p>Pour supprimer un élément d'un tableau, on pourra utiliser la méthode <strong><A url="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter">filter</A></strong> qui permet de conserver uniquement les éléments respectant une condition donnée.</p>
+                    <Snippet language="jsx" code={`
+    import {useState} from 'react';
+    
+    const App = props => {
+        
+        const [tableau, setTableau] = useState(['Adam','Julie','Nicolas','Rocktavie','Lucienne','Louiselle']);
+        
+        const supprimerDuTableau = () => {
+            //supprime l'élément à la position 0 du tableau
+            setTableau(prevTableau => prevTableau.filter((texte, i) => {
+                // conserve tous les éléments qui ne sont pas situés à la première position du tableau
+                return i !== 0;
+            }));
+        };
+        
+        {/* ... reste de la composante */}
+    
+    };  
+                    `}/>
+                    <p>Cette composante peut être testée sur <A url="https://codesandbox.io/s/angry-keldysh-mil83?file=/src/App.js" internal={false}>Codesandbox.io</A>.</p>
+                </Groupe>
+
+                <Groupe title="Modification du state lorsqu'il s'agit d'un tableau - MODIFICATION">
+                    <p>Les méthodes utilisées pour modifier le state lorsqu'il contient une <strong>référence</strong> (tableau ou objet) doivent se faire de façon immuable. C'est à dire qu'on ne doit pas modifier direct le tableau ou l'objet, mais le remplacer par un nouveau tableau ou un nouvel objet.</p>
+                    <p>Pour modifier un élément d'un tableau, on pourra utiliser la méthode <strong><A url="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/map">map</A></strong> qui permet de conserver le même nombre d'élément, mais de pouvoir les transformer/modifier.</p>
+                    <Snippet language="jsx" code={`
+    import {useState} from 'react';
+    
+    const App = props => {
+        
+        const [tableau, setTableau] = useState(['Adam','Julie','Nicolas','Rocktavie','Lucienne','Louiselle']);
+        
+        const modificationDuTableau = () => {
+            //met l'élément 0 du tableau en lettre majuscule
+            setTableau(prevTableau => prevTableau.map((texte, i) => {
+                // conserve tous les éléments intacts sauf le premier
+                return i === 0 ?  texte.toUpperCase() : texte;
+            }));
+        };
+        
+        {/* ... reste de la composante */}
+    
+    };  
+                    `}/>
+                    <p>Cette composante peut être testée sur <A url="https://codesandbox.io/s/ecstatic-sun-e2m3s?file=/src/App.js" internal={false}>Codesandbox.io</A>.</p>
+                </Groupe>
+
                 <Groupe title="Affichage conditionnel d'une portion du JSX" toggleable={true} hidden={false}>
                     <p>Il arrivera souvent que l'on voudra afficher ou non une portion de JSX en fonction d'une condition. On pourra évidemment passer par une fonction pour ce faire, mais le tout alourdit la tâche.</p>
                     <p>Comme on ne peut pas déclarer de bloc à l'intérieur du JSX, l'une des stratégies est d'utiliser un opérateur ternaire.</p>
