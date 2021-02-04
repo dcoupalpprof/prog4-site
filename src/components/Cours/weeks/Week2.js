@@ -244,7 +244,7 @@ const Week2 = (props) => {
         );
     };
                     `}/>
-                    <p>Quand on exécute la commande suivante <pre>console.log(5 > 1 && 'allo');</pre>, le résultat affiché est <strong>allo</strong>. Cela veut donc dire que ce qui est au bout de la condition est affiché si le début de la condition est true. Tout ça pour dire que si on veut afficher conditionnellement un bout de JSX sans vouloir fournir d'alternative, on peutr aussi procéder ainsi:</p>
+                    <p>Quand on exécute la commande suivante <pre>console.log(5 > 1 && 'allo');</pre>, le résultat affiché est <strong>allo</strong>. Cela veut donc dire que ce qui est au bout de la condition est affiché si le début de la condition est true. Tout ça pour dire que si on veut afficher conditionnellement un bout de JSX sans vouloir fournir d'alternative, on peut aussi procéder ainsi:</p>
                     <Snippet language="jsx" code={`
     /* Avec une classe */
     const SayMyName = () => {
