@@ -136,7 +136,7 @@ const Week2 = (props) => {
 
                 <Groupe title="Modification du state lorsqu'il s'agit d'un tableau - AJOUT">
                     <p>Les méthodes utilisées pour modifier le state lorsqu'il contient une <strong>référence</strong> (tableau ou objet) doivent se faire de façon immuable. C'est à dire qu'on ne doit pas modifier direct le tableau ou l'objet, mais le remplacer par un nouveau tableau ou un nouvel objet. </p>
-                    <p>Pour ajouter un élément à un tableau, on utilisera donc le <strong><A url="https://youtu.be/h_D3VFfhvs4?t=65">spread operator</A></strong>.</p>
+                    <p>Pour ajouter un élément à un tableau, on utilisera donc le <strong><A url="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/Syntaxe_d%C3%A9composition">spread operator</A></strong>.</p>
                     <Snippet language="jsx" code={`
     import {useState} from 'react';
     
