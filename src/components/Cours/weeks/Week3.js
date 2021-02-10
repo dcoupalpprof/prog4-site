@@ -6,8 +6,8 @@ const Week3 = (props) => {
         <section>
             <Section title="La navigation à l'intérieur de l'app">
                 <Groupe title="Initialisation">
-                    <p>Il est nécessaire d'installer premièrement le module <strong>react-router-dom</strong> pour permettre de gérer les routes à l'intérieur de l'app.</p>
-                    <p>On en importera ensuite la composante <strong>BrowserRouter</strong> qui devra englober la composante <strong>App</strong>.</p>
+                    <p>Il est nécessaire d'installer premièrement le module <A url="https://reactrouter.com/web/guides/quick-start">react-router-dom</A> avec <A url="https://www.npmjs.com/package/react-router-dom">npm</A> pour permettre de gérer les routes à l'intérieur de l'app.</p>
+                    <p>On en importera ensuite la composante <strong>BrowserRouter</strong> qui devra englober la composante <strong>App</strong> (pour qu'une route soit utilisable/fonctionnelle, elle doit absolument se trouver dans la hiérarchie de composantes à l'intérieur du <strong>BrowserRouter</strong>).</p>
                     <Snippet language="jsx" code={`
 import {BrowserRouter} from 'react-router-dom';
 ...
@@ -16,19 +16,22 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
                 </Groupe>
                 <Groupe title="Déclaration et paramétrage des routes">
                     <p>À l'endroit où seront affichées les différentes vues, on déclare une composante <strong>{`<Route/>`}</strong> (importée depuis react-router-dom) pour chacun des états.</p>
+                    <p>La composante Route permet d'afficher une composante conditionnellement à l'url courant. On englobera donc chaque composante-page par un Route différent.</p>
                     <h4>Propriétés de la composante {`<Route/>`}:</h4>
                     <ul style={{listStyleType:'disc', paddingLeft: '25px'}}>
                         <li>path: url absolu correspondant à la vue à afficher</li>
-                        <li>exact: (aucune valeur) permet de s'assurer que le path corresponde exactement à l'url</li>
+                        <li>exact: (aucune valeur) permet de s'assurer que le path corresponde exactement à l'url. Souvent utilisé pour l'accueil ('/') et les routes imbriquées.</li>
                         <li>render: fonction devant retourner du jsx () => {`(<div></div>)`}</li>
-                        <li>component: référence de la composante à afficher (<strong>utilisé à la place de render)</strong></li>
-
+                        <li>component: référence de la composante à afficher (<strong>utilisé à la place de render)</strong>. Il est plus courant de déclarer la composante comme enfant de route plutôt que d'utiliser la prop <strong>component</strong>.</li>
                     </ul>
-                    <p style={{marginTop:'.5em'}}>Chaque composante correspondant à l'url actif par son path sera affichée. C'est pourquoi on utilise souvent l'attribut <strong>exact</strong> lorsqu'il s'agit de la page d'accueil (path="/"). Pour s'assurer de n'afficher qu'une seule Route à la fois, on peut englober toutes les routes à l'intérieur de la composante <strong>{`<Switch></Switch>`}</strong> (importée de react-router-dom.</p>
+                    <p style={{marginTop:'.5em'}}>Chaque composante correspondant à l'url actif par son path sera affichée. C'est pourquoi on utilise souvent l'attribut <strong>exact</strong> lorsqu'il s'agit de la page d'accueil (path="/").</p>
+                        <p>Pour s'assurer de n'afficher qu'une seule Route à la fois, il est recommandé d'englober toutes les routes à l'intérieur de la composante <strong>{`<Switch></Switch>`}</strong> (importée de react-router-dom).</p>
                     <h4>Redirection</h4>
-                    <p>On redirige un url vers un autre à l'aide de la balise <strong>{`<Redirect from="/" to="/posts"/>`}</strong>.</p>
+                    <p>On redirige un url vers un autre à l'aide de la balise <strong>{`<Redirect to="/posts"/>`}</strong>. On peut donc faire terminer le switch par un <strong>Redirect</strong> pour rediriger toutes les requêtes qui ne correspondent pas à une route.</p>
                     <h4>Paramètres dynamiques</h4>
-                    <p>On ajoute les paramètres dynamiques dans la propriété path: {`<Route path="/posts/:unId" .../>`}. L'interprétation des url se fait de haut en bas. Il faut donc mettre les routes avec paramètres dynamiques à la fin des choix de routes.</p>
+                    <p>On ajoute les paramètres dynamiques dans la propriété path: {`<Route path="/posts/:unId" .../>`}.</p>
+                    <h4>Organisation des routes</h4>
+                    <p>Afin de s'assurer du bon comportement d'affichage des routes, <strong>on déclarera les routes plus précises (plus longues) en premier vers les plus générales (plus courtes) à la fin</strong>.</p>
                     <h4>Erreur 404 - Route inconnue</h4>
                     <p>On peut déclarer une composante sans path pour attraper les url non déclarés dans une route.</p>
                 </Groupe>
@@ -37,23 +40,28 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
                     <ul className="cours-liste">
                         <li>history: Permet entre autres de naviguer par programmation.</li>
                         <li>location: Informations sur la route active (incluant les paramètres de requête)</li>
-                        <li>match: Permet entre autres la récupération des paramètres dynamiques</li>
+                        <li>match: Permet entre autres la <strong>récupération des paramètres dynamiques</strong></li>
                     </ul>
-                    <p>Pour accéder à ses informations à l'intérieur d'autres composantes, il est nécessaire de passer l'information manuellement par les props ou d'utiliser le <em>high order component</em> withRouter (importé aussi de react-router-dom).</p>
-                    <Snippet language="jsx" code={`
-    import {withRouter} from 'react-router-dom';
-    const UneComposante = props => (<div></div>);
-
-    //permettra à UneComposante de recevoir les props liées au routeur
-    export default withRouter(UneComposante);
-                    `}/>
-                    <p>On pourra aussi réclamer ces informations individuellements en les récupérant avec les <A internal={false} url="https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/hooks.md">hooks</A>.</p>
+                    <p>Pour accéder à ses informations à l'intérieur d'autres composantes, il est nécessaire d'utiliser les différents <A internal={false} url="https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/hooks.md">hooks</A> importés depuis react-router-dom.</p>
+                    <h4>Hooks de React-Router-Dom</h4>
                     <ul className="cours-liste">
                         <li>useHistory</li>
                         <li>useLocation</li>
                         <li>useParams</li>
                         <li>useRouteMatch</li>
                     </ul>
+                    <Snippet language="jsx" code={`
+    import {useLocation} from 'react-router-dom';
+    const UneComposante = props => {
+        
+        const location = useLocation();
+        console.log(location.pathname);
+        
+        return (<div></div>);
+    };
+
+    export default UneComposante;
+                    `}/>
                 </Groupe>
                 <Groupe title="Déclaration d'un hyperlien ne rafraîchissant pas la page auprès du serveur">
                     <p>On remplace les hyperliens par une composante <strong>{`<Link to="url">texte</Link>`}</strong></p>
@@ -64,7 +72,7 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
                     <p>Pour styliser le lien actif, on peut aussi remplacer la composante Link par <strong>NavLink</strong> qui donnera par défaut la classe active aux liens pointant vers l'url actif. Sa propriété <strong>activeClassName</strong> permet d'assigner un nom de classe différent.</p>
                 </Groupe>
                 <Groupe title="Navigation par programmation">
-                    <p>On utilise donc la propriété <strong>history</strong> passée dans les props pour y arriver. Quelques méthodes utiles:</p>
+                    <p>Si la navigation ne peut être faite au clic d'un Link, on utilise <strong>history</strong> passée dans les props pour naviguer par programmation. Quelques méthodes utiles:</p>
                     <ul className="cours-liste">
                         <li>history.<strong>goBack()</strong></li>
                         <li>history.<strong>goForward()</strong></li>
@@ -74,20 +82,6 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
                 </Groupe>
                 <Groupe title="Imbrication de routes">
                     On peut utiliser des Routes à l'intérieur d'une composante déjà liée à une Route. Il faudra cependant y utiliser un lien relatif comme path.
-                </Groupe>
-                <Groupe title="Passer des props à des Routes">
-                    <p>Pour passer des props à des routes, on peut détourner l'utilisation de la prop <strong>render</strong> sur une route.</p>
-                    <p>Il est cependant nécessaire de conserver les props passées par défaut (location, match, history).</p>
-                    <Snippet language="jsx" code={`
-                    
-    {/* depuis l'intérieur d'une compsante */}
-    const unNombre = 10;
-    
-    <Switch>
-        <Route path="/une-composante" component={UneComposante}/>
-        <Route path="/une-autre-composante" render={(props) => <UneAutreComposante {...props} unNombre={unNombre} />}/>
-    </Switch>
-                    `}/>
                 </Groupe>
             </Section>
         </section>
