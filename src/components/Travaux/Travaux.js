@@ -66,7 +66,7 @@ class Travaux extends React.Component {
                         {/*    <Groupe title="Contenu" toggleable={true}>*/}
                         {/*        <p>Vous devrez programmer la navigation du célèbre site <strong>volontairement</strong> visuellement minimaliste nommé Le Club des Louise.</p>*/}
                         {/*        <p>Vous devrez aussi permettre à des utilisateurs d'ajouter des commentaires.</p>*/}
-                        {/*        <p>Vous trouverez le contenu du devoir sur Partage.</p>*/}
+
                         {/*    </Groupe>*/}
                         {/*    <Groupe toggleable={true} title="Détails">*/}
                         {/*        <p>Votre site devra contenir 3 routes:</p>*/}

@@ -67,7 +67,8 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
                     <p>On remplace les hyperliens par une composante <strong>{`<Link to="url">texte</Link>`}</strong></p>
                     <p>Les liens sont absolus par défaut. Pour faire un lien relatif, il est nécessaire de les préfixer par l'url courant.</p>
                     <Snippet language="jsx" code={`
-    <Link to={props.match.url+'/unsuffixe'}>un lien relatif</Link>
+    <Link to="/path-absolu-depuis-la-racine-du-site">Lien absolu</Link>
+    <Link to={props.match.url+'/unsuffixe'}>Un semblant de lien relatif</Link>
                     `}/>
                     <p>Pour styliser le lien actif, on peut aussi remplacer la composante Link par <strong>NavLink</strong> qui donnera par défaut la classe active aux liens pointant vers l'url actif. Sa propriété <strong>activeClassName</strong> permet d'assigner un nom de classe différent.</p>
                 </Groupe>
@@ -81,7 +82,9 @@ ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('
                     </ul>
                 </Groupe>
                 <Groupe title="Imbrication de routes">
-                    On peut utiliser des Routes à l'intérieur d'une composante déjà liée à une Route. Il faudra cependant y utiliser un lien relatif comme path.
+                    <p>On peut utiliser des Routes à l'intérieur d'une composante déjà affichée par une Route. Le path de la
+                        route à afficher devra être absolu en contenant donc le path depuis la racine du site ou
+                        utilser <strong>props.match.url</strong> comme préfixe.</p>
                 </Groupe>
             </Section>
         </section>
