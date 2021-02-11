@@ -62,47 +62,47 @@ class Travaux extends React.Component {
                         {/*        <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 5.</p>*/}
                         {/*    </Groupe>*/}
                         {/*</Section>*/}
-                        {/*<Section title="Devoir 2" subtitle="Le Club des Louise">*/}
-                        {/*    <Groupe title="Contenu" toggleable={true}>*/}
-                        {/*        <p>Vous devrez programmer la navigation du célèbre site <strong>volontairement</strong> visuellement minimaliste nommé Le Club des Louise.</p>*/}
-                        {/*        <p>Vous devrez aussi permettre à des utilisateurs d'ajouter des commentaires.</p>*/}
+                        <Section title="Devoir 2" subtitle="Le Club des Louise">
+                            <Groupe title="Contenu" toggleable={true}>
+                                <p>Vous devrez programmer la navigation du célèbre site <strong>volontairement</strong> visuellement minimaliste nommé Le Club des Louise.</p>
+                                <p>Vous devrez aussi permettre à des utilisateurs d'ajouter des commentaires.</p>
 
-                        {/*    </Groupe>*/}
-                        {/*    <Groupe toggleable={true} title="Détails">*/}
-                        {/*        <p>Votre site devra contenir 3 routes:</p>*/}
-                        {/*        <ul className="cours-liste">*/}
-                        {/*            <li>Une route pour afficher  la liste de membres <strong>(vue par défaut)</strong></li>*/}
-                        {/*            <li>Une route pour permettre d'afficher et ajouter des commentaires</li>*/}
-                        {/*            <li>Une route avec un paramètre dynamique (user) pour afficher les détails des membres</li>*/}
-                        {/*        </ul>*/}
-                        {/*    </Groupe>*/}
-                        {/*    <Groupe toggleable={true} title="Composante Membres">*/}
-                        {/*        <p>La composante Membres devra afficher le prénom de nom de chaque membre sous un lien pointant vers la page de détails de cet utilisateur.</p>*/}
-                        {/*        <p>Le paramètre dynamique utilisé devra être le surnom (propriété user) du membre.</p>*/}
-                        {/*    </Groupe>*/}
-                        {/*    <Groupe toggleable={true} title="Composante MembreDetails">*/}
-                        {/*        <p>En accédant dynamiquement aux propriétés de l'objet membres, on y récupère et affiche les informations de l'utilisateur <strong>(sans modifier l'objet membres)</strong>.</p>*/}
-                        {/*        <p>On affiche les détails du membre dans chaque balise <strong>dd</strong>.</p>*/}
-                        {/*    </Groupe>*/}
-                        {/*    <Groupe toggleable={true} title="Composante Commentaires">*/}
-                        {/*        <p>La composante <strong>Commentaires</strong> peut/doit être modifiée pour permettre d'afficher et d'ajouter de nouveaux commentaires au tableau.</p>*/}
-                        {/*        <p>On affichera autant de balise <strong>Commentaire</strong> (singulier) que de commentaires dans le tableau et leur passant les props nécessaires.</p>*/}
-                        {/*        <p>Par les props, on permettra également à <strong>AddCommentaire</strong> de modifier le contenu du tableau commentaires (state?).</p>*/}
-                        {/*        <p><strong>AddCommentaire</strong> devra <span className="underline">prendre le contrôle</span> des champs de texte pour modifier et lire leur contenu.</p>*/}
-                        {/*    </Groupe>*/}
-                        {/*    <Groupe title="Correction" toggleable={true}>*/}
-                        {/*        <h3>Critères de correction:</h3>*/}
-                        {/*        <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>*/}
-                        {/*            <li>Absence d'erreur de programmation</li>*/}
-                        {/*            <li>Respect des contraintes de développement</li>*/}
-                        {/*            <li>Justesse de la création des composantes</li>*/}
-                        {/*            <li>Gestion immuable de l'état des composantes</li>*/}
-                        {/*        </ul>*/}
-                        {/*    </Groupe>*/}
-                        {/*    <Groupe title="Remise" toggleable={true}>*/}
-                        {/*        <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 4.</p>*/}
-                        {/*    </Groupe>*/}
-                        {/*</Section>*/}
+                            </Groupe>
+                            <Groupe toggleable={true} title="Détails">
+                                <p>Votre site devra contenir 3 routes:</p>
+                                <ul className="cours-liste">
+                                    <li>Une route pour afficher  la liste de membres <strong>(vue par défaut)</strong></li>
+                                    <li>Une route pour permettre d'afficher et ajouter des commentaires</li>
+                                    <li>Une route avec un paramètre dynamique (user) pour afficher les détails des membres</li>
+                                </ul>
+                            </Groupe>
+                            <Groupe toggleable={true} title="Composante Membres">
+                                <p>La composante Membres devra afficher le prénom et le nom de chaque membre sous un lien pointant vers la page de détails de cet utilisateur.</p>
+                                <p>Le paramètre dynamique utilisé devra être le surnom <strong>(propriété user)</strong> du membre.</p>
+                            </Groupe>
+                            <Groupe toggleable={true} title="Composante MembreDetails">
+                                <p>En accédant dynamiquement aux propriétés de l'objet membres, on y récupère et affiche les informations de l'utilisateur <strong>(sans modifier l'objet membres)</strong>.</p>
+                                <p>On affiche les détails du membre dans chaque balise <strong>dd</strong>.</p>
+                            </Groupe>
+                            <Groupe toggleable={true} title="Composante Commentaires">
+                                <p>La composante <strong>Commentaires</strong> peut/doit être modifiée pour permettre d'afficher et d'ajouter de nouveaux commentaires au tableau.</p>
+                                <p>On affichera autant de balise <strong>Commentaire</strong> (singulier) que de commentaires dans le tableau en leur passant les props nécessaires.</p>
+                                <p>Par les props, on permettra également à <strong>AddCommentaire</strong> de modifier le contenu du tableau commentaires (state?).</p>
+                                <p><strong>AddCommentaire</strong> devra <span className="underline">prendre le contrôle</span> des champs de texte pour modifier et lire leur contenu.</p>
+                            </Groupe>
+                            <Groupe title="Correction" toggleable={true}>
+                                <h3>Critères de correction:</h3>
+                                <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                    <li>Absence d'erreur de programmation</li>
+                                    <li>Respect des contraintes de développement</li>
+                                    <li>Justesse de la création des composantes</li>
+                                    <li>Gestion immuable de l'état des composantes</li>
+                                </ul>
+                            </Groupe>
+                            <Groupe title="Remise" toggleable={true}>
+                                <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à le site de remise avant le début du cours 4.</p>
+                            </Groupe>
+                        </Section>
                         <Section title="Devoir 1" subtitle="Les films">
                             <Groupe toggleable={true} title="Contenu" hidden={true}>
                                 <p>Vous devez organiser l'affichage d'une liste de films à l'aide de différentes composantes fonctionnelles React.</p>
