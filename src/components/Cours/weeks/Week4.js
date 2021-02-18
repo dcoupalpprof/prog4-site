@@ -10,7 +10,7 @@ const Week4 = (props) => {
                     <p>Les effects secondaires sont des opérations qui sortent des opérations normales d'une composantes (fonction pures). Une synchronisation avec un serveur, mise en cache de données ou la génération d'un log pourraient être de bons exemples d'effets secondaires.</p>
                     <p>Comme les autres hooks, useEffect ne peut qu'être utilisé à la <em>racine</em> de la composante (pas dans une fonction, un if, une boucle...). Le premier paramètre de useEffect est une fonction à appeler lors après chaque rendu.</p>
                     <Snippet language="jsx" code={`
-    import React, {useEffect} from 'react';
+    import {useEffect} from 'react';
     const uneComposante = props => {
     
         useEffect(() => {
@@ -25,7 +25,7 @@ const Week4 = (props) => {
         // Cette opération ne sera exécutée qu'au premier rendu
     }, []);
                     `}/>
-                    <p>Le 2e paramètre est une tableau de dépendances. Les variables qu'on y insérera seront évaluées à chaque rendu et si une valeur venait qu'à être modifiée, la fonction de useEffect serait éxécutée à nouveau.</p>
+                    <p>Le 2e paramètre est un tableau de dépendances. Les variables qu'on y insérera seront évaluées à chaque rendu et si une valeur venait qu'à être modifiée, la fonction de useEffect serait éxécutée à nouveau.</p>
                     <Snippet language="jsx" code={`
     const [nbEssaie, setNbEssais] = useState(0);
                     
@@ -34,7 +34,7 @@ const Week4 = (props) => {
         // props.match.params.userId OU nbEssais changeront de valeur
     }, [props.match.params.userId, nbEssais]);
                     `}/>
-                    <p>Il est aussi possible de retourner une fonction depuis la fonction passée en paramètre. Celle-ci sera exécuter à la suppression de la composante. On pourrai ainsi utiliser un addEventListener dans le useEffect et retourner une fonction faisait un removeEventListener.</p>
+                    <p>Il est aussi possible de retourner une fonction depuis la fonction passée en paramètre. Celle-ci sera exécuter à la suppression de la composante. On pourrait ainsi utiliser un addEventListener dans le useEffect et retourner une fonction faisant un removeEventListener.</p>
                     <Snippet language="jsx" code={`
     useEffect(() => {
         // Cette opération ne sera exécutée qu'au premier rendu
