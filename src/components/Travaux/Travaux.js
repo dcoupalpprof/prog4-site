@@ -319,50 +319,50 @@ class Travaux extends React.Component {
                                 <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 3.</p>
                             </Groupe>
                         </Section> }
-    {/*                    <Section title="Prélude au devoir 1" subtitle="Film">*/}
-    {/*                        <Groupe toggleable={true} title="Contenu">*/}
-    {/*                            <p>Vous devez afficher les informations d'un film à l'aide des composantes React.</p>*/}
-    {/*                            <p>Le contenu de l'objet suivant sera à intégrer:</p>*/}
-    {/*                            <Snippet code={`*/}
-    {/*const leFilm = {*/}
-    {/*    titre: 'Interstellar',*/}
-    {/*    synopsis: "Le film raconte les aventures d’un groupe d’explorateurs qui utilisent une faille récemment découverte dans l’espace-temps afin de repousser les limites humaines et partir à la conquête des distances astronomiques dans un voyage interstellaire.",*/}
-    {/*    annee: 2014,*/}
-    {/*    distribution: [*/}
-    {/*        {*/}
-    {/*            prenom: 'Matthew',*/}
-    {/*            nom: 'McConaughey',*/}
-    {/*            photo: 'http://fr.web.img4.acsta.net/c_162_216/pictures/16/03/02/17/16/573123.jpg'*/}
-    {/*        },{*/}
-    {/*            prenom: 'Anne',*/}
-    {/*            nom: 'Hathaway',*/}
-    {/*            photo: 'http://fr.web.img2.acsta.net/c_162_216/pictures/14/10/30/11/11/166473.jpg'*/}
-    {/*        },{*/}
-    {/*            prenom: 'Michael',*/}
-    {/*            nom: 'Caine',*/}
-    {/*            photo: 'http://fr.web.img5.acsta.net/c_162_216/pictures/15/05/20/14/58/214953.jpg'*/}
-    {/*        }*/}
-    {/*    ]*/}
-    {/*};*/}
-    {/*                            `}/>*/}
-    {/*                        </Groupe>*/}
-    {/*                        <Groupe title="Détails" toggleable={true}>*/}
-    {/*                            <p style={{textIndent:0}}>Vous devrez créer les composantes suivantes dans fichiers js différents:</p>*/}
-    {/*                            <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>*/}
-    {/*                                <li>Film</li>*/}
-    {/*                                <li>Entete</li>*/}
-    {/*                                <li>Personne</li>*/}
-    {/*                            </ul>*/}
-    {/*                            <p style={{marginTop:'.5em', textIndent:0}}>La composante <strong>Film</strong> devra recevoir l'ensemble des informations (passé depuis App). <br/>*/}
-    {/*                                La composante <strong>Entete</strong> devra recevoir et afficher le titre de l'année de production du film. <br/>*/}
-    {/*                                Les acteurs devront être affichés en réutilisant la composante <strong>Personne</strong>. <br/>*/}
-    {/*                                <strong>Film</strong> devrait contenir <strong>Entete</strong> et les composantes <strong>Personne</strong>.*/}
-    {/*                            </p>*/}
-    {/*                            </Groupe>*/}
-    {/*                        <Groupe title="Remise" toggleable={true}>*/}
-    {/*                            <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 2.</p>*/}
-    {/*                        </Groupe>*/}
-	{/*				</Section>*/}
+                        <Section title="Prélude au devoir 1" subtitle="Film">
+                            <Groupe toggleable={true} title="Contenu">
+                                <p>Vous devez afficher les informations d'un film à l'aide des composantes React.</p>
+                                <p>Le contenu de l'objet suivant sera à intégrer:</p>
+                                <Snippet code={`
+    const leFilm = {
+        titre: 'Interstellar',
+        synopsis: "Le film raconte les aventures d’un groupe d’explorateurs qui utilisent une faille récemment découverte dans l’espace-temps afin de repousser les limites humaines et partir à la conquête des distances astronomiques dans un voyage interstellaire.",
+        annee: 2014,
+        distribution: [
+            {
+                prenom: 'Matthew',
+                nom: 'McConaughey',
+                photo: 'http://fr.web.img4.acsta.net/c_162_216/pictures/16/03/02/17/16/573123.jpg'
+            },{
+                prenom: 'Anne',
+                nom: 'Hathaway',
+                photo: 'http://fr.web.img2.acsta.net/c_162_216/pictures/14/10/30/11/11/166473.jpg'
+            },{
+                prenom: 'Michael',
+                nom: 'Caine',
+                photo: 'http://fr.web.img5.acsta.net/c_162_216/pictures/15/05/20/14/58/214953.jpg'
+            }
+        ]
+    };
+                                `}/>
+                            </Groupe>
+                            <Groupe title="Détails" toggleable={true}>
+                                <p style={{textIndent:0}}>Vous devrez créer les composantes suivantes dans fichiers js différents:</p>
+                                <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                    <li>Film</li>
+                                    <li>Entete</li>
+                                    <li>Personne</li>
+                                </ul>
+                                <p style={{marginTop:'.5em', textIndent:0}}>La composante <strong>Film</strong> devra recevoir l'ensemble des informations (passé depuis App). <br/>
+                                    La composante <strong>Entete</strong> devra recevoir et afficher le titre de l'année de production du film. <br/>
+                                    Les acteurs devront être affichés en réutilisant la composante <strong>Personne</strong>. <br/>
+                                    <strong>Film</strong> devrait contenir <strong>Entete</strong> et les composantes <strong>Personne</strong>.
+                                </p>
+                                </Groupe>
+                            <Groupe title="Remise" toggleable={true}>
+                                <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 2.</p>
+                            </Groupe>
+					</Section>
                     </section>
                 </main>
             </React.Fragment>
