@@ -359,9 +359,9 @@ class Travaux extends React.Component {
                                     <strong>Film</strong> devrait contenir <strong>Entete</strong> et les composantes <strong>Personne</strong>.
                                 </p>
                                 </Groupe>
-                            <Groupe title="Remise" toggleable={true}>
-                                <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 2.</p>
-                            </Groupe>
+                            {/*<Groupe title="Remise" toggleable={true}>*/}
+                            {/*    <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur Asterix avant le début du cours 2.</p>*/}
+                            {/*</Groupe>*/}
 					</Section>
                     </section>
                 </main>
