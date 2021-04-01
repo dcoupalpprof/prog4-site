@@ -125,7 +125,7 @@ const Week2 = (props) => {
                { /* Comme son nom l'indique', on change est appelé à chaque modification du contenu du champ de texte.
                     On récupère alors le contenu du champ en passant par l'événement passé en paramètre.
                 */ }
-               <input type="text" value={texte} onChange={(e) => {setTexte(e.target.value)}} placeholder="Du texte"/>
+               <input type="text" value={texte} onChange={(e) => setTexte(e.target.value)} placeholder="Du texte"/>
             </>
         );
     
