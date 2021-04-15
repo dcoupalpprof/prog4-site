@@ -63,44 +63,44 @@ class Travaux extends React.Component {
                         {/*    </Groupe>*/}
                         {/*</Section>*/}
 
-    {/*                    <Section title="Devoir 3" subtitle="Les séries télé">*/}
-    {/*                        <Groupe toggleable={true} title="Sujet" hidden={true}>*/}
-    {/*                            <p>Vous devez créer une application React permettant de faire la recherche de séries télé à l'aide de l'API de <A url="https://www.themoviedb.org/documentation/api" internal={false}>TheMovieDb</A>. Il vous faut donc premièrement vous y inscrire pour obtenir une clé d'API.</p>*/}
-    {/*                            <p>Votre application devra intégrer les routes pour afficher la recherche et ses résultats en plus d'une route pour les détails d'une série sélectionnée.</p>*/}
-    {/*                        </Groupe>*/}
-    {/*                        <Groupe title="Détails" toggleable={true}>*/}
-    {/*                            <p style={{textIndent:0}}>Vous devrez créer au minimum les composantes suivantes:</p>*/}
-    {/*                            <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>*/}
-    {/*                                <li>App : racine du projet</li>*/}
-    {/*                                <li>Header: contenant le titre que vous aurez donné à votre app + la navigation</li>*/}
-    {/*                                <li>Recherche: composante affichée par une route permettant d'effectuer une recherche</li>*/}
-    {/*                                <li>ListeResultats: composante affichant la liste des séries télé recherchées + des séries populaires</li>*/}
-    {/*                                <li>Serie: composante affichée affichant l'information de chacun des résultats (une Serie par résultat)</li>*/}
-    {/*                                <li>SerieDetails: obtenue par une route et affichant les données de la série sélectionnée (sur une nouvelle page)</li>*/}
-    {/*                            </ul>*/}
-    {/*                            <h4 style={{marginTop:'.5em'}}>Certaines précisions:</h4>*/}
-    {/*                            <p><strong>Header:</strong> La navigation devra entraîner un changement de route sans rechargement de la page.</p>*/}
-    {/*                            <p><strong>Recherche:</strong> En plus d'afficher l'engin de recherche, la page affichera ses résultats en plus de 10 séries parmi les plus populaires actuellement.</p>*/}
-    {/*                            <p><strong>ListeResultats:</strong> ListeResultats devrait pouvoir être réutilisée à l'intérieur de Recherche pour afficher les résultats de recherche et la liste de séries propulaire.</p>*/}
-    {/*                            <p><strong>Serie:</strong> Série devra afficher l'affiche de la série, son titre et l'année de la diffusion du premier épisode. Un clic sur une série entrâinera un changement de route vers l'affichage de ses détails.</p>*/}
-    {/*                            <p><strong>SerieDetails:</strong>: SerieDetails ne peut pas être imbriquée à l'intérieur de la page de recherche. Elle doit être affichée à sa place. On doit y afficher le titre, l'affiche, l'année de la diffusion du premier épisode, un indicateur qu'elle est terminée ou non, une note sur 5 étoiles et une vidéo embed de Youtube (récupérée depuis le même API).</p>*/}
-    {/*                            <p>** <A url="https://developers.themoviedb.org/3/getting-started/append-to-response" internal={false}>append_to_response</A> peut être utilisé pour combiner des données.</p>*/}
-    {/*                            <p>** L'utilisation du framework css <A url="https://getmdl.io" internal={false}>Material Lite</A> est obligatoire.</p>*/}
-    {/*                        </Groupe>*/}
-    {/*                        <Groupe title="Correction" toggleable={true}>*/}
-    {/*                            <h3>Critères de correction:</h3>*/}
-    {/*                            <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>*/}
-    {/*                                <li>Absence d'erreur de programmation</li>*/}
-    {/*                                <li>Respect des contraintes de développement</li>*/}
-    {/*                                <li>Justesse de la création des composantes</li>*/}
-    {/*                                <li>Optimisation et clarté du code Javascript</li>*/}
-    {/*                                <li>Qualité de l'intégration</li>*/}
-    {/*                            </ul>*/}
-    {/*                        </Groupe>*/}
-    {/*                        <Groupe title="Remise" toggleable={true}>*/}
-    {/*                            <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur le site de remise.</p>*/}
-    {/*                        </Groupe>*/}
-    {/*                    </Section>*/}
+                        <Section title="Devoir 3" subtitle="Les séries télé">
+                            <Groupe toggleable={true} title="Sujet" hidden={true}>
+                                <p>Vous devez créer une application React permettant de faire la recherche de séries télé à l'aide de l'API de <A url="https://www.themoviedb.org/documentation/api" internal={false}>TheMovieDb</A>. Il vous faut donc premièrement vous y inscrire pour obtenir une clé d'API.</p>
+                                <p>Votre application devra intégrer les routes pour afficher la recherche et ses résultats en plus d'une route pour les détails d'une série sélectionnée.</p>
+                            </Groupe>
+                            <Groupe title="Détails" toggleable={true}>
+                                <p style={{textIndent:0}}>Vous devrez créer au minimum les composantes suivantes:</p>
+                                <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                    <li>App : racine du projet</li>
+                                    <li>Header: contenant le titre que vous aurez donné à votre app + la navigation</li>
+                                    <li>Recherche: composante affichée par une route permettant d'effectuer une recherche</li>
+                                    <li>ListeResultats: composante affichant la liste des séries télé recherchées + des séries populaires</li>
+                                    <li>Serie: composante affichée affichant l'information de chacun des résultats (une Serie par résultat)</li>
+                                    <li>SerieDetails: obtenue par une route et affichant les données de la série sélectionnée (sur une nouvelle page)</li>
+                                </ul>
+                                <h4 style={{marginTop:'.5em'}}>Certaines précisions:</h4>
+                                <p><strong>Header:</strong> La navigation devra entraîner un changement de route sans rechargement de la page.</p>
+                                <p><strong>Recherche:</strong> En plus d'afficher l'engin de recherche, la page affichera ses résultats en plus de 10 séries parmi les plus populaires actuellement.</p>
+                                <p><strong>ListeResultats:</strong> ListeResultats devrait pouvoir être réutilisée à l'intérieur de Recherche pour afficher les résultats de recherche et la liste de séries propulaire.</p>
+                                <p><strong>Serie:</strong> Série devra afficher l'affiche de la série, son titre et l'année de la diffusion du premier épisode. Un clic sur une série entrâinera un changement de route vers l'affichage de ses détails.</p>
+                                <p><strong>SerieDetails:</strong>: SerieDetails ne peut pas être imbriquée à l'intérieur de la page de recherche. Elle doit être affichée à sa place. On doit y afficher le titre, l'affiche, l'année de la diffusion du premier épisode, un indicateur qu'elle est terminée ou non, une note sur 5 étoiles et une vidéo embed de Youtube (récupérée depuis le même API).</p>
+                                <p>** <A url="https://developers.themoviedb.org/3/getting-started/append-to-response" internal={false}>append_to_response</A> peut être utilisé pour combiner des données.</p>
+                                <p>** L'utilisation du framework css <A url="https://getmdl.io" internal={false}>Material Lite</A> est obligatoire.</p>
+                            </Groupe>
+                            <Groupe title="Correction" toggleable={true}>
+                                <h3>Critères de correction:</h3>
+                                <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                    <li>Absence d'erreur de programmation</li>
+                                    <li>Respect des contraintes de développement</li>
+                                    <li>Justesse de la création des composantes</li>
+                                    <li>Optimisation et clarté du code Javascript</li>
+                                    <li>Qualité de l'intégration</li>
+                                </ul>
+                            </Groupe>
+                            <Groupe title="Remise" toggleable={true}>
+                                <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur le site de remise.</p>
+                            </Groupe>
+                        </Section>
 
                         <Section title="Devoir 2" subtitle="Le Club des Louise">
                             <Groupe title="Contenu" toggleable={true}>
