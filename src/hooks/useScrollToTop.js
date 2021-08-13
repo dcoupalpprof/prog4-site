@@ -1,4 +1,7 @@
-import React from 'react';
+import {useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
+/*
+* import React from 'react';
 
 const withScrollToTop = WrappedComponent => {
     return class extends React.PureComponent {
@@ -22,3 +25,15 @@ const withScrollToTop = WrappedComponent => {
 };
 
 export default withScrollToTop;
+* */
+const useScrollToTop = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
+
+    return null;
+};
+
+export default useScrollToTop;
