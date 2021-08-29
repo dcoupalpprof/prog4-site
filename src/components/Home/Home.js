@@ -2,23 +2,24 @@ import React from 'react';
 import Features from './Features/Features';
 import {Header} from '../shared';
 import {Helmet} from 'react-helmet';
-import withScrollToTop from '../hoc/withScrollToTop';
+import {useScrollToTop} from "../../hooks";
+//import withScrollToTop from '../hoc/withScrollToTop';
 
-class Home extends React.Component {
+const Home = () => {
 
-    render() {
-        return (
-            <React.Fragment>
-                <Helmet>
-                    <title>{`Programmation multimédia 4`}</title>
-                </Helmet>
-                <main>
-                    <Header isSmall={false} siteTitle="Programmation multimédia 4" title="Programmation multimédia 4"/>
-                    <Features/>
-                </main>
-            </React.Fragment>
-        );
-    }
-}
+    useScrollToTop();
 
-export default withScrollToTop(Home);
+    return (
+        <React.Fragment>
+            <Helmet>
+                <title>{process.env.REACT_APP_SITE_TITLE}</title>
+            </Helmet>
+            <main>
+                <Header isSmall={false} siteTitle={process.env.REACT_APP_SITE_TITLE} title={process.env.REACT_APP_SITE_TITLE}/>
+                <Features/>
+            </main>
+        </React.Fragment>
+    );
+};
+
+export default Home;

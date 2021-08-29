@@ -3,11 +3,11 @@ import classes from './A.module.css';
 import propTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
-const A = (props) => {
-    return props.internal ? (
-        <Link to={props.url} className={classes.A}>[{props.children}]</Link>
+const A = ({url, internal = false, children}) => {
+    return internal ? (
+        <Link to={url} className={classes.A}>[{children}]</Link>
         ) : (
-        <a target="_blank" rel="noopener noreferrer" className={classes.A} href={props.url}>[{props.children}]</a>
+        <a target="_blank" rel="noopener noreferrer" className={classes.A} href={url}>[{children}]</a>
     );
 };
 

@@ -3,26 +3,95 @@ import classes from './References.module.css';
 import {Header} from '../shared';
 import {Helmet} from 'react-helmet';
 import {A, Groupe, Snippet} from '../shared';
-import withScrollToTop from '../hoc/withScrollToTop';
+import {useScrollToTop} from "../../hooks";
+// import withScrollToTop from '../hoc/withScrollToTop';
 
-class References extends React.Component {
-    references = [];
+const References = () => {
 
+    useScrollToTop();
     /*showReferences = () => {
         return this.references.length === 0 ? <p className="center">Aucune référence disponible pour l'instant.</p> : this.references.map((references) => {
             return <h3 key={references.titre}>{references.titre}</h3>;
         });
     };*/
 
-    render() {
         return (
             <React.Fragment>
                 <Helmet>
-                    <title>{'Programmation multimédia 4 - Références'}</title>
+                    <title>{`${process.env.REACT_APP_SITE_TITLE} - Références`}</title>
                 </Helmet>
                 <main className={classes.Travaux}>
-                    <Header siteTitle="Programmation multimédia 4" isSmall={true} title="Références"/>
+                    <Header siteTitle={process.env.REACT_APP_SITE_TITLE} isSmall={true} title="Références"/>
                     <section>
+                        <Groupe toggleable={true} title="Manipulation d'un objet JS">
+                            <p>On utilisera un objet pour organiser de données "complexes" à l'intérieur d'une variable.</p>
+                            <Snippet code={`
+    // Création d'un objet mélangeant plusieurs types de données
+    const monObjet = {
+        propriete1: 'valeur',
+        propriete2: 5,
+        propriete3: [1, 2, 3],
+        methode1: () => console.log('saluer'),
+        "une-propriete": 'la propriété peut être créée sous forme de string si elle contient des caractères spéciaux'
+    };
+    
+    // Accès et modification d'une propriété
+    console.log(monObjet.propriete2); // affiche 5 dans la console
+    monObjet.propriete4 = 'test';  // ajoute propriete4 à l'objet
+    
+    // Accès dynamique à une propriété
+    const maPropriete = 'propriete5';
+    monObjet[maPropriete] = 'test'; // ajoute propriete5 à l'objet
+    
+    // L'accès dynamique permet un peu plus de flexibilité
+    cont numero = 6;
+    const prefixeProp = 'propriete';
+    monObjet[prefixeProp + numero] = 'test'; // ajouter propriete6 à l'objet
+    
+    // On peut aussi utiliser une propriété dynamique à la création
+    const propDynamique = 'unePropriete';
+    const monObjet = {
+        [propDynamique] : 666  // crée une objet avec la propriété unePropriete contenant la valeur 666
+    };
+                            `}/>
+                            <h3>Décomposition d'un objet</h3>
+                            <p>On peut utiliser la décomposition d'objets afin de créer des variables rapidement à partir des différentes propriétés de l'objet</p>
+                            <Snippet code={`
+    // Décomposition d'un objet
+    const monObjet = {
+        prenom: 'John',
+        nom: 'Doe',
+        age: 66,
+        enfants: ['Lucienne', 'Roberte']
+    };
+    // On peut récupérer les valeurs de la façon normale:
+    const monPrenom = monObjet.prenom;
+    const monNom = monObjet.nom;
+    
+    // On peut aussi décomposer l'objet
+    const {prenom, nom} = monObjet; // crée une variable prenom contenant 'John' et une variable nom contenant 'Doe'
+    
+    // On peut également utiliser l'opérateur ... pour récuper les propriétés non décomposées à l'intérieur d'un nouvel objet
+    const {prenom, nom, ...autres} = monObjet; // la variable autres est un objet contenant les propriétés age et enfants
+    
+    // un objet passé en paramètre à une fonction peut également être décompose pour plus de clarté
+    const maFonction = ({prenom, nom}) => {
+        console.log(prenom + ' ' + nom);
+    };
+    
+    maFonction(monObjet);
+    
+                            `}/>
+                            <h3>Décomposition d'un tableau</h3>
+                            <p>On peut utiliser la même logique pour récupérer rapidement les valeurs d'un tableau dans des variables:</p>
+                            <Snippet code={`
+    const monTableau = ['Denise', 'Lucienne', 'Roberte', 'Donalda', 'Brigitte'];
+    const [prenom1, prenom2, ...autresPrenoms]; // prenom1 = 'Denise', prenom2 = 'Lucienne', autresPrenoms = ['Roberte', 'Donalda', 'Brigitte']
+                            `}/>
+                        </Groupe>
+
+
+
                         <Groupe toggleable={true} title="Navigation à l'intérieur de la ligne de commande">
                             <p>Il est très fréquent qu'il soit nécessaire d'utiliser la ligne de commande pour effectuer des opérations avec Node.js.</p>
                             <Snippet code={`
@@ -41,7 +110,7 @@ class References extends React.Component {
     //Navigation à travers un chemin composé de plusieurs dossiers
     cd nomDunDossier/nomDunAutre/PuisDunAutre
     //Veuillez entourer le chemin par une paire de guillemets s'il y a des espaces dans celui-ci
-
+    
                 `}/>
                             <h4>Important</h4>
                             <p>Si vous désirez interrompre un processus en cours dans la ligne de commande, il vous suffit d'appuyer à une ou deux reprises sur les touches <strong>ctrl-c</strong>.</p>
@@ -91,10 +160,10 @@ class References extends React.Component {
                             <Snippet code={`
     //file1.js
     const uneVariable = 'un string';
-
+    
     export default uneVariable;
     /* ************************************************************************************ */
-
+    
     //file2.js
     import UnNomAuChoix from './file2.js';
     console.log(UnNomAuChoix); //affiche 'un string dans la console';
@@ -103,30 +172,30 @@ class References extends React.Component {
                             <Snippet code={`
     //file1.js
     export const uneFonction = (param1, param2) => param1 + param2;
-
+    
     export UneClasse {
         constructor() {
             console.log('Une instance a été créée');
         }
     }
-
+    
     export const unBool = true;
-
+    
     const unArray = [0,1,2];
     export default unArray;
     /* ************************************************************************************ */
-
+    
     //file2.js
     import {uneFonction, UneClasse, unBool} from './file2.js';
     const uneInstance = new UneClasse(); //affiche 'Une instance a été créée dans la console'
-
+    
     //ou
-
+    
     import {uneFonction as fonction, UneClasse, unBool as unBooleen} from './file2.js';
     console.log(unBooleen); //affiche true dans la console
-
+    
     //ou
-
+    
     import * as fromFile2 from './file2.js';
     console.log(fromFile2.uneFonction(2,5)); //affiche 7 dans la console
     console.log(fromFile2.default.length); //affiche 3 dans la console
@@ -142,7 +211,6 @@ class References extends React.Component {
                 </main>
             </React.Fragment>
         );
-    }
-}
+};
 
-export default withScrollToTop(References);
+export default References;

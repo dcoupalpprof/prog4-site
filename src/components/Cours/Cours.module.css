@@ -4,3 +4,7 @@
     padding-left: 14px;
     font-family: "Open Sans", "Helvetica Neue", sans-serif;
 }
+
+.CoursLoader {
+    filter:blur(.15rem);
+}

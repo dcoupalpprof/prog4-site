@@ -7,22 +7,16 @@ require('prismjs/components/prism-jsx.min');
 
 // TODO: Ajuster pour mobile
 
-class Snippet extends React.Component {
+const Snippet = ({code, language = 'javascript', empty = false}) => {
 
-    componentWillMount() {
-        //Prism.highlightAll();
-    }
-
-    render() {
-        return (
-            <pre>
-                <PrismCode className={`language-${this.props.language}`}>
-{this.props.code}
-                </PrismCode>
-            </pre>
-        );
-    }
-}
+    return (
+        <pre>
+            <PrismCode className={`language-${language}`}>
+{code}
+            </PrismCode>
+        </pre>
+    );
+};
 
 Snippet.defaultProps = {
     language: 'javascript'

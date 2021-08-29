@@ -4,45 +4,44 @@ import PropTypes from "prop-types";
 import { Menubar } from "../../";
 import "../../../../styles/prism.css";
 import {Link} from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
-import withLastCours from '../../../hoc/withLastCours';
+import {useHistory} from 'react-router-dom';
+import {useLastCours} from "../../../../hooks";
 
-class TitleBar extends React.Component {
+const TitleBar = ({title}) => {
 
-    constructor(props) {
-        super(props);
-        const coursItems = this.createCoursItems();
-        let navCoursItem = {label: 'Notes de cours'};
-        navCoursItem = coursItems.length <= 1 ? {...navCoursItem, url: '/cours', command: (e) => {this.redirectWithRouter(e)}} : {...navCoursItem, items: coursItems};
+    const {noLastCours} = useLastCours();
 
-        this.navItems = [
-            navCoursItem,
-            { label: "Travaux", url: '/travaux', command: (e) => {this.redirectWithRouter(e)}  },
-            { label: "Références", url: '/references', command: (e) => {this.redirectWithRouter(e)}  }
-        ];
-    }
-
-   createCoursItems = () => {
-       const cours = [];
-       for(let i = 0; i < this.props.noLastCours; i++){
-           cours.push({label: `Cours ${i+1}`, command: (e) => {this.redirectWithRouter(e)}, url: `/cours/${i+1}`});
-       }
-       return cours;
-   };
-
-   redirectWithRouter = (e) => {
-        e.originalEvent.preventDefault();
-        this.props.history.push(e.item.url);
+    const createCoursItems = () => {
+        const cours = [];
+        for(let i = (process.env.REACT_APP_DEFAULT_COURS_NO - 1); i < noLastCours; i++){
+            cours.push({label: `Cours ${i + 1}`, command: (e) => {redirectWithRouter(e)}, url: `/cours/${i + 1}`});
+        }
+        return cours;
     };
 
-  render() {
+
+    const history = useHistory();
+    const coursItems = createCoursItems();
+    let navCoursItem = {label: 'Notes de cours'};
+    navCoursItem = coursItems.length <= 1 ? {...navCoursItem, url: '/cours', command: (e) => {redirectWithRouter(e)}} : {...navCoursItem, items: coursItems};
+
+    const navItems = [
+        navCoursItem,
+        { label: "Travaux", url: '/travaux', command: (e) => {redirectWithRouter(e)}  },
+        { label: "Références", url: '/references', command: (e) => {redirectWithRouter(e)}  }
+    ];
+
+   const redirectWithRouter = (e) => {
+        e.originalEvent.preventDefault();
+        history.push(e.item.url);
+    };
+
     return (
       <div className={classes.TitleBar}>
-        <h2><Link to="/" style={{color: '#000'}} href="/">{this.props.title}</Link></h2>
-        <Menubar style={{ color: "#000" }} model={this.navItems} />
+        <h2><Link to="/" style={{color: '#000'}} href="/">{title}</Link></h2>
+        <Menubar style={{ color: "#000" }} model={navItems} />
       </div>
     );
-  }
 }
 
 TitleBar.defaultProps = {
@@ -52,4 +51,4 @@ TitleBar.propTypes = {
   title: PropTypes.string
 };
 
-export default withLastCours(withRouter(TitleBar));
+export default TitleBar;

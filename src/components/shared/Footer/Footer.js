@@ -2,9 +2,9 @@ import React from 'react';
 import classes from './Footer.module.css';
 
 
-const Footer = (props) => (
+const Footer = () => (
     <footer className={classes.Footer}>
-        <p>© {new Date().getFullYear()} - Programmation multimédia 4 - Techniques d'intégration multimédia - <br/> Dominique Coupal</p>
+        <p>© {new Date().getFullYear()} - Web 5: Applicatif - Techniques d'intégration multimédia - <br/> Dominique Coupal</p>
     </footer>
 );
 

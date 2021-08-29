@@ -1,96 +1,103 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from "prop-types";
 import Snippet from '../Snippet/Snippet';
 import classes from './Groupe.module.css';
 import {Panel} from '../';
-import {withRouter} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 
-const checkSnippet = (props) => {
-    return props.language && props.code ? (
-        <Snippet language={props.language} code={props.code}/>
-    ) : props.children;
+
+const checkSnippet = ({language, code, children}) => {
+    return language && code ? (
+        <Snippet language={language} code={code}/>
+    ) : children;
 };
 
-class Groupe extends React.Component{
+const Groupe = ({title, code, children, toggleable = false, hidden = false, language = 'javascript', empty = false}) => {
 
-    panelId;
-    groupeRef;
-    lSKeyName = 'p-collapsed';
+    let panelId;
+    let groupeRef;
+    let lSKeyName = 'p-collapsed';
 
-    state = {
-        collapsed: this.props.hidden
-    };
+    const location = useLocation();
 
-    componentDidMount() {
-        this.initCollapsedState();
-    }
+    const [collapsed, setCollapsed] = useState(hidden);
 
-    initCollapsedState() {
-        if (this.props.toggleable) {
-            this.panelId = this.getGroupeId();
-            console.log(this.panelId);
-            const lsState = this.getCollapseState();
-            const savedState = typeof lsState === 'undefined' ? this.props.hidden : lsState === 0 ?  false: true;
-            if (this.state.collapsed !== savedState) {
-                this.setState({collapsed: savedState});
+    useEffect(() => {
+        if (empty) {
+            return;
+        }
+        initCollapsedState();
+    }, []);
+
+    const initCollapsedState = () => {
+        if (toggleable) {
+            panelId = getGroupeId();
+            const lsState = getCollapseState();
+            const savedState = typeof lsState === 'undefined' ? hidden : lsState !== 0;
+            if (collapsed !== savedState) {
+                setCollapsed(savedState);
             }
         }
-    }
+    };
 
-    setNewCollapsedState(newVal) {
-        const states = this.getLsObj();
-        this.setState({collapsed: newVal});
-        this.setLSPanelRef(states, newVal);
-    }
+    const setNewCollapsedState = (newVal) => {
+        const states = getLsObj();
+        setCollapsed(newVal);
+        setLSPanelRef(states, newVal);
+    };
 
-    getCollapseState() {
-        const panelRefs = this.getLsObj();
+    const getCollapseState = () => {
+        const panelRefs = getLsObj();
         if (!panelRefs) {
-            this.setLSPanelRef();
+            setLSPanelRef();
         } else {
-            if (typeof panelRefs[this.panelId] === 'undefined') {
-                this.setLSPanelRef(panelRefs);
+            if (typeof panelRefs[panelId] === 'undefined') {
+                setLSPanelRef(panelRefs);
             } else {
-                return panelRefs[this.panelId];
+                return panelRefs[panelId];
             }
         }
-    }
-
-    getLsObj() {
-        const panelRefs = window.localStorage[this.lSKeyName];
-        return typeof panelRefs === 'undefined' ? null : JSON.parse(panelRefs);
-    }
-
-    setLSPanelRef(obj, newVal) {
-        const collapsedVal = typeof newVal === 'undefined' ? this.state.collapsed : newVal;
-        if (typeof obj === 'undefined') {
-            window.localStorage.setItem(this.lSKeyName, JSON.stringify({[this.panelId] : this.state.collapsed ? 1 : 0}));
-        } else {
-            window.localStorage.setItem(this.lSKeyName, JSON.stringify({...obj, [this.panelId] : collapsedVal ? 1 : 0}));
-        }
-
-    }
-
-    getGroupeId() {
-        const no = [...document.querySelectorAll(`.${classes.Groupe}`)].indexOf(this.groupeRef);
-        return this.props.location.pathname.replace(/\//g, '') + '_' + no;
-    }
-
-    togglePanel = e => {
-        const newCollapsedVal = !this.state.collapsed;
-        this.setNewCollapsedState(newCollapsedVal);
     };
 
-    render() {
-        return (
-            <div className={classes.Groupe} ref={el => this.groupeRef = el}>
-                <Panel header={this.props.title} toggleable={this.props.toggleable} collapsed={this.state.collapsed} onToggle={this.togglePanel}>
-                    {checkSnippet(this.props)}
+    const getLsObj = () => {
+        const panelRefs = window.localStorage[lSKeyName];
+        return typeof panelRefs === 'undefined' ? null : JSON.parse(panelRefs);
+    };
+
+    const setLSPanelRef = (obj, newVal) => {
+        const collapsedVal = typeof newVal === 'undefined' ? collapsed : newVal;
+        if (typeof obj === 'undefined') {
+            window.localStorage.setItem(lSKeyName, JSON.stringify({[panelId] : collapsed ? 1 : 0}));
+        } else {
+            window.localStorage.setItem(lSKeyName, JSON.stringify({...obj, [panelId] : collapsedVal ? 1 : 0}));
+        }
+    };
+
+    const getGroupeId = () => {
+        const no = [...document.querySelectorAll(`.${classes.Groupe}`)].indexOf(groupeRef);
+        return location.pathname.replace(/\//g, '') + '_' + no;
+    };
+
+    const togglePanel = e => {
+        const newCollapsedVal = !collapsed;
+        setNewCollapsedState(newCollapsedVal);
+    };
+
+    return (
+        <div className={classes.Groupe} ref={el => groupeRef = el}>
+            {empty ? (
+                <div className={classes.empty}>
+                    <Panel header="ff" toggleable={false} collapsed={false}>
+                    </Panel>
+                </div>
+            ) : (
+                <Panel header={title} toggleable={false} collapsed={collapsed} onToggle={togglePanel}> {/* toggleable={toggledable*/}
+                    {checkSnippet({code, language, children})}
                 </Panel>
-            </div>
-        );
-    }
-}
+            )}
+        </div>
+    );
+};
 
 
 Groupe.defaultProps = {
@@ -109,4 +116,4 @@ Groupe.propTypes = {
     code: PropTypes.string
 };
 
-export default withRouter(Groupe);
+export default Groupe;
