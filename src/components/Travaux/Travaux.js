@@ -4,11 +4,14 @@ import {Header} from "../shared";
 import {Helmet} from 'react-helmet';
 import {A, Groupe, Snippet, Section} from '../shared';
 import {useScrollToTop} from "../../hooks";
+import {useFBCoursProvider} from "../../contexts";
 // import withScrollToTop from '../hoc/withScrollToTop';
 
 const Travaux = () => {
 
     useScrollToTop();
+
+    const {travaux, loading} = useFBCoursProvider();
 
     /*showTravaux = () => {
         return this.travaux.length === 0 ? <p className="center">Aucun travail disponible pour l'instant.</p> : this.travaux.map((travail) => {
@@ -26,6 +29,41 @@ const Travaux = () => {
                     <section>
                         {/*<p className="center">Aucun travail n'est disponible pour l'instant.</p>*/}
 
+                        {!loading && travaux !== null && travaux.devoirC1 && (<Section title="Devoir en continu - Partie 1" subtitle="Sélection des ingrédients">
+                            <Groupe title="Sujet">
+                                <p>Vous devez élaborer les bases d'un créateur de pizzas personnalisées en ligne. Cette étape permettra de réviser l'utilisation de <em>states</em> multiples, de sa synchronisation avec un formulaire et l'affichage conditionnel de balises dans le JSX.</p>
+                            </Groupe>
+
+                            <Groupe title="Détails">
+                                <p>L'utilisateur devra pouvoir sélectionner les ingrédients à ajouter à la pizza et obtenir un aperçu du résultat en temps réel ainsi que de pouvoir donner un nom à sa création.</p>
+                                <h3>Fonctionalités:</h3>
+                                <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                    <li>Utiliser une liste de cases à cocher pour sélectionner/déselectionner les ingrédients (au moins 10). Chaque ingrédient devra être relié à un state bien à lui;</li>
+                                    <li>Un champ de texte synchronisé à un state devra permettre de nommer la pizza;</li>
+                                    <li>Un bouton <strong>Enregistrer</strong> permettra de générer une description de la pizza dans la console. Ce bouton sera désactivé tant que la pizza ne sera pas nommée ET qu'au moins un ingrédient ne sera pas choisi; (voir <em>disabled</em>)</li>
+                                    <li>Un bouton <strong>Annuler</strong> permettra de réinitialiser la pizza en vidant tous les states incluant le champ de texte;</li>
+                                    <li>Un aperçu de la pizza devra être généré en temps réel en positionnant les ingrédients au-dessus de la "pâte" et en les affichant conditionnellement à l'état du state auquel ils sont liés (fort probablement en positionnement absolu);</li>
+                                </ul>
+                            </Groupe>
+
+                            <Groupe title="Intégration">
+                                <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                <li>Comme ceci n'a pas été couvert, évitez d'utiliser une balise form pour l'instant.</li>
+                                <li>Pour l'instant, seul le css de l'aperçu de la pizza et ses ingrédients est demandé. Le positionnement à l'aide de pourcentages (pour top/right/bottom/left) est fortement encouragé. Assurez-vous que les ingrédients utilisent bien la pizza comme repère de positionnement en redimensionnant votre navigateur pour vous en assurer.</li>
+                                <li>Vous devez fournir vous-même le visuel en le produisant par vous même ou en fournissant du matériel libre de droits pour lequel vous devrez fournir la/les sources. Mettez vos images dans le dossier <strong>public</strong> et utilisez des balises img. Une image dans /public/img pourra être liées avec le src suivant: src="/img/image1.png".</li>
+                                <li>Il est possible d'utiliser une librairie css (https://speckyboy.com/open-source-front-end-ui-kits/) pour améliorer rapidement le visuel du formulaire, mais ceci n'est pas requis pour l'instant.</li>
+                                </ul>
+                            </Groupe>
+
+                            <Groupe title="Remise & correction" toggleable={true}>
+                               <p>Le projet devra être poussé sur Github</p>
+                                <h3>Critères de correction:</h3>
+                               <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                   <li>Respect des contraintes de développement</li>
+                                   <li>Qualité de l'intégration</li>
+                               </ul>
+                            </Groupe>
+                        </Section>)}
 
                         {/*DEVOIR 3*/}
 

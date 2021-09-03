@@ -142,7 +142,7 @@ const Week2 = (props) => (
         return (
             <main>
                 <ul>
-                    { eleves.map((eleve, index) => <li key={prenom}>{eleve.prenom + ' ' + eleve.nom}</li>) }
+                    { eleves.map((eleve, index) => <li key={eleve.prenom}>{eleve.prenom + ' ' + eleve.nom}</li>) }
                 </ul>
             </main>
         );

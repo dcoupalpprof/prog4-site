@@ -114,6 +114,7 @@ const Week3 = (props) => {
                         <li>Elle est une fonction retournant du JSX</li>
                         <li>Le JSX retourné n'est composé que d'un seul élément racine. On peut utiliser un fragment <strong>&#x3C;&#x3E;&#x3C;/&#x3E;</strong> si ça nous est impossible.</li>
                         <li>Le JSX est enrobé d'une paire de parenthèses pour s'assurer de sa bonne compilation.</li>
+                        <li>Elle est "personnalisable" par ses <em>props</em> qu'on lui passe en lui ajoutant de nouveaux attributs.</li>
                     </ul>
                 </Groupe>
                 <Groupe title="Mettre à jour le contenu d'un composante">
