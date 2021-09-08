@@ -13,6 +13,7 @@ const coursTitles = [
     'Retour sur JS',
     'React',
     'Les composantes React',
+    'Les composantes React (suite)',
     'React-Router',
     'Tâches asynchrones',
     'Context API',

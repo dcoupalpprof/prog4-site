@@ -1,149 +1,90 @@
 import React from 'react';
-import {A, Groupe, Section, Snippet} from '../../shared';
+import {Groupe, Section, Snippet, A} from '../../shared';
 
 const Week5 = (props) => {
     return (
         <section>
-            <Section title="Récupération de données externes">
-                <Groupe title="Les effets secondaires (de bord)">
-                    <p>On utilisera le <strong>hook <A internal={false} url="https://fr.reactjs.org/docs/hooks-effect.html">useEffect</A></strong> pour effectuer des <strong>effets secondaires</strong> après le premier rendu et/ou après chacun des rafraîchissements d'une composante.</p>
-                    <p>Les effects secondaires sont des opérations qui sortent des opérations normales d'une composantes (fonction pures). Une synchronisation avec un serveur, mise en cache de données ou la génération d'un log pourraient être de bons exemples d'effets secondaires.</p>
-                    <p>Comme les autres hooks, useEffect ne peut qu'être utilisé à la <em>racine</em> de la composante (pas dans une fonction, un if, une boucle...). Le premier paramètre de useEffect est une fonction à appeler lors après chaque rendu.</p>
+            <Section title="La navigation à l'intérieur de l'app">
+                <Groupe title="Initialisation">
+                    <p>Il est nécessaire d'installer premièrement le module <A url="https://reactrouter.com/web/guides/quick-start">react-router-dom</A> avec <A url="https://www.npmjs.com/package/react-router-dom">npm</A> pour permettre de gérer les routes à l'intérieur de l'app.</p>
+                    <p>On en importera ensuite la composante <strong>BrowserRouter</strong> qui devra englober la composante <strong>App</strong> (pour qu'une route soit utilisable/fonctionnelle, elle doit absolument se trouver dans la hiérarchie de composantes à l'intérieur du <strong>BrowserRouter</strong>).</p>
                     <Snippet language="jsx" code={`
-    import {useEffect} from 'react';
-    const uneComposante = props => {
-    
-        useEffect(() => {
-            // Cette opération est exécutée après le premier rendu et les suivants
-        });    
-    };
-                    `}></Snippet>
-                    <p>Si useEffect modifie le state, un nouveau rendu sera exécuté et une boucle infinie s'en suivra. On utilisera alors le <span className="underline">deuxième
-                        paramètre</span> de useEffect.</p>
-                    <Snippet language="jsx" code={`
-    useEffect(() => {
-        // Cette opération ne sera exécutée qu'au premier rendu
-    }, []);
+import {BrowserRouter} from 'react-router-dom';
+...
+ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('root'));
                     `}/>
-                    <p>Le 2e paramètre est un tableau de dépendances. Les variables qu'on y insérera seront évaluées à chaque rendu et si une valeur venait qu'à être modifiée, la fonction de useEffect serait éxécutée à nouveau.</p>
+                </Groupe>
+                <Groupe title="Déclaration et paramétrage des routes">
+                    <p>À l'endroit où seront affichées les différentes vues, on déclare une composante <strong>{`<Route/>`}</strong> (importée depuis react-router-dom) pour chacun des états.</p>
+                    <p>La composante Route permet d'afficher une composante conditionnellement à l'url courant. On englobera donc chaque composante-page par un Route différent.</p>
+                    <h4>Propriétés de la composante {`<Route/>`}:</h4>
+                    <ul style={{listStyleType:'disc', paddingLeft: '25px'}}>
+                        <li>path: url absolu correspondant à la vue à afficher</li>
+                        <li>exact: (aucune valeur) permet de s'assurer que le path corresponde exactement à l'url. Souvent utilisé pour l'accueil ('/') et les routes imbriquées.</li>
+                        <li>render: fonction devant retourner du jsx () => {`(<div></div>)`}</li>
+                        <li>component: référence de la composante à afficher (<strong>utilisé à la place de render)</strong>. Il est plus courant de déclarer la composante comme enfant de route plutôt que d'utiliser la prop <strong>component</strong>.</li>
+                    </ul>
+                    <p style={{marginTop:'.5em'}}>Chaque composante correspondant à l'url actif par son path sera affichée. C'est pourquoi on utilise souvent l'attribut <strong>exact</strong> lorsqu'il s'agit de la page d'accueil (path="/").</p>
+                        <p>Pour s'assurer de n'afficher qu'une seule Route à la fois, il est recommandé d'englober toutes les routes à l'intérieur de la composante <strong>{`<Switch></Switch>`}</strong> (importée de react-router-dom).</p>
+                    <h4>Redirection</h4>
+                    <p>On redirige un url vers un autre à l'aide de la balise <strong>{`<Redirect to="/posts"/>`}</strong>. On peut donc faire terminer le switch par un <strong>Redirect</strong> pour rediriger toutes les requêtes qui ne correspondent pas à une route.</p>
+                    <h4>Paramètres dynamiques</h4>
+                    <p>On ajoute les paramètres dynamiques dans la propriété path: {`<Route path="/posts/:unId" .../>`}.</p>
+                    <h4>Organisation des routes</h4>
+                    <p>Afin de s'assurer du bon comportement d'affichage des routes, <strong>on déclarera les routes plus précises (plus longues) en premier vers les plus générales (plus courtes) à la fin</strong>.</p>
+                    <h4>Erreur 404 - Route inconnue</h4>
+                    <p>On peut déclarer une composante sans path pour attraper les url non déclarés dans une route.</p>
+                </Groupe>
+                <Groupe title="Informations sur la route active et l'historique">
+                    <p>Les composantes affichées comme enfant direct d'une route recevront des propriétés supplémentaires à l'intérieur de leurs props.</p>
+                    <ul className="cours-liste">
+                        <li>history: Permet entre autres de naviguer par programmation.</li>
+                        <li>location: Informations sur la route active (incluant les paramètres de requête)</li>
+                        <li>match: Permet entre autres la <strong>récupération des paramètres dynamiques</strong></li>
+                    </ul>
+                    <p>Pour accéder à ses informations à l'intérieur d'autres composantes, il est nécessaire d'utiliser les différents <A internal={false} url="https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/hooks.md">hooks</A> importés depuis react-router-dom.</p>
+                    <h4>Hooks de React-Router-Dom</h4>
+                    <ul className="cours-liste">
+                        <li>useHistory</li>
+                        <li>useLocation</li>
+                        <li>useParams</li>
+                        <li>useRouteMatch</li>
+                    </ul>
                     <Snippet language="jsx" code={`
-    const [nbEssaie, setNbEssais] = useState(0);
-                    
-    useEffect(() => {
-        // Cette opération ne sera exécutée qu'au premier rendu et à chaque fois que
-        // props.match.params.userId OU nbEssais changeront de valeur
-    }, [props.match.params.userId, nbEssais]);
-                    `}/>
-                    <p>Il est aussi possible de retourner une fonction depuis la fonction passée en paramètre. Celle-ci sera exécuter à la suppression de la composante. On pourrait ainsi utiliser un addEventListener dans le useEffect et retourner une fonction faisant un removeEventListener.</p>
-                    <Snippet language="jsx" code={`
-    useEffect(() => {
-        // Cette opération ne sera exécutée qu'au premier rendu
+    import {useLocation} from 'react-router-dom';
+    const UneComposante = props => {
         
-        return () => {
-            // Cette opération sera exécutée à la destruction (démontage) de la composante
-        }
-    }, []);
+        const location = useLocation();
+        console.log(location.pathname);
+        
+        return (<div></div>);
+    };
+
+    export default UneComposante;
                     `}/>
                 </Groupe>
-                <Groupe title="Requêtes ajax">
-                    <p>Bien que des librairies comme Axios font un travail efficace, nous utiliserons la méthode <strong>fetch</strong> pour interroger un serveur. Fetch n'utilise pas l'objet typique xmlHttpRequest (comme le fait axios). Son utilisation retourne une promesse afin de mieux enchaîner les différentes requêtes asynchrones et il est de plus compatible avec les <strong>Service Workers</strong> si l'envie de développer une <strong>Progressive web app (PWA)</strong> vous prenait. Il faut écrire davantage de code que si nous utilisions axios, mais c'est le prix à payer.</p>
-                    <Snippet code={`
-    //Requête en GET
-    fetch('url')
-    .then(resp => resp.json) //la réponse "incomplète" à convertir (depuis un json ici)
-    .then(data => console.log(data)); //les données retournées par le serveur
-
-    //Requête en POST
-    fetch('url', {
-        method: 'POST',
-        headers: { 'Content-Type' : 'application/json'}, //dans la plupart des cas
-        body: JSON.stringify({  //informations envoyées au serveur
-            prop1: val1,
-            prop2: val2
-        })
-    }).then(resp => resp.json())
-     .then(data => console.log(data));
-                    `}/>
-                    <p>On utilise la promesse retournée par fetch pour enchaîne par la suite l'exécution d'autres fonctions en utilisant sa méthode <strong>then</strong>. On peut donc y récupérer l'information, mais aussi retourner une nouvelle promesse pour continuer une séquence asynchrone. Les promesses permettent donc de garder le code ordonné et lisible sans se perdre dans une série de callbacks entrecroisés. D'autres solutions telles ques Rxjs ont aussi vu le jour, mais celle-ci ne sera pas abordée durant la session.</p>
-                    <p>Avec l'avènement de ES2018, il est maintenant possible d'utiliser <strong>async/await</strong> en combinaison avec les promesses:</p>
-                    <Snippet code={`
-    async () => {
-        const resp = await fetch('url');
-        const data = await resp.json();
-        console.log(data);
-    };
-                    `}/>
-                    <p><strong>Await</strong> fait une pause (en quelque sorte) dans le code en attendant que la promesse soit résolue. Il est impossible d'utiliser <strong>await</strong> si la fonction qui englobe cette commande n'est pas marquée par un <strong>async</strong>. Les deux méthodes <strong>then</strong> et <strong>async/await</strong> peuvent aussi être mélangées selon le style de programmeur.</p>
-                    <Snippet code={`
-    async () => {
-        const data = await fetch('url')
-         .then(resp => resp.json());
-         console.log(data);
-    };
-                    `}/>
-                    <p>Si on désire exécuter un fetch après le premier rendu de la composante, on combinera l'utilisation de fetch et useEffect:</p>
+                <Groupe title="Déclaration d'un hyperlien ne rafraîchissant pas la page auprès du serveur">
+                    <p>On remplace les hyperliens par une composante <strong>{`<Link to="url">texte</Link>`}</strong></p>
+                    <p>Les liens sont absolus par défaut. Pour faire un lien relatif, il est nécessaire de les préfixer par l'url courant.</p>
                     <Snippet language="jsx" code={`
-    useEffect(() => {
-        // On ne peut pas déclarer la fonction de useEffect comme async parce que celle-ci retournerait une promesse (plutôt qu'une fonction à exécuter au démontage)
-        const fetchData = async(() => {
-            const resp = await fetch('url');
-            const data = await data.json();
-            // on modifierait probablement le state de la composante ici
-        );
-        fetchData();
-    }, []);
+    <Link to="/path-absolu-depuis-la-racine-du-site">Lien absolu</Link>
+    <Link to={props.match.url+'/unsuffixe'}>Un semblant de lien relatif</Link>
                     `}/>
+                    <p>Pour styliser le lien actif, on peut aussi remplacer la composante Link par <strong>NavLink</strong> qui donnera par défaut la classe active aux liens pointant vers l'url actif. Sa propriété <strong>activeClassName</strong> permet d'assigner un nom de classe différent.</p>
                 </Groupe>
-                <Groupe title="Cross origin resource sharing (CORS)">
-                    <p>Par défaut, il est impossible <strong>depuis un navigateur</strong> d'accéder à des ressources situées sur un serveur appartenant à un nom de domaine. Celui-ci doit explicitement permettre au domaine de l'application d'accéder à ses ressources ou permettre à tous les domaines d'y accéder. Une tentative non autorisée, affichera une erreur à cet effet dans la console.</p>
-                    <p>Si le développeur n'a pas accès au serveur distant et qu'il n'est pas possible de demander l'accès à ses ressources, il existe au moins deux moyens de procéder pour y arriver. Il est possible d'utiliser un proxy qui permet les requêtes de l'application et qui les redirigera ensuite vers le serveur qui possède les ressources souhaitées. <A url="https://cors-anywhere.herokuapp.com/" internal={false}>CorsAnywhere</A> sert exactement à cette fin. Le <A url="https://github.com/Rob--W/cors-anywhere" internal={false}>code de ce proxy</A> est aussi disponible sur Github pour permettre de déployer son propre <em>CorsAnywhere</em>.</p>
-                    <Snippet code={`
-    //utilisation de corsAnywhere
-    fetch('https://cors-anywhere.herokuapp.com/http://sitedelaressourcetantsouhaitee.com')...
-                    `}/>
-                    <p>On pourrait aussi utiliser la méthode <strong>jsonp (json with padding)</strong> si l'api à interroger le permet. Comme il est possible de télécharger un fichier javascript distant à l'aide d'une balise script, on peut donc utiliser l'url de l'api comme source d'une balise script. Pour récupérer le contenu retourné, il faut que les données soient passées par une fonction. On doit donc fournir à l'api le nom de la fonction à laquelle sera passée le contenu. On utilise un paramètre de requête souvent nommé <strong>callback</strong> pour identifier cette fonction (ouf). Le contenu de la balise script contiendra donc un appel de cette fonction avec les données passées en paramètre. Afin de simplifier la chose, on peut utiliser <A url="https://github.com/camsong/fetch-jsonp" internal={false}>fetch-jsonp</A>.</p>
-                    <Snippet code={`
-    //utilisé de la même façon que fetch
-    const resp = await fetchJsonp('urlDeLapi');
-    const data = resp.json();
-    //dans l'outil de développeurs Chrome, on verra que les données retournées sont "paddées" par une fonction
-                    `}/>
+                <Groupe title="Navigation par programmation">
+                    <p>Si la navigation ne peut être faite au clic d'un Link, on utilise <strong>history</strong> passée dans les props pour naviguer par programmation. Quelques méthodes utiles:</p>
+                    <ul className="cours-liste">
+                        <li>history.<strong>goBack()</strong></li>
+                        <li>history.<strong>goForward()</strong></li>
+                        <li>history.<strong>push('/posts/3')</strong> : ajoute à l'historique et y garde donc la page précédente également</li>
+                        <li>history.<strong>replace('/posts/3')</strong>: remplace l'entrée de la page active par la nouvelle dans l'historique (appuyer sur précédent ne permettra pas d'y retourner)</li>
+                    </ul>
                 </Groupe>
-                <Groupe title="Création d'une promesse">
-                    <p>Il arrive à certains moments où l'on veut exécuter une commande après une tâche asynchrone qui ne retourne pas nécessairement de promesse. On peut tout de même en créer une soi-même.</p>
-                    <Snippet code={`
-    const promesse = new Promise((resolve, reject) => {
-        //fait qq qui nécessite du temps
-        //on résout ensuite la promesse avec la fonction resolve passée en paramètre:
-        resolve();
-    });
-                    `}/>
-                    <p><strong>Resolve</strong> (le premier paramètre) permet de résoudre la promesse et de retourner du contenu à la commande suivante (par <strong>then</strong>) et reject permet de lancer une erreur (capturée par un <strong>catch</strong>).</p>
-                    <Snippet code={`
-    const promesse = new Promise((resolve, reject) => {
-        //fait qqc qui nécessite du temps
-        resolve(500);
-    });
-    promesse
-      .then(nombre => console.log(nombre)) //affiche 500
-      .catch(err => console.log(err));  //si une erreur était lancée
-
-                    `}/>
-                    <Snippet code={`
-    //un exemple
-    async () => {
-        const waitForXSeconds = (sec) => {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve(true);
-                }, sec * 1000);
-            });
-        };
-        const delai = 5;
-        const unBooleen = await waitForXSeconds(delai);
-        console.log(delai+ ' secondes écoulées');
-    }
-                    `}/>
+                <Groupe title="Imbrication de routes">
+                    <p>On peut utiliser des Routes à l'intérieur d'une composante déjà affichée par une Route. Le path de la
+                        route à afficher devra être absolu en contenant donc le path depuis la racine du site ou
+                        utilser <strong>props.match.url</strong> comme préfixe.</p>
                 </Groupe>
             </Section>
         </section>
