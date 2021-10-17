@@ -12,7 +12,7 @@ const firebaseApp = initializeApp({
     measurementId: "G-9K53J2RCEG"
 });
 
-const firestore = getFirestore();
-const analytics = getAnalytics();
+const firestore = getFirestore(firebaseApp);
+const analytics = getAnalytics(firebaseApp);
 
 export {firestore, analytics, doc, onSnapshot};

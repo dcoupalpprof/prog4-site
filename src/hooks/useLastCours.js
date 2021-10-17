@@ -6,7 +6,14 @@ const randomStrings = [
     'FHzTc8IAAN',
     '6zuwtYLY32',
     'jxOzjbXpZo',
-    'a6gTIY8tCa'
+    'a6gTIY8tCa',
+    'YQ2je5oJAg',
+    'ahlwv8xWkz',
+    '9qEKLmCNdW',
+    'Lx57UYuVAV',
+    'bqJ933MauL',
+    'qNSkAH8RcI',
+    'tXtrEfkirW',
 ];
 
 const coursTitles = [
@@ -15,6 +22,8 @@ const coursTitles = [
     'Les composantes React',
     'Les composantes React (suite)',
     'React-Router',
+    'Thierry',
+    'Thierry - The Sequel',
     'Tâches asynchrones',
     'Context API',
     'Expérimentations',

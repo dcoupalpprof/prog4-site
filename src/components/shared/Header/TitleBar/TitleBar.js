@@ -12,9 +12,16 @@ const TitleBar = ({title}) => {
     const {noLastCours} = useLastCours();
 
     const createCoursItems = () => {
+        let exclusion = [];
+        if(process.env.REACT_APP_NAV_COURS_EXCLUSION != null) {
+            exclusion = [...exclusion, ...process.env.REACT_APP_NAV_COURS_EXCLUSION.split(' ').map(c => +c)];
+        }
+
         const cours = [];
         for(let i = (process.env.REACT_APP_DEFAULT_COURS_NO - 1); i < noLastCours; i++){
-            cours.push({label: `Cours ${i + 1}`, command: (e) => {redirectWithRouter(e)}, url: `/cours/${i + 1}`});
+            if (exclusion.indexOf(i + 1) === -1){
+                cours.push({label: `Cours ${i + 1}`, command: (e) => {redirectWithRouter(e)}, url: `/cours/${i + 1}`});
+            }
         }
         return cours;
     };
