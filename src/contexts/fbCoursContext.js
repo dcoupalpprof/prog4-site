@@ -10,7 +10,7 @@ const FBCoursProvider = ({children}) => {
 
 
     useEffect(() => {
-        onSnapshot(doc(firestore, 'cours', '--info'), doc => {
+        return onSnapshot(doc(firestore, 'cours', '--info'), doc => {
             const {lastUnlocked: vLastUnlocked, travaux: vTravaux} = doc.data();
             setLastUnlocked(vLastUnlocked);
             setTravaux(vTravaux);
