@@ -29,6 +29,35 @@ const Travaux = () => {
                     <section>
                         {/*<p className="center">Aucun travail n'est disponible pour l'instant.</p>*/}
 
+                        {!loading && travaux !== null && travaux.devoir2 && (
+                            <Section title="Devoir Firebase" subtitle="Séries télé populaires">
+                                <Groupe title="Sujet">
+                                    <p>Vous devez développer une application affichant les séries les plus populaires du moment incluant une page d'accueil et une page d'information propre à chaque série.</p>
+                                </Groupe>
+                                <Groupe title="Détails">
+                                    <p>Vous devez créer un projet Firebase et activer son service Firestore. Un fichier JSON vous est fourni sur Teams pour y ajouter du contenu (plus de détails plus bas).</p>
+                                    <p>Vous devrez, à l'aide du <strong>react-router-dom</strong>, afficher les séries populaires à l'aide du contenu de Firestore en y incluant leur titre et leur affiche. Un clic sur l'une de ces séries entraînera la navigation vers une route du style "/series/<em>id-de-la-serie</em>" qui permettra d'afficher le reste des informations de la série sélectionnée. Il vous est interdit de modifier la structure de la base de données.</p>
+                                    <p>Toutes les photos devront être affichées correctement et une <strong>note sur 5 étoiles</strong> devra être affichée (vous avez droit d'utiliser un module npm au besoin).</p>
+                                    <p>Le framework css <A url="https://getmdl.io/started/index.html" internal={false}>Material Lite</A> doit obligatoirement être utilisé pour en faire l'intégration. Vous pouvez directement utiliser les fichiers css et js <em>hosted</em> dans le fichier index.html. Le reste de l'intégration pourra être complété avec la méthode de votre choix.</p>
+                                </Groupe>
+                                <Groupe title="Importation du contenu dans Firestore">
+                                    <p>Dans Firebase, cliquer sur l'engrenage à droite de "Vue d'ensemble du projet" puis "Paramètres du projet". Cliquer ensuite sur "Comptes de service", sur le bouton "Générer une nouvelle clé privée" et sauvegarder le fichier sous le nom <strong>credentials.json</strong> dans le même dossier que le fichier <strong>series.json</strong>. Attention, ce fichier permet les droits admin à votre projet Firebase. Ne pas le distribuer.</p>
+                                    <p>Veuillez vous rendre dans ce dossier à l'aide de votre ligne de commande et exécutez ensuite la commande suivante: <br/>
+                                    <strong>npx -p node-firestore-import-export firestore-import -a credentials.json -b series.json</strong></p>
+                                    <p>Les données devraient maintenant être ajoutées à Firestore.</p>
+                                </Groupe>
+
+                                <Groupe title="Correction">
+                                    <h3>Critères de correction:</h3>
+                                    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                        <li>Absence d'erreur de programmation</li>
+                                        <li>Respect des contraintes de développement</li>
+                                        <li>Qualité de l'intégration</li>
+                                    </ul>
+                                </Groupe>
+                            </Section>
+                        )}
+
                         {!loading && travaux !== null && travaux.devoirC1 && (<Section title="Devoir en continu - Partie 1" subtitle="Sélection des ingrédients">
                             <Groupe title="Sujet">
                                 <p>Vous devez élaborer les bases d'un créateur de pizzas personnalisées en ligne. Cette étape permettra de réviser l'utilisation de <em>states</em> multiples, de sa synchronisation avec un formulaire et l'affichage conditionnel de balises dans le JSX.</p>

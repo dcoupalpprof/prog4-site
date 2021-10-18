@@ -31,7 +31,8 @@ const useFBCoursProvider = () => {
             lastUnlocked: process.env.REACT_APP_LAST_COURS,
             travaux: {
                 devoir1: true,
-                devoirC1: true
+                devoirC1: true,
+                devoir2: true
             },
             loading: false
         };
