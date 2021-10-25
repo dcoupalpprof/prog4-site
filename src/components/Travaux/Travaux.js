@@ -28,6 +28,37 @@ const Travaux = () => {
                     <Header siteTitle={process.env.REACT_APP_SITE_TITLE} isSmall={true} title="Travaux"/>
                     <section>
                         {/*<p className="center">Aucun travail n'est disponible pour l'instant.</p>*/}
+                        {!loading && travaux !== null && travaux.devoir3 && (
+                            <Section title="Devoir Context et Auth">
+                                <Groupe title="Sujet">
+                                    <p>À partir du projet fourni sur Teams, vous devez obliger un utilisateur à s'authentifier afin de pouvoir publier et afficher des commentaires dans une application.</p>
+                                </Groupe>
+                                <Groupe title="Détails - Authentification">
+                                    <p>Vous devez détecter le statut d'authentification d'un utilisateur et le rediriger vers les routes qui lui sont accessibles.</p>
+                                    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                        <li>Un utilisateur non authentifié sera dirigé vers /login automatiquement. Il pourra se rendre sur la page /register en cliquant dans la barre de navigation. La route /posts ne lui sera pas accessible.</li>
+                                        <li>Un utilisateur authentifié sera dirigé vers /posts automatiquement. Il ne pourra pas se rendre vers aucune autre route.</li>
+                                        <li>Après s'être authentifié une première fois, un utilisateur sera authentifié automatiquement à son retour sur l'application.</li>
+                                        <li>La barre de navigation ne devra contenir que les liens reliés à son statut d'authentification.</li>
+                                        <li>Le bouton déconnexion ne sera affiché que si l'utilisateur est authentifié et devra être fonctionnel.</li>
+                                    </ul>
+                                    <p className="underline" style={{marginTop: '.7em'}}>La gestion de l'authentification de l'utilisateur (détails de l'utilisateur connecté, fonctions pour s'inscrire, se connecter et se déconnecter) devront être propagés à travers l'application à l'aide d'un contexte.</p>
+                                </Groupe>
+                                <Groupe title="Détails - Publications">
+                                    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                        <li>Les utilisateurs connectés pourront afficher les publications de Firestore en temps réel (vous devez vous même créer la collection nécessaire).</li>
+                                        <li>Le formulaire de publication devra permettre d'ajouter une nouvelle publication à Firestore. Le courriel de l'utilisateur connecté sera utilisé pour le champ Auteur.</li>
+                                    </ul>
+                                </Groupe>
+                                <Groupe title="Correction">
+                                    <h3>Critères de correction:</h3>
+                                    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                        <li>Absence d'erreur de programmation</li>
+                                        <li>Respect des contraintes de développement</li>
+                                    </ul>
+                                </Groupe>
+                            </Section>
+                        )}
 
                         {!loading && travaux !== null && travaux.devoir2 && (
                             <Section title="Devoir Firebase" subtitle="Séries télé populaires">

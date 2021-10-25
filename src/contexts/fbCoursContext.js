@@ -32,7 +32,8 @@ const useFBCoursProvider = () => {
             travaux: {
                 devoir1: true,
                 devoirC1: true,
-                devoir2: true
+                devoir2: true,
+                devoir3: true
             },
             loading: false
         };

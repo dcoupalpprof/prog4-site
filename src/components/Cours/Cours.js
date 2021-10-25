@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useParams, useHistory} from 'react-router-dom';
 import classes from './Cours.module.css';
 import {Header} from '../shared';
-import {Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8, WeekLoader} from "./weeks";
+import {Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8, Week9, WeekLoader} from "./weeks";
 import {Helmet} from 'react-helmet';
 import {useLastCours, useScrollToTop} from "../../hooks";
 
@@ -68,8 +68,11 @@ const Cours = () => {
             case 8:
                 weekTag  = <Week8/>;
                 break;
+            case 9:
+                weekTag  = <Week9/>;
+                break;
             default:
-                weekTag = <Week1/>;
+                weekTag = <Week2/>;
         }
 
         return weekTag;

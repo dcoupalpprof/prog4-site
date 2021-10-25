@@ -25,7 +25,7 @@ const coursTitles = [
     'Thierry',
     'Thierry - The Sequel',
     'Tâches asynchrones',
-    'Context API',
+    'Context API & Firebase',
     'Expérimentations',
     'Je ne sais trop',
 ];
