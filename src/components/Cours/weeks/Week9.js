@@ -98,30 +98,48 @@ const [themeActif, setThemeActif] = useState(defaultTheme);
 <ThemeProvider value={{themeActif}}>{/* ... */}</ThemeProvider>
 				`}/>
                 </Groupe>
-{/*                <Groupe title="Un contexte comme un service autonome">*/}
-{/*                    <p>Dans l'exemple précédent, on peut reprocher au contexte de dépendre de la composante App. Il serait préférable qu'il puisse avoir son propre state et ses propres méthodes.</p>*/}
-{/*                    <Snippet language="jsx" code={`*/}
-{/*//themeContext.js*/}
-{/*import React, {useState} from 'react';*/}
-{/*const {Provider, Consumer} = React.createContext();*/}
+                <Groupe title="Un contexte comme un service autonome">
+                    <p>Dans l'exemple précédent, on peut reprocher au contexte de dépendre de la composante App. Il serait préférable qu'il puisse avoir son propre state et ses propres méthodes.</p>
+                    <Snippet language="jsx" code={`
+//themeContext.js
+import React, {useState, useContext} from 'react';
+const ThemeContext = React.createContext();
+const {Provider} = ThemeContext;
 
-{/*const ThemeProvider = props => {*/}
-{/*	const [themeActif, setThemeActif = useState('devil');*/}
+const ThemeProvider = props => {
+	const [themeActif, setThemeActif = useState('devil');
 
-{/*	const themeSwitchHandler = () => /!* ... *!/;*/}
+	const themeSwitchHandler = () => {/* ... */};
 
-{/*	return (*/}
-{/*		<Provider value={{themeActif: themeActif}}>{props.children}}</Provider>*/}
-{/*	);*/}
-{/*};*/}
-{/*export {ThemeProvider, Consumer as ThemeConsumer};*/}
+	return (
+		<Provider value={{themeActif, themeSwitchHandler}}>{props.children}}</Provider>
+	);
+};
 
-{/*	//App.js*/}
-{/*import {ThemeProvider} from './providers/themeContext';*/}
-{/*...*/}
-{/*<ThemeProvider>/!* ... *!/</ThemeProvider>*/}
-{/*				`}/>*/}
-{/*                </Groupe>*/}
+const useTheme = () => {
+    const themeContext = useContext(ThemeContext);
+    if (themeContext === undefined) {
+        throw new Error('useTheme doit être utilisé à l\'intérieur d\'un ThemeProvider');
+    }
+    return themeContext;
+};
+
+export {ThemeProvider, useTheme};
+
+	//App.js
+import {ThemeProvider} from './providers/themeContext';
+...
+<ThemeProvider>{/* ... */}</ThemeProvider>
+
+    //ComposanteQuelconque.js
+import {useTheme} from '../providers/themeContext';
+const UneComposante = () => {
+    const {themeActif} = useTheme();
+    console.log(themeActif);
+};
+
+				`}/>
+                </Groupe>
             </Section>
 
             <Section title="Écrire dans Firestore">
