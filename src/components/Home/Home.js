@@ -3,6 +3,7 @@ import Features from './Features/Features';
 import {Header} from '../shared';
 import {Helmet} from 'react-helmet';
 import {useScrollToTop} from "../../hooks";
+import {config} from "../../config";
 //import withScrollToTop from '../hoc/withScrollToTop';
 
 const Home = () => {
@@ -12,10 +13,10 @@ const Home = () => {
     return (
         <React.Fragment>
             <Helmet>
-                <title>{process.env.REACT_APP_SITE_TITLE}</title>
+                <title>{config.siteTitle}</title>
             </Helmet>
             <main>
-                <Header isSmall={false} siteTitle={process.env.REACT_APP_SITE_TITLE} title={process.env.REACT_APP_SITE_TITLE}/>
+                <Header isSmall={false} siteTitle={config.siteTitle} title={config.siteTitle}/>
                 <Features/>
             </main>
         </React.Fragment>

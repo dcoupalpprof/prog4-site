@@ -4,6 +4,7 @@ import {Header} from '../shared';
 import {Helmet} from 'react-helmet';
 import {A, Groupe, Snippet} from '../shared';
 import {useScrollToTop} from "../../hooks";
+import {config} from "../../config";
 // import withScrollToTop from '../hoc/withScrollToTop';
 
 const References = () => {
@@ -18,10 +19,10 @@ const References = () => {
         return (
             <React.Fragment>
                 <Helmet>
-                    <title>{`${process.env.REACT_APP_SITE_TITLE} - Références`}</title>
+                    <title>{`${config.siteTitle} - Références`}</title>
                 </Helmet>
                 <main className={classes.Travaux}>
-                    <Header siteTitle={process.env.REACT_APP_SITE_TITLE} isSmall={true} title="Références"/>
+                    <Header siteTitle={config.siteTitle} isSmall={true} title="Références"/>
                     <section>
                         <Groupe toggleable={true} title="Manipulation d'un objet JS">
                             <p>On utilisera un objet pour organiser de données "complexes" à l'intérieur d'une variable.</p>

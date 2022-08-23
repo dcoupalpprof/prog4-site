@@ -47,22 +47,30 @@ const Week2 = (props) => (
         </Section>*/}
         <Section title="Introduction à React">
             <Groupe title="Installation">
-                <p>React est une librarie qui peut s'installer dans un projet existant, mais pour en tirer son plein potentiel et obtenir un projet bien configuré (avec Webpack, Babel, JSX, modules CSS... on utilisera le CLI <A url="https://fr.reactjs.org/docs/create-a-new-react-app.html" internal={false}>create-react-app</A>. </p>
+                <p>React est une librarie qui peut s'installer dans un projet existant, mais pour en tirer son plein potentiel et obtenir un projet complet et bien configuré on utilisera l'outil <A url="https://vitejs.dev/guide/#scaffolding-your-first-vite-project" internal={false}>Vite</A> (développé par l'équipe de <A url="https://vuejs.org/" internal={false}>Vue.js</A>). </p>
 
                 <p>D'autres "adaptations" sont également disponibles en fonction des besoins d'un projet telles que:</p>
                 <ul>
+                    <li><A url="https://create-react-app.dev/">Create React App</A>, le CLI officiel pour créer un projet React (beaucoup plus long à l'initialisation et à la construction);</li>
                     <li><A url="https://nextjs.org/">Next.js</A> pour un rendu des composantes du côté serveur (SEO ++);</li>
                     <li><A url="https://www.gatsbyjs.com/">Gatsby</A> pour construire des sites web statique pouvant intégrer le contenu de la plupart des CMS existant avant l'exportation;</li>
-                    <li><A url="https://relay.dev/">Relay</A>pour la création d'applications flexibles hautes performances;</li>
+                    <li><A url="https://relay.dev/">Relay</A> pour la création d'applications flexibles hautes performances;</li>
+                    <li><A url="https://www.remotion.dev/">Remotion</A> pour construire des vidéos (mp4) à partir de React;</li>
                     <li>...</li>
                 </ul>
-                <p>Une fois Node.js installé, il vous faut ouvrir une nouvelle ligne de commande pour utiliser le module <strong>create-react-app</strong>. <br/>
-                On utilisera npx pour éviter d'avoir à installer une version localement. (voir la section <A url='/references' internal={true}>références</A> pour plus d'informations)</p>
+                <p>Une fois Node.js installé, il vous faut ouvrir une nouvelle ligne de commande.<br/>
+                On utilisera la commande suivante pour initialiser un projet. Il suffit de suivre les instructions par la suite.</p>
                 <Snippet code={`
-    //L'utiliser directement avec npx
-    npx create-react-app unNouveauProjet
+    npm create vite
                 `}/>
-                <p>Depuis le dossier du projet, on démarre le projet ainsi que sa compilation automatique avec la commande <strong>npm start</strong>.</p>
+                <p>Depuis le dossier du projet, on installera ensuite les dépendances:</p>
+                <Snippet code={`
+    npm install
+                `}/>
+                <p>On démarre ensuite l'application avec la commande <strong>dev</strong></p>
+                <Snippet code={`
+    npm run dev
+                `}/>
             </Groupe>
             <Groupe title="Composante fonctionnelle">
                 <p>Une composante fonctionnelle est une fonction devant retourner du <strong>JSX</strong> (<A url="https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-different-in-the-new-transform">syntaxe ressemblant à du html</A>, mais <A url="https://www.icantbelieveitsnotbutter.com/">c'est

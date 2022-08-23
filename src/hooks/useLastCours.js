@@ -35,6 +35,8 @@ const useLastCours = () => {
     const {lastUnlocked, loading} = useFBCoursProvider();
     const noLastCours = !loading ? randomStrings.indexOf(lastUnlocked) + 1 : null;
 
+    console.log(noLastCours);
+
     return {
         noLastCours,
         coursTitles

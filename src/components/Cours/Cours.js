@@ -5,6 +5,7 @@ import {Header} from '../shared';
 import {Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8, Week9, WeekLoader} from "./weeks";
 import {Helmet} from 'react-helmet';
 import {useLastCours, useScrollToTop} from "../../hooks";
+import {config} from "../../config";
 
 const Cours = () => {
 
@@ -15,7 +16,8 @@ const Cours = () => {
     const params = useParams();
     const history = useHistory();
 
-    const [currentCoursNo, setCurrentCoursNo] = useState(process.env.REACT_APP_DEFAULT_COURS_NO);
+    console.log(config);
+    const [currentCoursNo, setCurrentCoursNo] = useState(config.defaultCours);
 
     useEffect(() => {
         if (noLastCours != null) {
@@ -25,11 +27,11 @@ const Cours = () => {
     }, [params.coursNo, noLastCours]);
 
     const redirectToRightClass = () => {
-        const activeCoursNo = parseInt(params.coursNo) || (process.env.REACT_APP_DEFAULT_COURS_NO);
 
+        const activeCoursNo = parseInt(params.coursNo) || (config.defaultCours);
         // s'assure que le cours est débloqué
-        const realCoursNo = Math.max((process.env.REACT_APP_DEFAULT_COURS_NO - 1), Math.min(noLastCours, activeCoursNo));
-        if (activeCoursNo === (process.env.REACT_APP_DEFAULT_COURS_NO - 1)) {
+        const realCoursNo = Math.max((+config.defaultCours - 1), Math.min(+noLastCours, +activeCoursNo));
+        if (activeCoursNo === (config.defaultCours - 1)) {
             history.push('/cours/' + noLastCours);
             return;
         } else if (realCoursNo !== activeCoursNo) {
@@ -85,10 +87,10 @@ const Cours = () => {
     return (
         <React.Fragment>
             <Helmet>
-                <title>{`${process.env.REACT_APP_SITE_TITLE} - Notes de cours`}</title>
+                <title>{`${config.siteTitle} - Notes de cours`}</title>
             </Helmet>
             <main className={classes.Cours}>
-                <Header history={history} isSmall={true} siteTitle={process.env.REACT_APP_SITE_TITLE} title="Notes de cours"/>
+                <Header history={history} isSmall={true} siteTitle={config.siteTitle} title="Notes de cours"/>
                 {noLastCours ?
                     (
                         <>

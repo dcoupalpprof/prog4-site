@@ -6,6 +6,7 @@ import "../../../../styles/prism.css";
 import {Link} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
 import {useLastCours} from "../../../../hooks";
+import {config} from "../../../../config";
 
 const TitleBar = ({title}) => {
 
@@ -13,12 +14,12 @@ const TitleBar = ({title}) => {
 
     const createCoursItems = () => {
         let exclusion = [];
-        if(process.env.REACT_APP_NAV_COURS_EXCLUSION != null) {
-            exclusion = [...exclusion, ...process.env.REACT_APP_NAV_COURS_EXCLUSION.split(' ').map(c => +c)];
+        if(config.navCoursExclus != null) {
+            exclusion = [...exclusion, ...config.navCoursExclus.split(' ').map(c => +c)];
         }
 
         const cours = [];
-        for(let i = (process.env.REACT_APP_DEFAULT_COURS_NO - 1); i < noLastCours; i++){
+        for(let i = (config.defaultCours - 1); i < noLastCours; i++){
             if (exclusion.indexOf(i + 1) === -1){
                 cours.push({label: `Cours ${i + 1}`, command: (e) => {redirectWithRouter(e)}, url: `/cours/${i + 1}`});
             }

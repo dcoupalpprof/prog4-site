@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {doc, onSnapshot, firestore} from "../services/firebase";
+import {config} from "../config";
 
 const CoursContext = React.createContext();
 
@@ -26,10 +27,15 @@ const FBCoursProvider = ({children}) => {
 
 const useFBCoursProvider = () => {
     const context = React.useContext(CoursContext);
-    if (parseInt(process.env.REACT_APP_IS_OFFLINE) === 1) {
+    if (parseInt(config.isOffline) === 1) {
         return {
-            lastUnlocked: process.env.REACT_APP_LAST_COURS,
+            lastUnlocked: config.lastCours,
             travaux: {
+                devoirFilmPrelude: false,
+                devoirFilms: false,
+                devoirTele: false,
+                devoirLouise: false,
+                devoirDeezer: false,
                 devoir1: true,
                 devoirC1: true,
                 devoir2: true,

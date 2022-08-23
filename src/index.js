@@ -8,6 +8,7 @@ import {BrowserRouter} from 'react-router-dom';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
+
 ReactDOM.render(<BrowserRouter basename="/"><App /></BrowserRouter>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
