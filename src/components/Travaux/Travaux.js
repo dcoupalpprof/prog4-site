@@ -415,7 +415,7 @@ const Travaux = () => {
                                 </ul>
                             </Groupe>
                             <Groupe title="Remise" toggleable={true}>
-                                <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur <A internal={false} url="https://remise.cstj.qc.ca/">remise</A> avant le début du cours 3.</p>
+                                <p style={{textIndent:0}}>Le dossier du projet <strong>(sans le sous-dossier <em>node_modules</em>)</strong> est à remettre sur <strong>Teams</strong> avant le début du cours 3.</p>
                             </Groupe>
                         </Section>)}
 
