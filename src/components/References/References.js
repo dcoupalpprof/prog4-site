@@ -204,6 +204,38 @@ const References = () => {
 
 
                         </Groupe>
+                        <Groupe title="Commandes Git fréquemment utilisées">
+                            <p>Voici une liste peu exhaustive de commandes Git couramment utilisées:</p>
+                            <Snippet language="javascript" code={`
+    # initialise un projet git
+    git init
+    
+    # ajoute les fichiers modifiés au staging area
+    git add .
+    
+    # créer un commit avec la description fournie
+    git commit -m "description du commit"
+    
+    # ajoute un tag au dernier commit
+    git tag -l "nomDuTag"
+    
+    # pousse les commits de la branche donnée (main) vers le repositoire distant nommé (origin par défaut)
+    git push origin main
+    
+    # pousse les commits ainsi que les tags
+    git push origin main --tags
+    
+    # récupère les commits de la branche donnée depuis le repositoire distant nommé
+    git pull origin master
+    
+    # affiche les fichiers modifiés dans la branche
+    git status 
+    
+    # affiche les derniers commits de la branche
+    git log
+    
+                            `}/>
+                        </Groupe>
                         <Groupe title="Modification du state - Objets et tableaux" toggleable={true}>
                             <p>Stratégies pour modifier le <em>state</em> d'une composante à état lorsqu'il s'agit d'objets ou de tableaux par <A url="https://github.com/StephenGrider">Stephen Grider</A>.</p>
                             <img style={{maxWidth: '100%'}} src="/img/state_diagram.png" alt=""/>

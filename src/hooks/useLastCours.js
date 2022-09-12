@@ -20,7 +20,7 @@ const coursTitles = [
     'Retour sur JS',
     'React',
     'Les composantes React',
-    'Les composantes React (suite)',
+    'La gestion du state (suite)',
     'React-Router',
     'Thierry',
     'Thierry - The Sequel',
