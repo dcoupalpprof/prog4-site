@@ -101,10 +101,14 @@ const Travaux = () => {
                                         <li>Le bouton Enregistrer du formulaire devra permettre d'ajouter la pizza à la liste affichée et de réinitialiser l'état du formulaire par la suite.</li>
                                         <li>Rédiger les tests suivants:
                                             <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
-                                                <li>Le nombre de pizzas affichées au départ correspond-t-il au nombre de pizzas dans le tableau?</li>
-                                                <li>Est-ce que le bouton d'enregistrement est cliquable dès le départ? Après avoir inscrit un nom? Après avoir sélectionné au moins un ingrédient?</li>
-                                                <li>Est-ce que la pizza s'ajoute à la liste une fois le formulaire soumis?</li>
-                                                <li>Est-ce que le formulaire a bien été réinitialisé?</li>
+                                                <li>Le nombre de pizzas affichées au départ correspond-t-il au nombre de pizzas dans le tableau? (méthodes de requêtes getAll..., <A internal={false} url="https://jestjs.io/fr/docs/expect#tobevalue">validateur
+                                                    toBe</A>)</li>
+                                                <li>Est-ce que le bouton d'enregistrement est cliquable dès le départ (<A internal={false} url="https://github.com/testing-library/jest-dom#tobedisabled">validateur
+                                                    toBeDisabled</A>)? Après avoir inscrit un nom (<A internal={false} url="https://testing-library.com/docs/ecosystem-user-event/#typeelement-text-options">userEvent.type</A>)? Après avoir sélectionné au moins un ingrédient?</li>
+                                                <li>Est-ce que la pizza s'ajoute à la liste une fois le formulaire soumis (méthodes de requêtes getAll..., <A internal={false} url="https://jestjs.io/fr/docs/expect#tobevalue">validateur
+                                                    toBe</A>)?</li>
+                                                <li>Est-ce que le formulaire a bien été réinitialisé (<A internal={false} url="https://github.com/testing-library/jest-dom#tohavevalue">validateur
+                                                    toHaveValue</A>)?</li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -117,7 +121,7 @@ const Travaux = () => {
                                         2"</strong></p>
                                     <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
                                         <li>Respect des contraintes de développement</li>
-                                        <li>Rédaction judicieuse et efficace des tests unitaires</li>
+                                        {/*<li>Rédaction judicieuse et efficace des tests unitaires</li>*/}
                                         <li>Qualité de l'intégration</li>
                                     </ul>
                                 </Groupe>
