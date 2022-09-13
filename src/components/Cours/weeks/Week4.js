@@ -120,7 +120,7 @@ describe('Nom de la suite de tests', () => {
                 </Groupe>
                 <Groupe title="Requêtes">
                     <p><A url="https://testing-library.com/docs/queries/about" internal={false}>La liste de requêtes</A> pouvant être utilisées afin de cibler un élément du html peut sembler limitée. On pourra cibler des balises html par leur <A url="https://www.w3.org/TR/html-aria/#docconformance" internal={false}>rôle implicite d'accessibilité</A> ou
-                    en les marquant à l'aide d'un <A url="https://testing-library.com/docs/queries/bytestid" internal={false}>attribut data-test-id</A></p>.
+                    en les marquant à l'aide d'un <A url="https://testing-library.com/docs/queries/bytestid" internal={false}>attribut data-testid</A></p>.
                     <p>Il existe <strong>3 catégories</strong> de requêtes. Elles varient en fonction du verbe utiliser comme préfixe:</p>
                     <ul className="cours-liste">
                         <li><strong>get...</strong>: Retourne les éléments trouvés, mais retourne une erreur si aucun n'est trouvé.</li>
