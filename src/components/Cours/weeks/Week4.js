@@ -48,12 +48,12 @@ const Week3 = (props) => {
             {
                 id: 'a'
                 prenom: 'Robert-Denis',
-                nom: 'Rheault,
+                nom: 'Rheault',
                 age: 66
             }, {
                 id: 'b'
                 prenom: 'Bill',
-                nom: 'Paxton,
+                nom: 'Paxton',
                 age: 52
             }
         ]);
@@ -88,7 +88,6 @@ const Week3 = (props) => {
     import {screen, render} from '@testing-library/react';
     import '@testing-library/jest-dom';
     import userEvent from '@testing-library/user-event';
-    import '
     import MaComposante from './MaComposante';
                     
     // Les méthodes test/it sont ajoutées à l'environnement global par jest, inutile de l'importer                    
