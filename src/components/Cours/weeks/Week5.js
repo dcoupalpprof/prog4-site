@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<RouterProvider rout
                 <Groupe title="Déclaration et paramétrage des routes">
                     <p>Il existe deux façon de déclarer les routes à l'aide de <strong>createBrowserRouter</strong>.</p>
                     <ul className="cours-liste">
-                        <li>L'une sous forme d'un tableau d'<A url="https://reactrouter.com/en/main/route/route#type-declaration" internal={false}>objets Route</A> (favorisée durant les cours).</li>
+                        <li>L'une sous forme d'un tableau d'<A url="https://reactrouter.com/en/main/route/route#type-declaration" internal={false}>objets Route</A>.</li>
                         <li>L'autre à l'aide de composantes <strong><A url="https://reactrouter.com/en/main/route/route#type-declaration" internal={false}>&lt;Route&#47;&gt;</A></strong></li>
                     </ul>
 
@@ -46,7 +46,7 @@ const routes = createRoutesFromElements(
     </>
 );
                     `}/>
-
+                    <p className="underline">Il peut être pratique d'utiliser le RouterProvider à l'intérieur de la composante App pour pouvoir aussi y utiliser des hooks comme useState.</p>
                 </Groupe>
                 <Groupe title="Imbrication de routes">
                     <p>Il arrivera souvent que l'on désirera imbriquer des routes. On pourrait ainsi avoir une composante parent affichat un mise en page récurrente et une section dynamique variant selon l'url utilisé. On pourrait aussi vouloir avoir une route parent affichant le contenu publique et une autre pour afficher le contenu aux utilisateurs authentifiés.
@@ -293,6 +293,41 @@ const UneComposante = () => {
 
     export default UneComposante;
                     `}/>
+                </Groupe>
+
+                <Groupe title="Déclaration conditionnelle des routes">
+                    <p>En utilisant un state, il peut être possible de modifier la liste de routes disponibles en tout temps. Pour ce faire les routes doivent cependant être déclarées dans une composante (comme App) pour pouvoir y déclarer un state.</p>
+                    <p>On pourrait ainsi avoir plus d'un tableau de routes ou plus d'un ensemble de composantes Routes et les utiliser avec les RouterProvider selon une condition donnée.</p>
+                    <Snippet language="jsx" code={`
+const App = () => {
+    const [monState, setMonState] = useState(false);
+    
+    const routes = monState ? [
+        {
+            path: '/',
+            element: <ComposanteA setFn={setMonState} />
+        }, {
+            path: '/url',
+            element: <ComposanteB setFn={setMonState} />
+        }
+    ] : [
+         {
+            path: '/',
+            element: <ComposanteC setFn={setMonState} />
+        }, {
+            path: '/url',
+            element: <ComposanteD setFn={setMonState} />
+        },
+    ];
+    
+    return (
+        <RouterProvider router={createBrowserRouter(routes)}/>
+    );
+    
+    
+};
+                    `}/>
+                    <p>L'utilisation de <em>splats</em> et de &lt;Navigate&#47;&gt; pourra permettre la redirection d'un ensemble de routes à l'autre lors du changement de state.</p>
                 </Groupe>
 
 
