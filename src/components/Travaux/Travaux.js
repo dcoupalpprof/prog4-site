@@ -85,50 +85,6 @@ const Travaux = () => {
                                 </Groupe>
                             </Section>)}
 
-                        {!loading && travaux !== null && travaux.devoirC2 &&  (
-                            <Section title="Devoir en continu - Partie 2" subtitle="Pizzas à la chaîne">
-                                <Groupe title="Sujet">
-                                    <p>Vous devez poursuivre votre application en permettant d'enregistrer (en mémoire jusqu'au rechargement de la page) et d'afficher les pizzas créées par l'utilisateur.</p>
-                                </Groupe>
-
-                                <Groupe title="Détails">
-                                    <p>La nouvelle version de votre application devra répondre aux besoins suivants:</p>
-                                    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
-                                        <li>3 pizzas devront déjà être affichées au démarrage de l'application (depuis un
-                                        tableau d'objets local).</li>
-                                        <li>Afficher les détails de chacune de ces pizzas dans une tuile/carte UI contenant le nom, les ingrédients et son visuel. La tuile devra obligatoirement être une composante nourrie par des props.</li>
-                                        <li>Le formulaire de création de pizza de la version 1 devra être intégré à l'interface depuis une composante enfant. Vous devez réécrire la série de states d'ingrédients en un tableau.</li>
-                                        <li>Le bouton Enregistrer du formulaire devra permettre d'ajouter la pizza à la liste affichée et de réinitialiser l'état du formulaire par la suite.</li>
-                                        <li>Rédiger les tests suivants:
-                                            <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
-                                                <li>Le nombre de pizzas affichées au départ correspond-t-il au nombre de pizzas dans le tableau? (méthodes de requêtes getAll..., <A internal={false} url="https://jestjs.io/fr/docs/expect#tobevalue">validateur
-                                                    toBe</A>)</li>
-                                                <li>Est-ce que le bouton d'enregistrement est cliquable dès le départ (<A internal={false} url="https://github.com/testing-library/jest-dom#tobedisabled">validateur
-                                                    toBeDisabled</A>)? Après avoir inscrit un nom (<A internal={false} url="https://testing-library.com/docs/ecosystem-user-event/#typeelement-text-options">userEvent.type</A>)? Après avoir sélectionné au moins un ingrédient?</li>
-                                                <li>Est-ce que la pizza s'ajoute à la liste une fois le formulaire soumis (méthodes de requêtes getAll..., <A internal={false} url="https://jestjs.io/fr/docs/expect#tobevalue">validateur
-                                                    toBe</A>)?</li>
-                                                <li>Est-ce que le formulaire a bien été réinitialisé (<A internal={false} url="https://github.com/testing-library/jest-dom#tohavevalue">validateur
-                                                    toHaveValue</A>)?</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <p>L'exercice de la liste de tâches est un bon modèle à suivre pour cette étape du développement.</p>
-                                    <p>Continuez à bonifier votre intégration et à la retravailler au besoin.</p>
-                                </Groupe>
-
-                                <Groupe title="Remise & correction">
-                                    <p>Le projet devra être poussé sur Github et <strong>le commit devra porter le tag "Étape
-                                        2"</strong></p>
-                                    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
-                                        <li>Respect des contraintes de développement</li>
-                                        {/*<li>Rédaction judicieuse et efficace des tests unitaires</li>*/}
-                                        <li>Qualité de l'intégration</li>
-                                    </ul>
-                                </Groupe>
-
-                            </Section>
-                        )}
-
                         {!loading && travaux !== null && travaux.devoirC3 && (
                             <Section title="Devoir en continu - Partie 3" subtitle="Pizza de route">
                                 <Groupe title="Sujet">
@@ -170,18 +126,18 @@ const Travaux = () => {
                                     <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
                                         <li>Route "/pizza/:pizza" offrant le détail d'une pizza</li>
                                         <li>Le paramètre ":pizza" peut être l'une de ces valeurs (à vous de choisir et
-                                        d'implémenter la bonne, selon votre implémentation actuelle de la liste (en
-                                        choisir UNE)):
+                                            d'implémenter la bonne, selon votre implémentation actuelle de la liste (en
+                                            choisir UNE)):
                                             <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
                                                 <li>L'index dans le tableau (à prioriser)</li>
                                                 <li>Le nom (s'il est unique, donc si vous avez implémenté cette mécanique)</li>
                                                 <li>Le ID (s'il existe)</li>
                                                 <li>Le "slug" (s'il est unique, et s'il existe, donc si vous avez implémenté
-                                                cette mécanique)</li>
+                                                    cette mécanique)</li>
                                             </ul>
                                         </li>
                                         <li>La page devra se trouver à l'intérieur de votre page de liste (page
-                                        enfant)</li>
+                                            enfant)</li>
                                         <li>Afficher les éléments suivants:
                                             <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
                                                 <li>Nom</li>
@@ -191,8 +147,8 @@ const Travaux = () => {
                                         </li>
                                         <li>Le visuel de cette page doit bien s'harmoniser avec la page de liste</li>
                                         <li>Vous pouvez en faire une colonne CSS dédiée, un "modal", etc. Pensez à
-                                        l'usager! (le layout de votre page ne devrait pas interrompre la navigation de
-                                        l'usager)</li>
+                                            l'usager! (le layout de votre page ne devrait pas interrompre la navigation de
+                                            l'usager)</li>
                                     </ul>
 
                                     <h3 style={{marginTop: '1em'}}>Nouvelle pizza</h3>
@@ -200,19 +156,19 @@ const Travaux = () => {
                                     <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
                                         <li>Route "/pizza/creer" offrant le formulaire de création d'une pizza</li>
                                         <li>Devrait être le même formulaire que vous avez déjà créé (avec très peu/pas
-                                        de changement)</li>
+                                            de changement)</li>
                                         <li>Une fois la pizza créée, rediriger l'usager vers la page de détail de cette
-                                        pizza
+                                            pizza
                                             <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
                                                 <li>Voir le hook "useNavigate" de "react-router"</li>
                                                 <li>Vous devez trouver une façon de retrouver le paramètre ":pizza"
-                                                depuis
-                                                votre
-                                                formulaire. Votre fonction de sauvegarde pourrait vous retourner cet
-                                                identifiant, ou l'objet complet, pour vous permettre de bien rediriger
-                                                l'usager.</li>
+                                                    depuis
+                                                    votre
+                                                    formulaire. Votre fonction de sauvegarde pourrait vous retourner cet
+                                                    identifiant, ou l'objet complet, pour vous permettre de bien rediriger
+                                                    l'usager.</li>
                                             </ul>
-                                    </li>
+                                        </li>
 
                                     </ul>
                                     <h3 style={{marginTop: '1em'}}>Conseils:</h3>
@@ -226,6 +182,50 @@ const Travaux = () => {
                                     <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
                                         <li>Respect des contraintes de développement</li>
                                         <li>Rédaction judicieuse et efficace des tests unitaires</li>
+                                        <li>Qualité de l'intégration</li>
+                                    </ul>
+                                </Groupe>
+
+                            </Section>
+                        )}
+
+                        {!loading && travaux !== null && travaux.devoirC2 &&  (
+                            <Section title="Devoir en continu - Partie 2" subtitle="Pizzas à la chaîne">
+                                <Groupe title="Sujet">
+                                    <p>Vous devez poursuivre votre application en permettant d'enregistrer (en mémoire jusqu'au rechargement de la page) et d'afficher les pizzas créées par l'utilisateur.</p>
+                                </Groupe>
+
+                                <Groupe title="Détails">
+                                    <p>La nouvelle version de votre application devra répondre aux besoins suivants:</p>
+                                    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                        <li>3 pizzas devront déjà être affichées au démarrage de l'application (depuis un
+                                        tableau d'objets local).</li>
+                                        <li>Afficher les détails de chacune de ces pizzas dans une tuile/carte UI contenant le nom, les ingrédients et son visuel. La tuile devra obligatoirement être une composante nourrie par des props.</li>
+                                        <li>Le formulaire de création de pizza de la version 1 devra être intégré à l'interface depuis une composante enfant. Vous devez réécrire la série de states d'ingrédients en un tableau.</li>
+                                        <li>Le bouton Enregistrer du formulaire devra permettre d'ajouter la pizza à la liste affichée et de réinitialiser l'état du formulaire par la suite.</li>
+                                        <li>Rédiger les tests suivants:
+                                            <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                                <li>Le nombre de pizzas affichées au départ correspond-t-il au nombre de pizzas dans le tableau? (méthodes de requêtes getAll..., <A internal={false} url="https://jestjs.io/fr/docs/expect#tobevalue">validateur
+                                                    toBe</A>)</li>
+                                                <li>Est-ce que le bouton d'enregistrement est cliquable dès le départ (<A internal={false} url="https://github.com/testing-library/jest-dom#tobedisabled">validateur
+                                                    toBeDisabled</A>)? Après avoir inscrit un nom (<A internal={false} url="https://testing-library.com/docs/ecosystem-user-event/#typeelement-text-options">userEvent.type</A>)? Après avoir sélectionné au moins un ingrédient?</li>
+                                                <li>Est-ce que la pizza s'ajoute à la liste une fois le formulaire soumis (méthodes de requêtes getAll..., <A internal={false} url="https://jestjs.io/fr/docs/expect#tobevalue">validateur
+                                                    toBe</A>)?</li>
+                                                <li>Est-ce que le formulaire a bien été réinitialisé (<A internal={false} url="https://github.com/testing-library/jest-dom#tohavevalue">validateur
+                                                    toHaveValue</A>)?</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <p>L'exercice de la liste de tâches est un bon modèle à suivre pour cette étape du développement.</p>
+                                    <p>Continuez à bonifier votre intégration et à la retravailler au besoin.</p>
+                                </Groupe>
+
+                                <Groupe title="Remise & correction">
+                                    <p>Le projet devra être poussé sur Github et <strong>le commit devra porter le tag "Étape
+                                        2"</strong></p>
+                                    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                        <li>Respect des contraintes de développement</li>
+                                        {/*<li>Rédaction judicieuse et efficace des tests unitaires</li>*/}
                                         <li>Qualité de l'intégration</li>
                                     </ul>
                                 </Groupe>
