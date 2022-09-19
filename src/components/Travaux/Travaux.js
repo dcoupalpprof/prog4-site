@@ -93,7 +93,7 @@ const Travaux = () => {
 
                                 <Groupe title="Détails">
                                     <h3 style={{marginTop: '1em'}}>Authentification de l'utilisateur</h3>
-                                    <p>L'utilisateur se vera demandé son nom à son arrivée sur le site (son nom seulement):</p>
+                                    <p>L'utilisateur se verra demandé son nom à son arrivée sur le site (son nom seulement):</p>
                                     <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
                                         <li>Route "/login" offrant la page d'authentification.</li>
                                         <li>Un seul champ "Nom d'usager" (champ requis contenant au moins un caractère)</li>
@@ -176,9 +176,18 @@ const Travaux = () => {
                                     <p>Continuez à bonifier votre intégration et à la retravailler au besoin.</p>
                                 </Groupe>
 
+                                {/*<Groupe title="Tests">*/}
+                                {/*    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>*/}
+                                {/*        <li>Quelle page est affichée dès le départ?</li>*/}
+                                {/*        <li>Le bouton d'authentification est-il désactivé si rien n'est entré dans le input du login?</li>*/}
+                                {/*        <li>Quelle page est affichée une fois connecté?</li>*/}
+                                {/*        <li></li>*/}
+                                {/*    </ul>*/}
+                                {/*</Groupe>*/}
+
                                 <Groupe title="Remise & correction">
                                     <p>Le projet devra être poussé sur Github et <strong>le commit devra porter le tag "Étape
-                                        2"</strong></p>
+                                        3"</strong></p>
                                     <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
                                         <li>Respect des contraintes de développement</li>
                                         <li>Rédaction judicieuse et efficace des tests unitaires</li>
