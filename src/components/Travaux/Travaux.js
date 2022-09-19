@@ -15,7 +15,7 @@ const Travaux = () => {
     const {travaux, loading} = useFBCoursProvider();
 
     if (!loading && travaux) {
-        console.log(Object.values(travaux));
+        // console.log(Object.values(travaux));
     }
 
         return (
@@ -109,6 +109,110 @@ const Travaux = () => {
                                         </li>
                                     </ul>
                                     <p>L'exercice de la liste de tâches est un bon modèle à suivre pour cette étape du développement.</p>
+                                    <p>Continuez à bonifier votre intégration et à la retravailler au besoin.</p>
+                                </Groupe>
+
+                                <Groupe title="Remise & correction">
+                                    <p>Le projet devra être poussé sur Github et <strong>le commit devra porter le tag "Étape
+                                        2"</strong></p>
+                                    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                        <li>Respect des contraintes de développement</li>
+                                        <li>Rédaction judicieuse et efficace des tests unitaires</li>
+                                        <li>Qualité de l'intégration</li>
+                                    </ul>
+                                </Groupe>
+
+                            </Section>
+                        )}
+
+                        {!loading && travaux !== null && travaux.devoirC3 && (
+                            <Section title="Devoir en continu - Partie 3" subtitle="Pizza de route">
+                                <Groupe title="Sujet">
+                                    <p>Vous devez convertir votre application d'une page en une application multi-pages. Vous devrez également ajouter certaines fonctionnalités.</p>
+                                </Groupe>
+
+                                <Groupe title="Détails">
+                                    <h3 style={{marginTop: '1em'}}>Authentification de l'utilisateur</h3>
+                                    <p>L'utilisateur se vera demandé son nom à son arrivée sur le site (son nom seulement):</p>
+                                    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                        <li>Route "/login" offrant la page d'authentification.</li>
+                                        <li>Un seul champ "Nom d'usager" (champ requis contenant au moins un caractère)</li>
+                                        <li>La soumission du nom de l'utilisateur (contenant au moins un caractère) lui permettra d'accéder à l'application en le redirigeant vers la page de la liste de pizzas</li>
+                                        <li>Empêcher l'usager d'accéder à la page "/login" une fois "connecté"</li>
+                                        <li>Si vous redémarrez l'application, l'usager devra se reconnecter (<em>Pour vous faciliter la vie lorsque vous développez, rien ne vous empêche de "trafiquer" votre nom d'usager initial pour court-circuiter votre condition (au lieu de useState(''),
+                                            pourquoi pas useState('test')). Attention à replacer le tout avant la remise (vos tests devraient passer, sinon vous avez oublié de corriger ce tour de passe-passe)</em>)</li>
+                                    </ul>
+
+                                    <p>La section <strong>Déclaration conditionnelle des routes</strong> dans les <A url="/cours/5" internal={true}>Notes
+                                        de cours</A> pourrait vous être utile.</p>
+
+                                    <h3 style={{marginTop: '1em'}}>Page de la liste de pizzas</h3>
+                                    <p>Une page offrant l'ensemble des pizzas disponibles.</p>
+                                    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                        <li>Route "/pizza" offrant la liste des pizzas disponibles dans votre application</li>
+                                        <li>Rediriger toutes les pages invalides (404) vers cette page</li>
+                                        <li>Vous devriez réutiliser la composante de liste que vous avez créée au cours du dernier devoir (nécessitant probablement quelques changements)</li>
+                                        <li>Chaque pizza devra présenter les données suivantes dans une boîte (carte, tuile ou autre, bien formattée en CSS):
+                                            <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                                <li>Nom</li>
+                                                <li>Image (vous pourriez réutiliser la composante d'image à plusieurs endroits dans votre application... utilisez bien vos props!)</li>
+                                            </ul>
+                                        </li>
+                                        <li>Chaque pizza devra être cliquable (&lt;Link&#47;&gt;), permettant d'afficher le détail de la pizza</li>
+                                    </ul>
+
+                                    <h3 style={{marginTop: '1em'}}>Détails d'une pizza</h3>
+                                    <p>Permet d'afficher les détails d'une pizza sélectionnée.</p>
+                                    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                        <li>Route "/pizza/:pizza" offrant le détail d'une pizza</li>
+                                        <li>Le paramètre ":pizza" peut être l'une de ces valeurs (à vous de choisir et
+                                        d'implémenter la bonne, selon votre implémentation actuelle de la liste (en
+                                        choisir UNE)):
+                                            <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                                <li>L'index dans le tableau (à prioriser)</li>
+                                                <li>Le nom (s'il est unique, donc si vous avez implémenté cette mécanique)</li>
+                                                <li>Le ID (s'il existe)</li>
+                                                <li>Le "slug" (s'il est unique, et s'il existe, donc si vous avez implémenté
+                                                cette mécanique)</li>
+                                            </ul>
+                                        </li>
+                                        <li>La page devra se trouver à l'intérieur de votre page de liste (page
+                                        enfant)</li>
+                                        <li>Afficher les éléments suivants:
+                                            <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                                <li>Nom</li>
+                                                <li>Image (en plus gros plan)</li>
+                                                <li>Liste (ul>li) des ingrédients</li>
+                                            </ul>
+                                        </li>
+                                        <li>Le visuel de cette page doit bien s'harmoniser avec la page de liste</li>
+                                        <li>Vous pouvez en faire une colonne CSS dédiée, un "modal", etc. Pensez à
+                                        l'usager! (le layout de votre page ne devrait pas interrompre la navigation de
+                                        l'usager)</li>
+                                    </ul>
+
+                                    <h3 style={{marginTop: '1em'}}>Nouvelle pizza</h3>
+                                    <p>Page permettant de créer une nouvelle pizza </p>
+                                    <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                        <li>Route "/pizza/creer" offrant le formulaire de création d'une pizza</li>
+                                        <li>Devrait être le même formulaire que vous avez déjà créé (avec très peu/pas
+                                        de changement)</li>
+                                        <li>Une fois la pizza créée, rediriger l'usager vers la page de détail de cette
+                                        pizza
+                                            <ul style={{listStyleType: 'disc', paddingLeft: '1.4em'}}>
+                                                <li>Voir le hook "useNavigate" de "react-router"</li>
+                                                <li>Vous devez trouver une façon de retrouver le paramètre ":pizza"
+                                                depuis
+                                                votre
+                                                formulaire. Votre fonction de sauvegarde pourrait vous retourner cet
+                                                identifiant, ou l'objet complet, pour vous permettre de bien rediriger
+                                                l'usager.</li>
+                                            </ul>
+                                    </li>
+
+                                    </ul>
+                                    <h3 style={{marginTop: '1em'}}>Conseils:</h3>
+                                    <p>Assurez-vous que votre &lt;App&#47;&gt; est le "chef d'orchestre" des données globales, comme la liste de pizzas, le nom d'usager, etc. Pour qu'une composante utilise une donnée "globale", utilisez les props pour passer l'information plus bas dans l'arborescence.</p>
                                     <p>Continuez à bonifier votre intégration et à la retravailler au besoin.</p>
                                 </Groupe>
 

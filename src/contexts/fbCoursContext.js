@@ -39,6 +39,7 @@ const useFBCoursProvider = () => {
                 devoir1: true,
                 devoirC1: true,
                 devoirC2: true,
+                devoirC3: true,
                 devoir2: true,
                 devoir3: true
             },
