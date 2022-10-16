@@ -217,7 +217,7 @@ const References = () => {
     git commit -m "description du commit"
     
     # ajoute un tag au dernier commit
-    git tag -l "nomDuTag"
+    git tag -a unTag -m "description du tag"
     
     # pousse les commits de la branche donnée (main) vers le repositoire distant nommé (origin par défaut)
     git push origin main
