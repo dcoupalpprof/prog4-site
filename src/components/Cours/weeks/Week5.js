@@ -199,7 +199,7 @@ console.log(splat);
                     <Snippet language="jsx" code={`
 <Link to="/path-absolu-depuis-la-racine-du-site">Lien absolu</Link>
                 `}/>
-                    <p>Pour styliser le lien actif, on peut aussi remplacer la composante Link par <strong><A url="https://reactrouter.com/en/main/components/nav-link#navlink" internal={false}>NavLink</A></strong> qui <span class="underline">donnera
+                    <p>Pour styliser le lien actif, on peut aussi remplacer la composante Link par <strong><A url="https://reactrouter.com/en/main/components/nav-link#navlink" internal={false}>NavLink</A></strong> qui <span className="underline">donnera
                     par défaut la classe active aux liens pointant vers l'url actif</span>.</p>
 
                     <p>La composante <A url="https://reactrouter.com/en/main/components/navigate#navigate" internal={false}>&lt;Navigate&#47;&gt;</A> permet aussi de naviguer vers une autre route/composante dès qu'elle est affichée dans le jsx de l'application. On l'utilisera donc souvent à l'intérieur d'une logique d'affichage conditionnel pour rediriger ou non l'utilisateur vers une autre page.</p>

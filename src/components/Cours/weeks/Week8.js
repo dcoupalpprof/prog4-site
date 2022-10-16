@@ -7,7 +7,8 @@ const Week8 = () => {
         <section>
             <Section title="Récupération de données externes">
                 <Groupe title="Les effets secondaires (de bord)">
-                    <p>On utilisera le <strong>hook <A internal={false} url="https://fr.reactjs.org/docs/hooks-effect.html">useEffect</A></strong> pour effectuer des <strong>effets secondaires</strong> après le premier rendu et/ou après chacun des rafraîchissements d'une composante.</p>
+                    <p>On utilisera le <strong>hook <A internal={false} url="https://fr.reactjs.org/docs/hooks-effect.html">useEffect</A></strong> pour contrôler le moment auquel certaines opérations sont effectuées dans une composante. Plutôt que d'être exécuté à chaque rendu, le code à l'intérieur d'un
+                    useEffect est exécuté selon des conditions précises. On utilse souvent ce hook pour exécuter des <strong>effets secondaires</strong>.</p>
                     <p>Les effets secondaires sont des opérations qui sortent des opérations normales d'une composantes (fonction pures). Une synchronisation avec un serveur, mise en cache de données ou la génération d'un log pourraient être de bons exemples d'effets secondaires.</p>
                     <p>Comme les autres hooks, useEffect ne peut qu'être utilisé à la <em>racine</em> de la composante (pas dans une fonction, un if, une boucle...). Le premier paramètre de useEffect est une fonction à appeler après chaque rendu.</p>
                     <Snippet language="jsx" code={`

@@ -16,7 +16,6 @@ const Cours = () => {
     const params = useParams();
     const history = useHistory();
 
-    console.log(config);
     const [currentCoursNo, setCurrentCoursNo] = useState(config.defaultCours);
 
     useEffect(() => {
