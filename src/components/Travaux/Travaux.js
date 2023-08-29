@@ -555,9 +555,9 @@ const Travaux = () => {
                                 </ul>
                                 <p style={{marginTop:'.5em'}}>Les acteurs et le réalisateur devront être affichés à l'aide de la composante <strong>Personne</strong>. <br/>
                                     La composante <strong>Entete</strong> devra recevoir et afficher le titre, le synopsis et l'année de production du film. <br/>
-                                    <strong>Photo</strong> devra servir à la fois pour l'affiche et pour les personnes. {/*Une propriété <strong>type</strong> permettra de modifier son apparence en fonction du type de photo à afficher (affiche ou personne).*/} <br/>
-                                    {/*L'intégration devra être facilitée par l'utilisation d'une librairie CSS sélectionnée depuis cette <A url="https://speckyboy.com/open-source-front-end-ui-kits/">liste de librairies CSS</A>. (trouver le lien cdn pour simplement lier le fichier css à index.html)*/}</p>
-                                {/*<p>La composante <strong>Film</strong> <strong>devra inclure un bouton permettant de supprimer ce film de la liste.</strong></p>*/}
+                                    <strong>Photo</strong> devra servir à la fois pour l'affiche et pour les personnes. Une propriété <strong>type</strong> permettra de modifier son apparence en fonction du type de photo à afficher (affiche ou personne).*/} <br/>
+                                    L'intégration devra être facilitée par l'utilisation d'une librairie CSS sélectionnée depuis cette <A url="https://speckyboy.com/open-source-front-end-ui-kits/">liste de librairies CSS</A>. (trouver le lien cdn pour simplement lier le fichier css à index.html)</p>
+                                <p>La mise en forme des <strong>Films</strong> devra différer pour les films réalisés avant l'an 2000.</p>
 
                             </Groupe>
                             <Groupe title="Correction" toggleable={true}>
@@ -568,7 +568,7 @@ const Travaux = () => {
                                     <li>Justesse de la création des composantes</li>
                                     <li>Optimisation et clarté du code Javascript</li>
                                     {/*<li>Gestion immuable de l'état des composantes</li>*/}
-                                    {/*<li>Qualité de l'intégration</li>*/}
+                                    <li>Qualité de l'intégration</li>
                                 </ul>
                             </Groupe>
                             <Groupe title="Remise" toggleable={true}>
