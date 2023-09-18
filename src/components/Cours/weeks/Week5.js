@@ -80,7 +80,7 @@ const routes = [{
 }];
                     `}/>
 
-                    <h3 style={{marginTop: '1em'}}>À l'aide de composantes &lt;Route&#47;&gt;</h3>
+{/* <h3 style={{marginTop: '1em'}}>À l'aide de composantes &lt;Route&#47;&gt;</h3>
                     <Snippet language="jsx" code={`
 const routes = createRoutesFromElements(
     <>
@@ -95,7 +95,7 @@ const routes = createRoutesFromElements(
         </Route>   
     </>
 );
-                    `}/>
+                    `}/>*/}
 
                     <h3 style={{marginTop: '1em'}}>Détermination de la zone dynamique</h3>
                     <p>Comme les routes imbriquées permettent d'afficher une composante à l'intérieur d'une autre (&lt;Portfolio&#47;&gt; à l'intérieur de &lt;Layout&#47;&gt; dans l'exemple ci-dessus), il faut aussi indiquer à quel endroit la composante enfant doit s'afficher à l'intérieur du parent.
@@ -247,7 +247,7 @@ const routes = [{
                     `}/>
                 </Groupe>
 
-                <Groupe title="Fournir des données à une route">
+{/*<Groupe title="Fournir des données à une route">
                     <p>Certaines composantes peuvent nécessiter de récupérer certaines données (souvent externes) afin de pouvoir en afficher le contenu. La récupération de ces données est souvent critique et rend désuète la composante si l'information n'y est pas acheminée.</p>
                     <p>On pourrait évidemment récupérer les informations depuis l'intérieur de la composante en utilisant probablement useParams, mais on doit souvent gérer un premier rendu avant que les informations soient obtenues ainsi que de devoir gérer l'affichage en cas d'erreur dans la récupération des données.</p>
                     <p>La fonction <A url="https://reactrouter.com/en/main/route/loader#loader" internal={false}>loader</A> dans la déclaration des routes permet de récupérer les informations et de suspendre l'affichage de la composante tant qu'elles ne sont pas obtenues. La composante peut ensuite récupérer directement ces informations
@@ -273,7 +273,7 @@ const UneComposante = () => {
 };
                     `}/>
                     <p className="underline">Dans le cadre du cours, les fonctions utilisées dans loader seront toujours déclarées et exportées depuis le fichier de la composante en question.</p>
-                </Groupe>
+                </Groupe>*/}
 
                 <Groupe title="Informations sur la route active et l'historique">
                     <p>D'autres props permettent d'obtenir plus d'informations à propos de la route active depuis une composante:</p>
