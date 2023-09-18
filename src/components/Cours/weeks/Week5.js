@@ -268,7 +268,7 @@ const UneComposante = () => {
     const mesDonnes = useLoaderData();
     
     return (
-        {/* JSX */}
+        {...}
     );
 };
                     `}/>
