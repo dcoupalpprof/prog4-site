@@ -411,8 +411,9 @@ export default defineConfig({
 })
 
 // Fichier cypress.config.js
-// Dans l'objet e2e, ajouter la propriété suivante:
-    baseUrl: 'http://127.0.0.1:5173'
+// Dans l'objet e2e, ajouter les propriétés suivantes:
+    baseUrl: 'http://127.0.0.1:5173',
+    specPattern: 'cypress/e2e/**/*.{js.jsx.ts.tsx}'
                     `}/>
                 </Groupe>
                                 <Groupe title="Création d'un premier test">
