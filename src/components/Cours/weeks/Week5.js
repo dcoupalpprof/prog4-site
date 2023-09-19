@@ -88,11 +88,11 @@ const routes = createRoutesFromElements(
             <Route index element={<Home/>} />
             <Route path="travaux" element={<Portfolio/>} />
         </Route>
-        
+
         <Route path="/auth" element={<LayoutAuth/>} >
             <Route index element={<LoginForm/>} />
             <Route path="admin" element={<Admin/>} />
-        </Route>   
+        </Route>
     </>
 );
                     `}/>*/}
@@ -260,13 +260,13 @@ const routes = [
         loader: ({params}) => {
             // les params tels que ceux récupérés par useParams sont accessibles ici
             // les données doivent être retournées ici (directement ou dans une promesse) pour être récupérées dans la composante
-        } 
+        }
     }
-];        
+];
 
 const UneComposante = () => {
     const mesDonnes = useLoaderData();
-    
+
     return (
         {...}
     );
@@ -371,6 +371,104 @@ const App = () => {
                 {/*        utilser <strong>props.match.url</strong> comme préfixe.</p>*/}
                 {/*</Groupe>*/}
             </Section>
+
+            <Section title="Rédaction de tests" subtitle="Tests de bout en bout (E2E)">
+                <Groupe title="Introduction">
+                    <p>Les tests permettent de s'assurer de la fiabilité du code durant le développement et dans le temps. Il incombe au développeurs de rédiger ses tests au fur et à mesure du développement de ses composantes.
+                                            L'ajout d'une nouvelle fonctionnalité, la mise à jour d'une dépendance ou l'utilisation de données externes imprévues peuvent compromettre le bon fonctionnement de l'application.</p>
+                    <p>Il existe plus d'un type de tests. On pense notamment aux suivants:</p>
+                    <ul className="cours-liste">
+                        <li>Tests unitaires: Permettent de vérifier si une fonction recevant les paramètres données retourne toujours la même résultat (parfois exagérés pour du front-end).</li>
+                        <li>Tests de composantes: Permettent d'isoler une composante de son application et de lui passer des props précis pour vérifier si le résultat affiché est le même et que son comportement est celui qui est attendu.</li>
+                        <li><strong>Tests de bout en bout (E2E)</strong>: Ceux qui nous intéressent ici, permettent de tester l'application dans son ensemble en vérifiant si les différentes fonctionnalités du site (navigation, authentification, manipulations du state) fonctionnent toujours.</li>
+                    </ul>
+                    <p>Certains développeurs commencent par rédiger les tests avant de développer les fonctionnalités afin de s'assurer de cibler ce qui est nécessaire au fonctionnement d'un composante. Ces tests échouent donc tant que la composante n'est pas développée telle que prévue initialement.</p>
+                    <p>Les tests sont développés selon le point de vue de l'utilisateur. Ils simulent la navigation et les interactions telles qu'exécutées par celui-ci.</p>
+                    <p>On utilisera <A url="https://www.cypress.io/" internal={false}>Cypress</A> comme cadriciel de tests.</p>
+                </Groupe>
+
+                <Groupe title="Installation et configuration">
+                    <p>On install Cypress comme dépendance de développement à l'aide de la commande:</p>
+                    <Snippet code={`
+npm i -D cypress
+                    `}/>
+                    <p>L'une ou l'autre de ces deux commandes peuvent être utilisées pour effectuer les tests (l'application doit aussi être en route avec <strong>npm run dev</strong>:</p>
+                    <ul className="cours-liste">
+                        <li>npx cypress open  // permet d'ouvrir le studio (UI) Cypress. À utiliser la première fois</li>
+                        <li>npx cypress run // exécute les tests dans le terminal</li>
+                    </ul>
+                    <p>Les tests devront être rédigés par défaut sous /cypress/e2e sous la forme <em>nom</em>.test.js</p>
+
+                    <h3 style={{marginTop: '1em'}}>Modification de la configuration (Vite et Cypress)</h3>
+                    <p>Les tests avec le routeur ne semblent pas fonctionner par défaut, il est désormais nécessaire d'utiliser l'adresse 127.0.0.1 plutôt que l'alias localhost:</p>
+                    <Snippet language="javascript" code={`
+// Fichier vite.config.js
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    host: '127.0.0.1'
+  }
+})
+
+// Fichier cypress.config.js
+// Dans l'objet e2e, ajouter la propriété suivante:
+    baseUrl: 'http://127.0.0.1:5173'
+                    `}/>
+                </Groupe>
+                                <Groupe title="Création d'un premier test">
+                                    <p>On ajoutera la ligne <strong>///&lt;reference types="cypress" /&gt;</strong> en tête de chacun des fichiers de tests afin d'avoir davantage d'Intellisense sous VS Code.</p>
+                                    <p>Les tests auront souvent la forme suivante:</p>
+                                    <ol className="cours-liste">
+                                        <li>Visiter un url</li>
+                                        <li>Faire possiblement une/des manipulations</li>
+                                        <li>Faire une vérification</li>
+                                    </ol>
+                                    <Snippet language="javascript" code={`
+///<reference types="cypress"/>
+// Les méthodes test/it ainsi que l'objet cy sont ajoutées à l'environnement global par Cypress, inutile de les importer
+it('une description de ce qui est attendu du test', () => {
+    // on navigue vers une page
+    cy.visit('/url');
+    
+    //on effectue une requête d'un élément et on effectue une manipulation
+    cy.get('.btn.btn-full').click();
+    
+    // on effectue ensuite une vérification/assertion
+    cy.get('h2').should('have.text', 'Blog');    
+});   
+                                    `}/>
+                                    <p>Le test est effectué sur un maximum (par défaut de 4 secondes). Cypress attendra donc 4 secondes pour s'assurer que toutes les étapes sont des succès avant de déclarer un test comme un échec.</p>
+                                    <p>On peut rédiger autant de tests que nécessaires dans le fichier et on peut également utiliser plusieurs <em>expect</em> dans un même test. Pour réussir, chacun d'eux devra être un succès.</p>
+                                    <p>Il est également possible de regrouper des tests à l'intérieur d'une suite pour ajouter une description supplémentaire:</p>
+                                    <Snippet language="javascript" code={`
+//...
+
+describe('Nom de la suite de tests', () => {
+    it('...qqc', () => {});
+    
+    it('...qqc', () => {});
+    
+    it('...qqc', () => {});
+});    
+                                    `}/>
+                                </Groupe>
+                                <Groupe title="Requêtes">
+                                    <p>On utilisera principalement la méthode <A url="https://docs.cypress.io/api/commands/get" internal={false}>get</A> pour sélectionner un élément de l'interface. Afin de ne pas avoir à corriger les tests trop souvent, on utilisera normalement des sélecteurs qui ne varieront pas dans le temps ni qui sont trop liés au style de l'interface.
+                                    Cypress suggère d'utiliser un sélecteur d'attribut <strong>[data-cy="valeur"]</strong>.</p>
+                                    <p>On sélectionne aussi souvent à l'aide de la méthode <A url="https://docs.cypress.io/api/commands/contains" internal={false}>contains</A> afin de sélectionner un élément par le texte qu'il contient. Le premier élément contenat le texte fourni (même partiellement) sera utilisé. On peut aussi les combiner:</p>
+                                    <Snippet language="javascript" code={`
+cy.get('.nav').contains('About');  // le test sera un échec si aucune balise n'est trouvée                        
+                                    `}/>
+                                    <p>D'autres types de requêtes peuvent être effectués comme pour récupérer l'<A url="https://docs.cypress.io/api/commands/url" internal={false}>url
+                                        en cours</A> ou le <A url="https://docs.cypress.io/api/commands/title" internal={false}>title de la page en cours</A>. Les différentes requêtes disponibles se retrouvent dans le panneau gauche de la <A url="https://docs.cypress.io/api/commands/as" internal={false}>documentation
+                                        de Cypress</A>.</p>
+                                </Groupe>
+                                <Groupe title="Assertions">
+                                    <p>Le <em>code completion</em> est ici très utile comme les <em><A url="https://docs.cypress.io/api/commands/should" internal={false}>assertions</A></em> sont des <A url="https://docs.cypress.io/guides/references/assertions#Text-Content" internal={false}>chaînes
+                                        de caractères</A>.</p>
+                                    <p>Il est important de savoir que dans Cypress, même les requêtes servent aussi d'assertion. Une requête qui n'arrive pas à récupérer l'élément voulu mènera à un échec du test.</p>
+                                </Groupe>
+                            </Section>
         </section>
     );
 };

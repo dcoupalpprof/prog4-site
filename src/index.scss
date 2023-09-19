@@ -119,7 +119,9 @@ code {
 }
 
 .cours-liste {
-    list-style-type: disc;
+    &:not(ol) {
+       list-style-type: disc;
+    }
     padding-left: 1.4em;
 }
 
