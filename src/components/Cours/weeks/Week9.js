@@ -12,7 +12,7 @@ const Week9 = () => {
     import { collection, addDoc } from "firebase/firestore"
     import {db} from '../qq/part';
     
-    const addDoc = async() => {
+    const addDocHandler = async() => {
         const docRef = await addDoc(collection(db, 'nomDeLaCollection'), {
             propriete: 'valeur',
             propriete2: 'valeur2'
@@ -28,7 +28,7 @@ const Week9 = () => {
     import {doc, setDoc} from 'firebase/firestore';
     import {db} from '../qq/part';
     
-    const saveDoc = async () => {
+    const saveDocHandler = async () => {
         const docRef = doc(db, 'nomDeLaCollection', 'leID');
         await setDoc(docRef, {
             propriete: 'valeur',
@@ -38,7 +38,7 @@ const Week9 = () => {
                     `}/>
                     <p>Si un document existait déjà sous le ID spécifié, celui-ci sera écrasé par les nouvelles données. <strong>Une option supplémentaire permet cependant de fusionner les nouvelles et anciennes données</strong> afin d'éviter de perdre le document tel qu'il était sauvegardé. En cas de doute, il est préférable d'utiliser cette option d'emblée.</p>
                     <Snippet code={`
-    const saveDoc = async () => {
+    const saveDocHandler = async () => {
         const docRef = doc(db, 'nomDeLaCollection', 'leID');
         await setDoc(docRef, {
             propriete: 'valeur',
