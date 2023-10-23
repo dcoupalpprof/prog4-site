@@ -141,6 +141,81 @@ const UneComposante = () => {
 				`}/>
                 </Groupe>
             </Section>
+
+	<Section title="Utilisation de Firebase">
+                <Groupe title="Une suite d'outils côté serveur">
+                    <p>Acquis par Google en 2014, Firebase offre désormais une multitude d'outils <em>backend</em> sans nécessiter nécessaire de rédiger du code serveur. Un compte Google gratuit permet d'avoir accès aux fonctionnalités suivantes:</p>
+                    <ul className="cours-liste">
+                        <li><strong>Firestore:</strong> Une base de donnée NoSQL à lecture en temps réel;</li>
+                        <li><strong>Authentification:</strong> Authentification de l'utilisateur en utilisant les fournisseurs habituel (Google, Facebook, Github...) ainsi qu'une solution par texto ou courriel/mot de passe;</li>
+                        <li><strong>Stockage:</strong> Hébergement de fichiers multiples;</li>
+                        <li><strong>Hébergement:</strong> Possibilité d'héberger un site ou une application;</li>
+                        <li><strong>Fonctions Cloud:</strong> Permet de lancer des fonctions du côté serveur en réaction aux événements déclenchés par l'utilisation des autres services Firebase. Le code est rédigé en Javascript/Typescript (NodeJs) et nécessite un compte Blaze.</li>
+                        <li><strong>Autres: </strong>D'autres outils comme des fonctionnalités de <em>machine learning</em> et la distribution d'une application au sein d'une équipe de travail.</li>
+                    </ul>
+                    <p>Ces fonctionnalités peuvent être utilisées grâce au SDK de Firebase téléchargé par npm. Le SDK est disponible en plusieurs langages dont C#.</p>
+                </Groupe>
+                <Groupe title="Initialisation de Firestore">
+                    <p>À l'aide d'un compte Google, il faut débuter la création d'un projet depuis le site de Firebase, initialiser Firestore et récupérer sa configuration depuis les <strong>paramètres du projet</strong> en sélectionnant la version Web. <A internal={false} url="https://firebase.google.com/docs/firestore/quickstart">L'introduction à Firestore</A> peut servir de tutoriel pour y arriver.</p>
+                    <p>Dans le projet React, <strong>installer le module Firebase</strong> à l'aide de npm (<strong>npm i firebase</strong>).</p>
+                    <p>L'application Firebase ainsi que chacun des services utilisés doivent être "activés" au démarrage de l'application React (ce code peut être exécuté depuis index.js).</p>
+                    <Snippet language="javascript" code={`
+    import {initializeApp} from "firebase/app";
+    import {getFirestore} from "firebase/firestore";
+    
+    const firebaseApp = initializeApp(/*
+        récupérer les paramètres et leur valeur depuis la config FB
+    */);
+    
+    // les requêtes à Firestore utiliseront cet objet
+    // il pourrait être utile de l'exporter
+    const db = getFirestore(firebaseApp);
+                    `}/>
+                </Groupe>
+                <Groupe title="Interrogation de Firestore">
+                    <p>Firestore n'étant pas une bd relationnelle, la modélisation y est différente. On doit focaliser sur les questions que l'on voudra y poser en se rappelant aussi qu'un document ne peut être partiellement récupéré. Tous les champs du document sont envoyés lors d'une requête.</p>
+                    <p>L'évitement de doublons dans la bd n'est plus une obsession étant donné le faible coût du stockage de données. On préféra la répétition des données plutôt que de devoir exécuter plusieurs requêtes pour compléter les informations requises.</p>
+                    <h3>Récupération d'une collection - Lecture unique</h3>
+                    <p>Pour effectuer une lecture unique d'une collection (qui ne se mettra pas à jour automatiquement), on utilisera les fonctions <strong>collection et getDocs</strong>:</p>
+                    <Snippet code={`
+    import {getDocs, collection} from 'firebase/firestore';
+    
+    const getCollection = async() => {
+        const maCollection = await getDocs(collection(db, 'nomDeLaCollection'));
+        // documents sera un tableau contenant les données de la collection
+        const documents = maCollection.docs.map(doc => doc.data());
+        
+        // si le id de chacun des documents est nécessaire on procéderait ainsi
+        const documents = maCollection.docs.map(doc => ({
+            ...doc.data(),
+            id: doc.id // le id se trouvera sous la propriété id
+        }));
+    };
+                    `}/>
+
+                    <h3>Récupération d'une collection - Temps réel</h3>
+                    <p>Firestore permet aussi l'excitante lecture en temps réel où, par un écouteur d'événements, on recevra chaque mise à jour de la collection. Comme on utilise un écouteur, on utilise un système de <em>callbacks</em> ne devant pas être rédigé sous la forme asynchrone.</p>
+                    <Snippet code={`
+    import {onSnapshot, collection} from 'firebase/firestore';
+  
+    // la fonction passée en 2e paramètre sera appelée à chaque modification de la collection
+    const unsub = onSnapshot(collection(db, 'nomDeLaCollection'), (snapshot) => {
+        const documents = snapshot.docs.map(doc => doc.data());
+    });
+                    `}/>
+                    <p>La variable <strong>unsub</strong> créée ci-dessous est une fonction qui <strong>doit être appelée pour se désabonner de l'écouter d'événements</strong>.</p>
+                    <h3>Récupération d'un document par son id - Lecture unique</h3>
+                    <p>Pour récupérer les données d'un seul document on utilisera les fonctions <strong>doc et getDoc</strong>:</p>
+                    <Snippet code={`
+    import {doc, getDoc} from 'firebase/firestore';
+    
+    const getDocument = async(id) => {
+        const monDocument = await getDoc(doc(db, 'nomDeLaCollection', id));
+        return monDocument.data();
+    };
+                `}/>
+                </Groupe>
+            </Section>
             
         </section>
     );
