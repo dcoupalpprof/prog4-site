@@ -72,7 +72,7 @@ const Week9 = () => {
                 </Groupe>
                 <Groupe title="Authentification par mot de passe - Inscription">
                     <Snippet code={`
-    import {createUserWithEmailAndPassword } from "firebase/app";
+    import {createUserWithEmailAndPassword } from "firebase/auth";
     import {auth} from '../qq/part';
     
     const register = async (email, password) => {
