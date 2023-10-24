@@ -119,7 +119,7 @@ const ThemeProvider = props => {
 const useTheme = () => {
     const themeContext = useContext(ThemeContext);
     if (themeContext === undefined) {
-        throw new Error(`useTheme doit être utilisé à l'intérieur d'un ThemeProvider`);
+        throw new Error("useTheme doit être utilisé à l'intérieur d'un ThemeProvider");
     }
     return themeContext;
 };
